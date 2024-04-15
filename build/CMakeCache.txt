@@ -418,6 +418,12 @@ actionlib_msgs_DIR:PATH=/opt/ros/noetic/share/actionlib_msgs/cmake
 angles_DIR:PATH=/opt/ros/noetic/share/angles/cmake
 
 //Value Computed by CMake
+bdr_ur10_moveit_BINARY_DIR:STATIC=/catkin_ws/build/bdr_ur10_moveit
+
+//Value Computed by CMake
+bdr_ur10_moveit_SOURCE_DIR:STATIC=/catkin_ws/src/bdr_ur10_moveit
+
+//Value Computed by CMake
 bdr_ur10_moveit_v1_BINARY_DIR:STATIC=/catkin_ws/build/bdr_ur10_moveit_v1
 
 //Value Computed by CMake
@@ -428,6 +434,18 @@ bdr_ur10_moveit_v2_BINARY_DIR:STATIC=/catkin_ws/build/bdr_ur10_moveit_v2
 
 //Value Computed by CMake
 bdr_ur10_moveit_v2_SOURCE_DIR:STATIC=/catkin_ws/src/bdr_ur10_moveit_v2
+
+//Value Computed by CMake
+bdr_ur10_moveit_v3_BINARY_DIR:STATIC=/catkin_ws/build/bdr_ur10_moveit_v3
+
+//Value Computed by CMake
+bdr_ur10_moveit_v3_SOURCE_DIR:STATIC=/catkin_ws/src/bdr_ur10_moveit_v3
+
+//Value Computed by CMake
+bdr_ur10_moveit_v4_BINARY_DIR:STATIC=/catkin_ws/build/bdr_ur10_moveit_v4
+
+//Value Computed by CMake
+bdr_ur10_moveit_v4_SOURCE_DIR:STATIC=/catkin_ws/src/bdr_ur10_moveit_v4
 
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.71.0
@@ -545,7 +563,7 @@ gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 hardware_interface_DIR:PATH=/opt/ros/noetic/share/hardware_interface/cmake
 
 //The directory containing a CMake configuration file for industrial_robot_status_interface.
-industrial_robot_status_interface_DIR:PATH=/opt/ros/noetic/share/industrial_robot_status_interface/cmake
+industrial_robot_status_interface_DIR:PATH=industrial_robot_status_interface_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for joint_trajectory_controller.
 joint_trajectory_controller_DIR:PATH=/opt/ros/noetic/share/joint_trajectory_controller/cmake
@@ -557,7 +575,7 @@ kdl_conversions_DIR:PATH=/opt/ros/noetic/share/kdl_conversions/cmake
 kdl_parser_DIR:PATH=/opt/ros/noetic/share/kdl_parser/cmake
 
 //Path to a library.
-lib:FILEPATH=/usr/lib/liborocos-kdl.so
+lib:FILEPATH=/opt/ros/noetic/lib/librospack.so
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/noetic/share/message_filters/cmake
@@ -778,8 +796,7 @@ ur_client_library_DIR:PATH=/opt/ros/noetic/lib/cmake/ur_client_library
 //Value Computed by CMake
 ur_dashboard_msgs_BINARY_DIR:STATIC=/catkin_ws/build/Universal_Robots_ROS_Driver/ur_dashboard_msgs
 
-//The directory containing a CMake configuration file for ur_dashboard_msgs.
-ur_dashboard_msgs_DIR:PATH=/catkin_ws/devel/share/ur_dashboard_msgs/cmake
+ur_dashboard_msgs_DIR:PATH=
 
 //Value Computed by CMake
 ur_dashboard_msgs_SOURCE_DIR:STATIC=/catkin_ws/src/Universal_Robots_ROS_Driver/ur_dashboard_msgs
@@ -982,7 +999,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=23
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1026,7 +1043,7 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Boost
-FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake][c ][v1.71.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake][cfound components: system ][v1.71.0()]
 //Details about finding PY_em
 FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/usr/lib/python3/dist-packages/em.py][v()]
 //Details about finding PythonInterp

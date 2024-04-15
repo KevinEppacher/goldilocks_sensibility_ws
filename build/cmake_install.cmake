@@ -131,8 +131,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/catkin_ws/build/bdr_ur10_moveit/cmake_install.cmake")
   include("/catkin_ws/build/bdr_ur10_moveit_v1/cmake_install.cmake")
   include("/catkin_ws/build/bdr_ur10_moveit_v2/cmake_install.cmake")
+  include("/catkin_ws/build/bdr_ur10_moveit_v3/cmake_install.cmake")
+  include("/catkin_ws/build/bdr_ur10_moveit_v4/cmake_install.cmake")
   include("/catkin_ws/build/ur10_description_v3/cmake_install.cmake")
 
 endif()

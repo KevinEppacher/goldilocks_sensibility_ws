@@ -54,16 +54,22 @@ CMAKE_BINARY_DIR = /catkin_ws/build
 
 # The main recursive "all" target.
 all: gtest/all
+all: bdr_ur10_moveit/all
 all: bdr_ur10_moveit_v1/all
 all: bdr_ur10_moveit_v2/all
+all: bdr_ur10_moveit_v3/all
+all: bdr_ur10_moveit_v4/all
 all: ur10_description_v3/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: gtest/preinstall
+preinstall: bdr_ur10_moveit/preinstall
 preinstall: bdr_ur10_moveit_v1/preinstall
 preinstall: bdr_ur10_moveit_v2/preinstall
+preinstall: bdr_ur10_moveit_v3/preinstall
+preinstall: bdr_ur10_moveit_v4/preinstall
 preinstall: ur10_description_v3/preinstall
 
 .PHONY : preinstall
@@ -75,11 +81,32 @@ clean: CMakeFiles/clean_test_results.dir/clean
 clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/download_extra_data.dir/clean
 clean: gtest/clean
+clean: bdr_ur10_moveit/clean
 clean: bdr_ur10_moveit_v1/clean
 clean: bdr_ur10_moveit_v2/clean
+clean: bdr_ur10_moveit_v3/clean
+clean: bdr_ur10_moveit_v4/clean
 clean: ur10_description_v3/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory bdr_ur10_moveit
+
+# Recursive "all" directory target.
+bdr_ur10_moveit/all:
+
+.PHONY : bdr_ur10_moveit/all
+
+# Recursive "preinstall" directory target.
+bdr_ur10_moveit/preinstall:
+
+.PHONY : bdr_ur10_moveit/preinstall
+
+# Recursive "clean" directory target.
+bdr_ur10_moveit/clean: bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/clean
+
+.PHONY : bdr_ur10_moveit/clean
 
 #=============================================================================
 # Directory level rules for directory bdr_ur10_moveit_v1
@@ -95,7 +122,7 @@ bdr_ur10_moveit_v1/preinstall:
 .PHONY : bdr_ur10_moveit_v1/preinstall
 
 # Recursive "clean" directory target.
-bdr_ur10_moveit_v1/clean: bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/clean
+bdr_ur10_moveit_v1/clean:
 
 .PHONY : bdr_ur10_moveit_v1/clean
 
@@ -116,6 +143,42 @@ bdr_ur10_moveit_v2/preinstall:
 bdr_ur10_moveit_v2/clean:
 
 .PHONY : bdr_ur10_moveit_v2/clean
+
+#=============================================================================
+# Directory level rules for directory bdr_ur10_moveit_v3
+
+# Recursive "all" directory target.
+bdr_ur10_moveit_v3/all:
+
+.PHONY : bdr_ur10_moveit_v3/all
+
+# Recursive "preinstall" directory target.
+bdr_ur10_moveit_v3/preinstall:
+
+.PHONY : bdr_ur10_moveit_v3/preinstall
+
+# Recursive "clean" directory target.
+bdr_ur10_moveit_v3/clean:
+
+.PHONY : bdr_ur10_moveit_v3/clean
+
+#=============================================================================
+# Directory level rules for directory bdr_ur10_moveit_v4
+
+# Recursive "all" directory target.
+bdr_ur10_moveit_v4/all:
+
+.PHONY : bdr_ur10_moveit_v4/all
+
+# Recursive "preinstall" directory target.
+bdr_ur10_moveit_v4/preinstall:
+
+.PHONY : bdr_ur10_moveit_v4/preinstall
+
+# Recursive "clean" directory target.
+bdr_ur10_moveit_v4/clean:
+
+.PHONY : bdr_ur10_moveit_v4/clean
 
 #=============================================================================
 # Directory level rules for directory gtest
@@ -437,31 +500,31 @@ gtest/googletest/CMakeFiles/gtest.dir/clean:
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/clean
 
 #=============================================================================
-# Target rules for target bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir
+# Target rules for target bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir
 
 # All Build rule for target.
-bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/all:
-	$(MAKE) -f bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/build.make bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/depend
-	$(MAKE) -f bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/build.make bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/build
+bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/all:
+	$(MAKE) -f bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build.make bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/depend
+	$(MAKE) -f bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build.make bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/catkin_ws/build/CMakeFiles --progress-num= "Built target _catkin_empty_exported_target"
-.PHONY : bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/all
+.PHONY : bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/all
 
 # Build rule for subdir invocation for target.
-bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
+bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /catkin_ws/build/CMakeFiles 0
-.PHONY : bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/rule
+.PHONY : bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 # Convenience name for target.
-_catkin_empty_exported_target: bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/rule
+_catkin_empty_exported_target: bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 .PHONY : _catkin_empty_exported_target
 
 # clean rule for target.
-bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	$(MAKE) -f bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/build.make bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/clean
-.PHONY : bdr_ur10_moveit_v1/CMakeFiles/_catkin_empty_exported_target.dir/clean
+bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/clean:
+	$(MAKE) -f bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build.make bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/clean
+.PHONY : bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

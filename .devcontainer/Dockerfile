@@ -32,6 +32,12 @@ RUN sudo apt-get install -y ros-$ROS_DISTRO-realsense2-camera
 
 RUN sudo apt-get install -y ros-$ROS_DISTRO-realsense2-description
 
+RUN sudo apt update && sudo apt upgrade -y
+
+RUN sudo apt-get install -y ros-$ROS_DISTRO-universal-robots
+
+RUN sudo apt-get install -y ros-$ROS_DISTRO-ur10-moveit-config
+
 RUN sudo apt update -qq \
     && rosdep update
 
