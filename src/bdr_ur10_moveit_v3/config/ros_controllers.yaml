@@ -1,0 +1,9 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+  controller_list:
+    -name: /bdr_ur10/arm_controller
+    action_ns: follow_joint_trajectory
+    default: true
+    type: FollowJointTrajectory

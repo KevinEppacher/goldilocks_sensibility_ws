@@ -1,0 +1,12 @@
+controller_list:
+  - name: bdr_ur_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - motor_1
+      - motor_2
+      - motor_3
+      - motor_4
+      - motor_5
+      - motor_6

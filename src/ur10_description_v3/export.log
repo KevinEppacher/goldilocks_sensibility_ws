@@ -1,0 +1,100 @@
+2024-04-02 23:27:42,474 INFO  AssemblyExportForm.cs: 309 - Saving URDF package to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3
+2024-04-02 23:27:42,477 INFO  ExportHelper.cs: 147 - Beginning the export process
+2024-04-02 23:27:42,478 INFO  ExportHelper.cs: 153 - Creating package directories with name ur10_description_v3 and save path C:\Master\2_Semester\ROD\ur_control\catkin_ws\src
+2024-04-02 23:27:43,788 INFO  ExportHelper.cs: 162 - Creating CMakeLists.txt at C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\CMakeLists.txt
+2024-04-02 23:27:43,789 INFO  ExportHelper.cs: 166 - Creating joint names config at C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\config\joint_names_ur10_description_v3.yaml
+2024-04-02 23:27:43,789 INFO  ExportHelper.cs: 170 - Creating package.xml at C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\package.xml
+2024-04-02 23:27:43,789 INFO  PackageXMLWriter.cs: 21 - Creating package.xml at C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\package.xml
+2024-04-02 23:27:43,790 INFO  ExportHelper.cs: 177 - Creating RVIZ launch file in C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\launch\
+2024-04-02 23:27:43,790 INFO  ExportHelper.cs: 182 - Creating Gazebo launch file in C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\launch\
+2024-04-02 23:27:43,791 INFO  ExportHelper.cs: 187 - Saving existing STL preferences
+2024-04-02 23:27:43,791 INFO  ExportHelper.cs: 450 - Saving users preferences
+2024-04-02 23:27:43,791 INFO  ExportHelper.cs: 190 - Modifying STL preferences
+2024-04-02 23:27:43,791 INFO  ExportHelper.cs: 464 - Setting STL preferences
+2024-04-02 23:27:43,792 INFO  ExportHelper.cs: 196 - Found 0 hidden components 
+2024-04-02 23:27:43,792 INFO  ExportHelper.cs: 197 - Hiding all components
+2024-04-02 23:27:43,862 INFO  ExportHelper.cs: 204 - Beginning individual files export
+2024-04-02 23:27:43,878 INFO  ExportHelper.cs: 270 - Exporting link: table_link
+2024-04-02 23:27:43,878 INFO  ExportHelper.cs: 272 - Link table_link has 1 children
+2024-04-02 23:27:43,878 INFO  ExportHelper.cs: 270 - Exporting link: adapter_link
+2024-04-02 23:27:43,879 INFO  ExportHelper.cs: 272 - Link adapter_link has 1 children
+2024-04-02 23:27:43,879 INFO  ExportHelper.cs: 270 - Exporting link: base_link
+2024-04-02 23:27:43,879 INFO  ExportHelper.cs: 272 - Link base_link has 1 children
+2024-04-02 23:27:43,880 INFO  ExportHelper.cs: 270 - Exporting link: shoulder_link
+2024-04-02 23:27:43,880 INFO  ExportHelper.cs: 272 - Link shoulder_link has 1 children
+2024-04-02 23:27:43,881 INFO  ExportHelper.cs: 270 - Exporting link: upper_arm_link
+2024-04-02 23:27:43,881 INFO  ExportHelper.cs: 272 - Link upper_arm_link has 1 children
+2024-04-02 23:27:43,881 INFO  ExportHelper.cs: 270 - Exporting link: forearm_link
+2024-04-02 23:27:43,881 INFO  ExportHelper.cs: 272 - Link forearm_link has 1 children
+2024-04-02 23:27:43,882 INFO  ExportHelper.cs: 270 - Exporting link: wrist_1_link
+2024-04-02 23:27:43,882 INFO  ExportHelper.cs: 272 - Link wrist_1_link has 1 children
+2024-04-02 23:27:43,882 INFO  ExportHelper.cs: 270 - Exporting link: wrist_2_link
+2024-04-02 23:27:43,883 INFO  ExportHelper.cs: 272 - Link wrist_2_link has 1 children
+2024-04-02 23:27:43,883 INFO  ExportHelper.cs: 270 - Exporting link: wrist_3_link
+2024-04-02 23:27:43,883 INFO  ExportHelper.cs: 272 - Link wrist_3_link has 2 children
+2024-04-02 23:27:43,884 INFO  ExportHelper.cs: 270 - Exporting link: test_finger_link
+2024-04-02 23:27:43,884 INFO  ExportHelper.cs: 272 - Link test_finger_link has 0 children
+2024-04-02 23:27:43,884 INFO  ExportHelper.cs: 317 - test_finger_link: Exporting STL with coordinate frame Origin_tool_test_finger
+2024-04-02 23:27:43,884 INFO  ExportHelper.cs: 322 - test_finger_link: Reference geometry name 
+2024-04-02 23:27:43,906 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\test_finger_link.STL
+2024-04-02 23:27:43,962 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:43,963 INFO  ExportHelper.cs: 270 - Exporting link: camera_link
+2024-04-02 23:27:43,963 INFO  ExportHelper.cs: 272 - Link camera_link has 0 children
+2024-04-02 23:27:43,964 INFO  ExportHelper.cs: 317 - camera_link: Exporting STL with coordinate frame Origin_tool_camera
+2024-04-02 23:27:43,964 INFO  ExportHelper.cs: 322 - camera_link: Reference geometry name 
+2024-04-02 23:27:43,971 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\camera_link.STL
+2024-04-02 23:27:44,033 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,034 INFO  ExportHelper.cs: 317 - wrist_3_link: Exporting STL with coordinate frame Origin_motor_6
+2024-04-02 23:27:44,034 INFO  ExportHelper.cs: 322 - wrist_3_link: Reference geometry name 
+2024-04-02 23:27:44,042 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\wrist_3_link.STL
+2024-04-02 23:27:44,065 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,066 INFO  ExportHelper.cs: 317 - wrist_2_link: Exporting STL with coordinate frame Origin_motor_5
+2024-04-02 23:27:44,066 INFO  ExportHelper.cs: 322 - wrist_2_link: Reference geometry name 
+2024-04-02 23:27:44,096 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\wrist_2_link.STL
+2024-04-02 23:27:44,145 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,145 INFO  ExportHelper.cs: 317 - wrist_1_link: Exporting STL with coordinate frame Origin_motor_4
+2024-04-02 23:27:44,145 INFO  ExportHelper.cs: 322 - wrist_1_link: Reference geometry name 
+2024-04-02 23:27:44,176 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\wrist_1_link.STL
+2024-04-02 23:27:44,223 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,223 INFO  ExportHelper.cs: 317 - forearm_link: Exporting STL with coordinate frame Origin_motor_3
+2024-04-02 23:27:44,224 INFO  ExportHelper.cs: 322 - forearm_link: Reference geometry name 
+2024-04-02 23:27:44,261 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\forearm_link.STL
+2024-04-02 23:27:44,303 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,304 INFO  ExportHelper.cs: 317 - upper_arm_link: Exporting STL with coordinate frame Origin_motor_2
+2024-04-02 23:27:44,304 INFO  ExportHelper.cs: 322 - upper_arm_link: Reference geometry name 
+2024-04-02 23:27:44,311 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\upper_arm_link.STL
+2024-04-02 23:27:44,387 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,388 INFO  ExportHelper.cs: 317 - shoulder_link: Exporting STL with coordinate frame Origin_motor_1
+2024-04-02 23:27:44,388 INFO  ExportHelper.cs: 322 - shoulder_link: Reference geometry name 
+2024-04-02 23:27:44,397 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\shoulder_link.STL
+2024-04-02 23:27:44,434 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,435 INFO  ExportHelper.cs: 317 - base_link: Exporting STL with coordinate frame Origin_base_joint
+2024-04-02 23:27:44,435 INFO  ExportHelper.cs: 322 - base_link: Reference geometry name 
+2024-04-02 23:27:44,443 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\base_link.STL
+2024-04-02 23:27:44,473 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,474 INFO  ExportHelper.cs: 317 - adapter_link: Exporting STL with coordinate frame Origin_adapter_joint
+2024-04-02 23:27:44,474 INFO  ExportHelper.cs: 322 - adapter_link: Reference geometry name 
+2024-04-02 23:27:44,483 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\adapter_link.STL
+2024-04-02 23:27:44,507 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,508 INFO  ExportHelper.cs: 317 - table_link: Exporting STL with coordinate frame Origin_global
+2024-04-02 23:27:44,508 INFO  ExportHelper.cs: 322 - table_link: Reference geometry name 
+2024-04-02 23:27:44,515 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\table_link.STL
+2024-04-02 23:27:44,541 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
+2024-04-02 23:27:44,542 INFO  ExportHelper.cs: 145 - Showing all components except previously hidden components
+2024-04-02 23:27:44,666 INFO  ExportHelper.cs: 145 - Resetting STL preferences
+2024-04-02 23:27:44,666 INFO  ExportHelper.cs: 478 - Returning STL preferences to user preferences
+2024-04-02 23:27:44,667 INFO  ExportHelper.cs: 228 - Writing URDF file to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\urdf\ur10_description_v3.urdf
+2024-04-02 23:27:44,667 INFO  CSVImportExport.cs: 32 - Writing CSV file C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\urdf\ur10_description_v3.csv
+2024-04-02 23:27:44,668 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,669 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,669 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,672 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,672 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,673 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,673 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,673 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,673 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,674 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,674 ERROR CSVImportExport.cs: 130 - The following columns were not written to the CSV: Link.Joint.ChildLink.link,
+2024-04-02 23:27:44,674 INFO  ExportHelper.cs: 234 - Copying log file
+2024-04-02 23:27:44,674 INFO  ExportHelper.cs: 439 - Copying C:\Users\KEVIN\sw2urdf_logs\sw2urdf.log to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\export.log

@@ -1,0 +1,13 @@
+controller_list:
+  - name: fake_bdr_ur10_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - motor_1
+      - motor_2
+      - motor_3
+      - motor_4
+      - motor_5
+      - motor_6
+initial:  # Define initial robot poses per group
+  - group: bdr_ur10
+    pose: up
