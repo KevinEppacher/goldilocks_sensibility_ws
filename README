@@ -51,7 +51,7 @@ rosdep install --from-paths src --ignore-src -y
 
 # diese commands bis hier ausführen
 
-roslaunch ur_robot_driver ur10e_bringup.launch robot_ip:=192.168.1.102 kinematics_config:=/home/kevin/catkin_ws/src/ur_calibration/ex-ur5_calibration.yaml
+roslaunch ur_robot_driver ur10_bringup.launch robot_ip:=192.168.1.102 kinematics_config:=/home/kevin/catkin_ws/src/ur_calibration/ex-ur5_calibration.yaml
 
 roslaunch ur10_moveit_config moveit_planning_execution.launch ĺimited:=true
 

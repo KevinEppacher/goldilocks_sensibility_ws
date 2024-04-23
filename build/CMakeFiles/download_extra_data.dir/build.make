@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /catkin_ws/src
+CMAKE_SOURCE_DIR = /goldilocks_sensibility_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /catkin_ws/build
+CMAKE_BINARY_DIR = /goldilocks_sensibility_ws/build
 
 # Utility rule file for download_extra_data.
 
@@ -67,6 +67,6 @@ CMakeFiles/download_extra_data.dir/clean:
 .PHONY : CMakeFiles/download_extra_data.dir/clean
 
 CMakeFiles/download_extra_data.dir/depend:
-	cd /catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /catkin_ws/src /catkin_ws/src /catkin_ws/build /catkin_ws/build /catkin_ws/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
+	cd /goldilocks_sensibility_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /goldilocks_sensibility_ws/src /goldilocks_sensibility_ws/src /goldilocks_sensibility_ws/build /goldilocks_sensibility_ws/build /goldilocks_sensibility_ws/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/download_extra_data.dir/depend
 

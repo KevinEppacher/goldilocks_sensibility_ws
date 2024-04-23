@@ -44,27 +44,27 @@
 2024-04-02 23:27:43,964 INFO  ExportHelper.cs: 322 - camera_link: Reference geometry name 
 2024-04-02 23:27:43,971 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\camera_link.STL
 2024-04-02 23:27:44,033 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
-2024-04-02 23:27:44,034 INFO  ExportHelper.cs: 317 - wrist_3_link: Exporting STL with coordinate frame Origin_motor_6
+2024-04-02 23:27:44,034 INFO  ExportHelper.cs: 317 - wrist_3_link: Exporting STL with coordinate frame Origin_wrist_3_joint
 2024-04-02 23:27:44,034 INFO  ExportHelper.cs: 322 - wrist_3_link: Reference geometry name 
 2024-04-02 23:27:44,042 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\wrist_3_link.STL
 2024-04-02 23:27:44,065 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
-2024-04-02 23:27:44,066 INFO  ExportHelper.cs: 317 - wrist_2_link: Exporting STL with coordinate frame Origin_motor_5
+2024-04-02 23:27:44,066 INFO  ExportHelper.cs: 317 - wrist_2_link: Exporting STL with coordinate frame Origin_wrist_2_joint
 2024-04-02 23:27:44,066 INFO  ExportHelper.cs: 322 - wrist_2_link: Reference geometry name 
 2024-04-02 23:27:44,096 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\wrist_2_link.STL
 2024-04-02 23:27:44,145 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
-2024-04-02 23:27:44,145 INFO  ExportHelper.cs: 317 - wrist_1_link: Exporting STL with coordinate frame Origin_motor_4
+2024-04-02 23:27:44,145 INFO  ExportHelper.cs: 317 - wrist_1_link: Exporting STL with coordinate frame Origin_wrist_1_joint
 2024-04-02 23:27:44,145 INFO  ExportHelper.cs: 322 - wrist_1_link: Reference geometry name 
 2024-04-02 23:27:44,176 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\wrist_1_link.STL
 2024-04-02 23:27:44,223 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
-2024-04-02 23:27:44,223 INFO  ExportHelper.cs: 317 - forearm_link: Exporting STL with coordinate frame Origin_motor_3
+2024-04-02 23:27:44,223 INFO  ExportHelper.cs: 317 - forearm_link: Exporting STL with coordinate frame Origin_elbow_joint
 2024-04-02 23:27:44,224 INFO  ExportHelper.cs: 322 - forearm_link: Reference geometry name 
 2024-04-02 23:27:44,261 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\forearm_link.STL
 2024-04-02 23:27:44,303 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
-2024-04-02 23:27:44,304 INFO  ExportHelper.cs: 317 - upper_arm_link: Exporting STL with coordinate frame Origin_motor_2
+2024-04-02 23:27:44,304 INFO  ExportHelper.cs: 317 - upper_arm_link: Exporting STL with coordinate frame Origin_shoulder_lift_joint
 2024-04-02 23:27:44,304 INFO  ExportHelper.cs: 322 - upper_arm_link: Reference geometry name 
 2024-04-02 23:27:44,311 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\upper_arm_link.STL
 2024-04-02 23:27:44,387 INFO  ExportHelper.cs: 405 - Removing SW header in STL file
-2024-04-02 23:27:44,388 INFO  ExportHelper.cs: 317 - shoulder_link: Exporting STL with coordinate frame Origin_motor_1
+2024-04-02 23:27:44,388 INFO  ExportHelper.cs: 317 - shoulder_link: Exporting STL with coordinate frame Origin_shoulder_pan_joint
 2024-04-02 23:27:44,388 INFO  ExportHelper.cs: 322 - shoulder_link: Reference geometry name 
 2024-04-02 23:27:44,397 INFO  ExportHelper.cs: 330 - Saving STL to C:\Master\2_Semester\ROD\ur_control\catkin_ws\src\ur10_description_v3\meshes\shoulder_link.STL
 2024-04-02 23:27:44,434 INFO  ExportHelper.cs: 405 - Removing SW header in STL file

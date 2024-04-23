@@ -1,8 +1,8 @@
-# Install script for directory: /catkin_ws/src/bdr_ur10_moveit
+# Install script for directory: /goldilocks_sensibility_ws/src/bdr_ur10_moveit
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/goldilocks_sensibility_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,25 +38,25 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/catkin_ws/build/bdr_ur10_moveit/catkin_generated/installspace/bdr_ur10_moveit.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/goldilocks_sensibility_ws/build/bdr_ur10_moveit/catkin_generated/installspace/bdr_ur10_moveit.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bdr_ur10_moveit/cmake" TYPE FILE FILES
-    "/catkin_ws/build/bdr_ur10_moveit/catkin_generated/installspace/bdr_ur10_moveitConfig.cmake"
-    "/catkin_ws/build/bdr_ur10_moveit/catkin_generated/installspace/bdr_ur10_moveitConfig-version.cmake"
+    "/goldilocks_sensibility_ws/build/bdr_ur10_moveit/catkin_generated/installspace/bdr_ur10_moveitConfig.cmake"
+    "/goldilocks_sensibility_ws/build/bdr_ur10_moveit/catkin_generated/installspace/bdr_ur10_moveitConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bdr_ur10_moveit" TYPE FILE FILES "/catkin_ws/src/bdr_ur10_moveit/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bdr_ur10_moveit" TYPE FILE FILES "/goldilocks_sensibility_ws/src/bdr_ur10_moveit/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bdr_ur10_moveit" TYPE DIRECTORY FILES "/catkin_ws/src/bdr_ur10_moveit/launch" REGEX "/setup\\_assistant\\.launch$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bdr_ur10_moveit" TYPE DIRECTORY FILES "/goldilocks_sensibility_ws/src/bdr_ur10_moveit/launch" REGEX "/setup\\_assistant\\.launch$" EXCLUDE)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bdr_ur10_moveit" TYPE DIRECTORY FILES "/catkin_ws/src/bdr_ur10_moveit/config")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bdr_ur10_moveit" TYPE DIRECTORY FILES "/goldilocks_sensibility_ws/src/bdr_ur10_moveit/config")
 endif()
 

@@ -1,8 +1,8 @@
-# Install script for directory: /catkin_ws/src
+# Install script for directory: /goldilocks_sensibility_ws/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/goldilocks_sensibility_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,94 +49,95 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/catkin_ws/install/_setup_util.py")
+   "/goldilocks_sensibility_ws/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/catkin_ws/install" TYPE PROGRAM FILES "/catkin_ws/build/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/goldilocks_sensibility_ws/install" TYPE PROGRAM FILES "/goldilocks_sensibility_ws/build/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/catkin_ws/install/env.sh")
+   "/goldilocks_sensibility_ws/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/catkin_ws/install" TYPE PROGRAM FILES "/catkin_ws/build/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/goldilocks_sensibility_ws/install" TYPE PROGRAM FILES "/goldilocks_sensibility_ws/build/catkin_generated/installspace/env.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/catkin_ws/install/setup.bash;/catkin_ws/install/local_setup.bash")
+   "/goldilocks_sensibility_ws/install/setup.bash;/goldilocks_sensibility_ws/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/catkin_ws/install" TYPE FILE FILES
-    "/catkin_ws/build/catkin_generated/installspace/setup.bash"
-    "/catkin_ws/build/catkin_generated/installspace/local_setup.bash"
+file(INSTALL DESTINATION "/goldilocks_sensibility_ws/install" TYPE FILE FILES
+    "/goldilocks_sensibility_ws/build/catkin_generated/installspace/setup.bash"
+    "/goldilocks_sensibility_ws/build/catkin_generated/installspace/local_setup.bash"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/catkin_ws/install/setup.sh;/catkin_ws/install/local_setup.sh")
+   "/goldilocks_sensibility_ws/install/setup.sh;/goldilocks_sensibility_ws/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/catkin_ws/install" TYPE FILE FILES
-    "/catkin_ws/build/catkin_generated/installspace/setup.sh"
-    "/catkin_ws/build/catkin_generated/installspace/local_setup.sh"
+file(INSTALL DESTINATION "/goldilocks_sensibility_ws/install" TYPE FILE FILES
+    "/goldilocks_sensibility_ws/build/catkin_generated/installspace/setup.sh"
+    "/goldilocks_sensibility_ws/build/catkin_generated/installspace/local_setup.sh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/catkin_ws/install/setup.zsh;/catkin_ws/install/local_setup.zsh")
+   "/goldilocks_sensibility_ws/install/setup.zsh;/goldilocks_sensibility_ws/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/catkin_ws/install" TYPE FILE FILES
-    "/catkin_ws/build/catkin_generated/installspace/setup.zsh"
-    "/catkin_ws/build/catkin_generated/installspace/local_setup.zsh"
+file(INSTALL DESTINATION "/goldilocks_sensibility_ws/install" TYPE FILE FILES
+    "/goldilocks_sensibility_ws/build/catkin_generated/installspace/setup.zsh"
+    "/goldilocks_sensibility_ws/build/catkin_generated/installspace/local_setup.zsh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/catkin_ws/install/.rosinstall")
+   "/goldilocks_sensibility_ws/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/catkin_ws/install" TYPE FILE FILES "/catkin_ws/build/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/goldilocks_sensibility_ws/install" TYPE FILE FILES "/goldilocks_sensibility_ws/build/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/catkin_ws/build/gtest/cmake_install.cmake")
-  include("/catkin_ws/build/bdr_ur10_moveit/cmake_install.cmake")
-  include("/catkin_ws/build/bdr_ur10_moveit_v1/cmake_install.cmake")
-  include("/catkin_ws/build/bdr_ur10_moveit_v2/cmake_install.cmake")
-  include("/catkin_ws/build/bdr_ur10_moveit_v3/cmake_install.cmake")
-  include("/catkin_ws/build/bdr_ur10_moveit_v4/cmake_install.cmake")
-  include("/catkin_ws/build/ur10_description_v3/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/gtest/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/bdr_ur10_moveit/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/bdr_ur10_moveit_v1/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/bdr_ur10_moveit_v2/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/bdr_ur10_moveit_v3/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/bdr_ur10_moveit_v4/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/bdr_ur10_moveit_v5/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/ur10_description_v3/cmake_install.cmake")
 
 endif()
 
@@ -148,5 +149,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/catkin_ws/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/goldilocks_sensibility_ws/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

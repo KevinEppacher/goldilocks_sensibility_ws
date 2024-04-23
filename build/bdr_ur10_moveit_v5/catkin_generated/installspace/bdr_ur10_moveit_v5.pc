@@ -1,0 +1,8 @@
+prefix=/goldilocks_sensibility_ws/install
+
+Name: bdr_ur10_moveit_v5
+Description: Description of bdr_ur10_moveit_v5
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

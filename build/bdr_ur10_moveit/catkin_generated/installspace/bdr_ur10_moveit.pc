@@ -1,4 +1,4 @@
-prefix=/catkin_ws/install
+prefix=/goldilocks_sensibility_ws/install
 
 Name: bdr_ur10_moveit
 Description: Description of bdr_ur10_moveit

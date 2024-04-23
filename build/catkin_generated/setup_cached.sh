@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/catkin_ws/build'
+export PWD='/goldilocks_sensibility_ws/build'

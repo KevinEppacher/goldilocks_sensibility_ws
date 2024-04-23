@@ -103,7 +103,7 @@
             </geometry>
         </collision>
     </link>
-    <joint name="motor_1" type="revolute">
+    <joint name="shoulder_pan_joint" type="revolute">
         <origin xyz="0 0 0.038" rpy="0 0 0" />
         <parent link="base_link" />
         <child link="shoulder_link" />
@@ -132,7 +132,7 @@
             </geometry>
         </collision>
     </link>
-    <joint name="motor_2" type="revolute">
+    <joint name="shoulder_lift_joint" type="revolute">
         <origin xyz="0 0.0859989999999999 0.0882571802206784" rpy="1.5707963267949 0.0240929901040578 3.14159265358979" />
         <parent link="shoulder_link" />
         <child link="upper_arm_link" />
@@ -161,7 +161,7 @@
             </geometry>
         </collision>
     </link>
-    <joint name="motor_3" type="revolute">
+    <joint name="elbow_joint" type="revolute">
         <origin xyz="-0.612 0 0" rpy="0 0 0.0242666741712824" />
         <parent link="upper_arm_link" />
         <child link="forearm_link" />
@@ -190,7 +190,7 @@
             </geometry>
         </collision>
     </link>
-    <joint name="motor_4" type="revolute">
+    <joint name="wrist_1_joint" type="revolute">
         <origin xyz="-0.5716 0 0.0220010000000001" rpy="0 0 -0.000173684067224549" />
         <parent link="forearm_link" />
         <child link="wrist_1_link" />
@@ -219,7 +219,7 @@
             </geometry>
         </collision>
     </link>
-    <joint name="motor_5" type="revolute">
+    <joint name="wrist_2_joint" type="revolute">
         <origin xyz="0 -0.0617000000000001 0.054" rpy="1.5707963267949 0 0" />
         <parent link="wrist_1_link" />
         <child link="wrist_2_link" />
@@ -248,7 +248,7 @@
             </geometry>
         </collision>
     </link>
-    <joint name="motor_6" type="revolute">
+    <joint name="wrist_3_joint" type="revolute">
         <origin xyz="0 0.0617 0.054" rpy="-1.5707963267949 0.0141025375343068 0" />
         <parent link="wrist_2_link" />
         <child link="wrist_3_link" />
@@ -311,62 +311,62 @@
         <child link="camera_link" />
         <axis xyz="0 0 0" />
     </joint>
-    <transmission name="trans_motor_1">
+    <transmission name="trans_shoulder_pan_joint">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="motor_1">
+        <joint name="shoulder_pan_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor_1_motor">
+        <actuator name="shoulder_pan_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
-    <transmission name="trans_motor_2">
+    <transmission name="trans_shoulder_lift_joint">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="motor_2">
+        <joint name="shoulder_lift_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor_2_motor">
+        <actuator name="shoulder_lift_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
-    <transmission name="trans_motor_3">
+    <transmission name="trans_elbow_joint">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="motor_3">
+        <joint name="elbow_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor_3_motor">
+        <actuator name="elbow_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
-    <transmission name="trans_motor_4">
+    <transmission name="trans_wrist_1_joint">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="motor_4">
+        <joint name="wrist_1_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor_4_motor">
+        <actuator name="wrist_1_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
-    <transmission name="trans_motor_5">
+    <transmission name="trans_wrist_2_joint">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="motor_5">
+        <joint name="wrist_2_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor_5_motor">
+        <actuator name="wrist_2_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
-    <transmission name="trans_motor_6">
+    <transmission name="trans_wrist_3_joint">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="motor_6">
+        <joint name="wrist_3_joint">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="motor_6_motor">
+        <actuator name="wrist_3_joint_motor">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>

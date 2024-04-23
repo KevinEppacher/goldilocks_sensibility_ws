@@ -194,5 +194,5 @@ bdr_ur10:
     - AITstar
     - ABITstar
     - BITstar
-  projection_evaluator: joints(motor_1,motor_2)
+  projection_evaluator: joints(shoulder_pan_joint,shoulder_lift_joint)
   longest_valid_segment_fraction: 0.005

@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "ur10_description_v3"
-PROJECT_SPACE_DIR = "/catkin_ws/devel"
+PROJECT_SPACE_DIR = "/goldilocks_sensibility_ws/devel"
 PROJECT_VERSION = "1.0.0"

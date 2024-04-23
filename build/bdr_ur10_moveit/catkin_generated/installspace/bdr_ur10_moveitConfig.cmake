@@ -67,14 +67,14 @@ set(bdr_ur10_moveit_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(bdr_ur10_moveit_SOURCE_PREFIX /catkin_ws/src/bdr_ur10_moveit)
-  set(bdr_ur10_moveit_DEVEL_PREFIX /catkin_ws/devel)
+  set(bdr_ur10_moveit_SOURCE_PREFIX /goldilocks_sensibility_ws/src/bdr_ur10_moveit)
+  set(bdr_ur10_moveit_DEVEL_PREFIX /goldilocks_sensibility_ws/devel)
   set(bdr_ur10_moveit_INSTALL_PREFIX "")
   set(bdr_ur10_moveit_PREFIX ${bdr_ur10_moveit_DEVEL_PREFIX})
 else()
   set(bdr_ur10_moveit_SOURCE_PREFIX "")
   set(bdr_ur10_moveit_DEVEL_PREFIX "")
-  set(bdr_ur10_moveit_INSTALL_PREFIX /catkin_ws/install)
+  set(bdr_ur10_moveit_INSTALL_PREFIX /goldilocks_sensibility_ws/install)
   set(bdr_ur10_moveit_PREFIX ${bdr_ur10_moveit_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /catkin_ws/install/lib;/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /goldilocks_sensibility_ws/install/lib;/goldilocks_sensibility_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

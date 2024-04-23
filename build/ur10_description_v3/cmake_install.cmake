@@ -1,8 +1,8 @@
-# Install script for directory: /catkin_ws/src/ur10_description_v3
+# Install script for directory: /goldilocks_sensibility_ws/src/ur10_description_v3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/goldilocks_sensibility_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,33 +38,33 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/catkin_ws/build/ur10_description_v3/catkin_generated/installspace/ur10_description_v3.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/goldilocks_sensibility_ws/build/ur10_description_v3/catkin_generated/installspace/ur10_description_v3.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/cmake" TYPE FILE FILES
-    "/catkin_ws/build/ur10_description_v3/catkin_generated/installspace/ur10_description_v3Config.cmake"
-    "/catkin_ws/build/ur10_description_v3/catkin_generated/installspace/ur10_description_v3Config-version.cmake"
+    "/goldilocks_sensibility_ws/build/ur10_description_v3/catkin_generated/installspace/ur10_description_v3Config.cmake"
+    "/goldilocks_sensibility_ws/build/ur10_description_v3/catkin_generated/installspace/ur10_description_v3Config-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3" TYPE FILE FILES "/catkin_ws/src/ur10_description_v3/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3" TYPE FILE FILES "/goldilocks_sensibility_ws/src/ur10_description_v3/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/config" TYPE DIRECTORY FILES "/catkin_ws/src/ur10_description_v3/config/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/config" TYPE DIRECTORY FILES "/goldilocks_sensibility_ws/src/ur10_description_v3/config/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/launch" TYPE DIRECTORY FILES "/catkin_ws/src/ur10_description_v3/launch/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/launch" TYPE DIRECTORY FILES "/goldilocks_sensibility_ws/src/ur10_description_v3/launch/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/meshes" TYPE DIRECTORY FILES "/catkin_ws/src/ur10_description_v3/meshes/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/meshes" TYPE DIRECTORY FILES "/goldilocks_sensibility_ws/src/ur10_description_v3/meshes/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/urdf" TYPE DIRECTORY FILES "/catkin_ws/src/ur10_description_v3/urdf/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ur10_description_v3/urdf" TYPE DIRECTORY FILES "/goldilocks_sensibility_ws/src/ur10_description_v3/urdf/")
 endif()
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /catkin_ws/src
+CMAKE_SOURCE_DIR = /goldilocks_sensibility_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /catkin_ws/build
+CMAKE_BINARY_DIR = /goldilocks_sensibility_ws/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -63,10 +63,10 @@ bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build: _catkin_empt
 .PHONY : bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /catkin_ws/build/bdr_ur10_moveit && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /goldilocks_sensibility_ws/build/bdr_ur10_moveit && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /catkin_ws/src /catkin_ws/src/bdr_ur10_moveit /catkin_ws/build /catkin_ws/build/bdr_ur10_moveit /catkin_ws/build/bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /goldilocks_sensibility_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /goldilocks_sensibility_ws/src /goldilocks_sensibility_ws/src/bdr_ur10_moveit /goldilocks_sensibility_ws/build /goldilocks_sensibility_ws/build/bdr_ur10_moveit /goldilocks_sensibility_ws/build/bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : bdr_ur10_moveit/CMakeFiles/_catkin_empty_exported_target.dir/depend
 

@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "bdr_ur10_moveit_v1"
-PROJECT_SPACE_DIR = "/catkin_ws/install"
+PROJECT_SPACE_DIR = "/goldilocks_sensibility_ws/install"
 PROJECT_VERSION = "0.3.0"

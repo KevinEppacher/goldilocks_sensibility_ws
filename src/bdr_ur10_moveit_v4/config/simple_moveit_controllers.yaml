@@ -4,9 +4,9 @@ controller_list:
     type: FollowJointTrajectory
     default: True
     joints:
-      - motor_1
-      - motor_2
-      - motor_3
-      - motor_4
-      - motor_5
-      - motor_6
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - elbow_joint
+      - wrist_1_joint
+      - wrist_2_joint
+      - wrist_3_joint

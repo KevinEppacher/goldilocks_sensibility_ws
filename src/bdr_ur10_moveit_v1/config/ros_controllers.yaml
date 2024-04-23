@@ -1,39 +1,39 @@
 position_controller:
   type: position_controllers/JointTrajectoryController
   joints:
-    - motor_1
-    - motor_2
-    - motor_3
-    - motor_4
-    - motor_5
-    - motor_6
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
   gains:
-    motor_1:
+    shoulder_pan_joint:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
-    motor_2:
+    shoulder_lift_joint:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
-    motor_3:
+    elbow_joint:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
-    motor_4:
+    wrist_1_joint:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
-    motor_5:
+    wrist_2_joint:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
-    motor_6:
+    wrist_3_joint:
       p: 100
       d: 1
       i: 1
