@@ -1,4 +1,4 @@
-Docker installation:
+# Docker installation:
 url: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
 #Add Docker s official GPG key:
@@ -43,6 +43,8 @@ sudo systemctl enable containerd.service
 UR Startup:
 
 cd catkin_ws
+
+192.168.1.101
 
 #temporäre Lösung --> muss automatisch im Dockerfile erfolgen --> alle packages herunterladen
 sudo apt-get update
