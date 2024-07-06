@@ -104,7 +104,7 @@
         </collision>
     </link>
     <joint name="shoulder_pan_joint" type="revolute">
-        <origin xyz="0 0 0.038" rpy="0 0 0" />
+        <origin xyz="0 0 0.038" rpy="0 0 -1.57" />
         <parent link="base_link" />
         <child link="shoulder_link" />
         <axis xyz="0 0 1" />
@@ -376,5 +376,20 @@
             <robotNamespace>/</robotNamespace>
         </plugin>
     </gazebo>
+
+    <!-- ROS-Industrial 'base' frame: base_link to UR 'Base' Coordinates transform -->
+    <link name="base"/>
+    <joint name="base_link-base_fixed_joint" type="fixed">
+      <!-- Note the rotation over Z of pi radians: as base_link is REP-103
+           aligned (ie: has X+ forward, Y+ left and Z+ up), this is needed
+           to correctly align 'base' with the 'Base' coordinate system of
+           the UR controller.
+      -->
+      <origin xyz="0 0 0" rpy="0 0 3.14"/>
+      <parent link="base_link"/>
+      <child link="base"/>
+    </joint>
+
 </robot>
+
 
