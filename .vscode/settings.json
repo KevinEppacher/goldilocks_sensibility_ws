@@ -6,5 +6,6 @@
     "python.analysis.extraPaths": [
         "/home/kevin/RobotikMaster/Semester2/ROD/catkin_ws/devel/lib/python3/dist-packages",
         "/opt/ros/noetic/lib/python3/dist-packages"
-    ]
+    ],
+    "cmake.sourceDirectory": "/home/kevin/RobotikMaster/Semester2/ROD/goldilocks_sensibility_ws/src/bdr_ur10_moveit_v6"
 }

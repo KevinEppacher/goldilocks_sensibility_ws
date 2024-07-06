@@ -21,12 +21,10 @@ RUN sudo usermod --append --groups video $USERNAME
 RUN sudo apt update && sudo apt upgrade -y
 
 # Install Git
-RUN sudo apt install -y git
+# RUN sudo apt install -y git
 
 # Rosdep update
 RUN rosdep update
-
-RUN sudo apt install -y ros-${ROS_DISTRO}-ur-robot-driver
 
 RUN sudo apt-get install -y ros-$ROS_DISTRO-realsense2-camera
 
@@ -34,12 +32,14 @@ RUN sudo apt-get install -y ros-$ROS_DISTRO-realsense2-description
 
 RUN sudo apt update && sudo apt upgrade -y
 
+RUN sudo apt install -y ros-${ROS_DISTRO}-ur-robot-driver
+
 RUN sudo apt-get install -y ros-$ROS_DISTRO-universal-robots
 
 RUN sudo apt-get install -y ros-$ROS_DISTRO-ur10-moveit-config
 
 RUN sudo apt update -qq \
-    && rosdep update
+&& rosdep update
 
 
 ENV XDG_RUNTIME_DIR=/tmp/runtime-$USERNAME
@@ -49,5 +49,4 @@ RUN sudo usermod -a -G dialout $USERNAME
 
 # Source the ROS setup file
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
-
 
