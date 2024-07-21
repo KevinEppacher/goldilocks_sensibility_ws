@@ -250,12 +250,13 @@
     </link>
     <joint name="wrist_3_joint" type="revolute">
         <origin xyz="0 0.0617 0.054" rpy="-1.5707963267949 0.0141025375343068 0" />
+
         <parent link="wrist_2_link" />
         <child link="wrist_3_link" />
         <axis xyz="0 0 1" />
         <limit lower="-6.28" upper="6.28" effort="56" velocity="180" />
     </joint>
-    <link name="tool0">
+    <link name="tool0_link">
         <inertial>
             <origin xyz="-9.51811385263568E-09 -0.00040829549117638 -0.063076624107084" rpy="0 0 0" />
             <mass value="0.159494248297753" />
@@ -280,7 +281,7 @@
     <joint name="tool0" type="fixed">
         <origin xyz="0 -0.0486072989450782 0.0984743807368732" rpy="0.785398163397435 0 0" />
         <parent link="wrist_3_link" />
-        <child link="tool0" />
+        <child link="tool0_link" />
         <axis xyz="0 0 0" />
     </joint>
     <link name="camera_link">
@@ -311,6 +312,12 @@
         <child link="camera_link" />
         <axis xyz="0 0 0" />
     </joint>
+
+
+
+
+
+    
     <transmission name="trans_shoulder_pan_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="shoulder_pan_joint">
