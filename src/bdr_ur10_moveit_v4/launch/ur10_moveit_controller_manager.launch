@@ -1,7 +1,0 @@
-<launch>
-    <arg name = "moveit_controller_manager" default " moveit_simple_controller_manager/MoveitSimpleControllerManager" />
-    <param name = " moveit_controller_manager" value = " $(arg moveit_controller_manager)" />
-
-    <rosparam file = "$(find bdr_ur10_moveit_v4)/config/ros_controllers.yaml" /> 
-
-</launch>
