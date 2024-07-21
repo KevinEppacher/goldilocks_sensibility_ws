@@ -37,6 +37,8 @@ RUN sudo apt-get install -y ros-$ROS_DISTRO-ur10-moveit-config
 
 RUN sudo apt-get install -y ros-noetic-moveit-visual-tools
 
+RUN sudo apt-get install -y ros-noetic-rosbridge-suite
+
 # Install Git
 RUN sudo apt install -y git
 

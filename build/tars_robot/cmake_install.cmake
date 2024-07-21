@@ -52,3 +52,18 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tars_robot" TYPE FILE FILES "/goldilocks_sensibility_ws/src/tars_robot/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/goldilocks_sensibility_ws/build/tars_robot/catkin_generated/installspace/tars_robot.pc")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tars_robot/cmake" TYPE FILE FILES
+    "/goldilocks_sensibility_ws/build/tars_robot/catkin_generated/installspace/tars_robotConfig.cmake"
+    "/goldilocks_sensibility_ws/build/tars_robot/catkin_generated/installspace/tars_robotConfig-version.cmake"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tars_robot" TYPE FILE FILES "/goldilocks_sensibility_ws/src/tars_robot/package.xml")
+endif()
+

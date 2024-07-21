@@ -4,7 +4,8 @@
   "runArgs": [
     "--privileged",
     "--network=host",
-    "-p", "8086:8086"
+    // "-p", "8086:8086"
+    "-p", "9090:9090"
 
   ],
   "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",

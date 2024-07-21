@@ -168,6 +168,36 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+tars_robot/CMakeFiles/advertise_topics_for_UR.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/advertise_topics_for_UR.dir/rule
+.PHONY : tars_robot/CMakeFiles/advertise_topics_for_UR.dir/rule
+
+# Convenience name for target.
+advertise_topics_for_UR: tars_robot/CMakeFiles/advertise_topics_for_UR.dir/rule
+
+.PHONY : advertise_topics_for_UR
+
+# fast build rule for target.
+advertise_topics_for_UR/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build.make tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build
+.PHONY : advertise_topics_for_UR/fast
+
+# Convenience name for target.
+tars_robot/CMakeFiles/custom_lib.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/custom_lib.dir/rule
+.PHONY : tars_robot/CMakeFiles/custom_lib.dir/rule
+
+# Convenience name for target.
+custom_lib: tars_robot/CMakeFiles/custom_lib.dir/rule
+
+.PHONY : custom_lib
+
+# fast build rule for target.
+custom_lib/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/build
+.PHONY : custom_lib/fast
+
+# Convenience name for target.
 tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/rule:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/rule
 .PHONY : tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/rule
@@ -1562,6 +1592,60 @@ object_recognition_msgs_generate_messages_eus/fast:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/build.make tars_robot/CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/build
 .PHONY : object_recognition_msgs_generate_messages_eus/fast
 
+include/classes/Measurement.o: include/classes/Measurement.cpp.o
+
+.PHONY : include/classes/Measurement.o
+
+# target to build an object file
+include/classes/Measurement.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/Measurement.cpp.o
+.PHONY : include/classes/Measurement.cpp.o
+
+include/classes/Measurement.i: include/classes/Measurement.cpp.i
+
+.PHONY : include/classes/Measurement.i
+
+# target to preprocess a source file
+include/classes/Measurement.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/Measurement.cpp.i
+.PHONY : include/classes/Measurement.cpp.i
+
+include/classes/Measurement.s: include/classes/Measurement.cpp.s
+
+.PHONY : include/classes/Measurement.s
+
+# target to generate assembly for a file
+include/classes/Measurement.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/Measurement.cpp.s
+.PHONY : include/classes/Measurement.cpp.s
+
+src/advertise_topics_for_UR.o: src/advertise_topics_for_UR.cpp.o
+
+.PHONY : src/advertise_topics_for_UR.o
+
+# target to build an object file
+src/advertise_topics_for_UR.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build.make tars_robot/CMakeFiles/advertise_topics_for_UR.dir/src/advertise_topics_for_UR.cpp.o
+.PHONY : src/advertise_topics_for_UR.cpp.o
+
+src/advertise_topics_for_UR.i: src/advertise_topics_for_UR.cpp.i
+
+.PHONY : src/advertise_topics_for_UR.i
+
+# target to preprocess a source file
+src/advertise_topics_for_UR.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build.make tars_robot/CMakeFiles/advertise_topics_for_UR.dir/src/advertise_topics_for_UR.cpp.i
+.PHONY : src/advertise_topics_for_UR.cpp.i
+
+src/advertise_topics_for_UR.s: src/advertise_topics_for_UR.cpp.s
+
+.PHONY : src/advertise_topics_for_UR.s
+
+# target to generate assembly for a file
+src/advertise_topics_for_UR.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build.make tars_robot/CMakeFiles/advertise_topics_for_UR.dir/src/advertise_topics_for_UR.cpp.s
+.PHONY : src/advertise_topics_for_UR.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1573,6 +1657,8 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
+	@echo "... advertise_topics_for_UR"
+	@echo "... custom_lib"
 	@echo "... graph_msgs_generate_messages_py"
 	@echo "... graph_msgs_generate_messages_nodejs"
 	@echo "... graph_msgs_generate_messages_eus"
@@ -1668,6 +1754,12 @@ help:
 	@echo "... shape_msgs_generate_messages_lisp"
 	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... object_recognition_msgs_generate_messages_eus"
+	@echo "... include/classes/Measurement.o"
+	@echo "... include/classes/Measurement.i"
+	@echo "... include/classes/Measurement.s"
+	@echo "... src/advertise_topics_for_UR.o"
+	@echo "... src/advertise_topics_for_UR.i"
+	@echo "... src/advertise_topics_for_UR.s"
 .PHONY : help
 
 
