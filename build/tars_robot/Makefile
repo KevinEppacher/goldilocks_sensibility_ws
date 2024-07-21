@@ -288,6 +288,21 @@ std_srvs_generate_messages_eus/fast:
 .PHONY : std_srvs_generate_messages_eus/fast
 
 # Convenience name for target.
+tars_robot/CMakeFiles/stop_teaching_mode.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/stop_teaching_mode.dir/rule
+.PHONY : tars_robot/CMakeFiles/stop_teaching_mode.dir/rule
+
+# Convenience name for target.
+stop_teaching_mode: tars_robot/CMakeFiles/stop_teaching_mode.dir/rule
+
+.PHONY : stop_teaching_mode
+
+# fast build rule for target.
+stop_teaching_mode/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/build
+.PHONY : stop_teaching_mode/fast
+
+# Convenience name for target.
 tars_robot/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
 .PHONY : tars_robot/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
@@ -1619,6 +1634,33 @@ include/classes/Measurement.cpp.s:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/Measurement.cpp.s
 .PHONY : include/classes/Measurement.cpp.s
 
+include/classes/get_pose.o: include/classes/get_pose.cpp.o
+
+.PHONY : include/classes/get_pose.o
+
+# target to build an object file
+include/classes/get_pose.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/get_pose.cpp.o
+.PHONY : include/classes/get_pose.cpp.o
+
+include/classes/get_pose.i: include/classes/get_pose.cpp.i
+
+.PHONY : include/classes/get_pose.i
+
+# target to preprocess a source file
+include/classes/get_pose.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/get_pose.cpp.i
+.PHONY : include/classes/get_pose.cpp.i
+
+include/classes/get_pose.s: include/classes/get_pose.cpp.s
+
+.PHONY : include/classes/get_pose.s
+
+# target to generate assembly for a file
+include/classes/get_pose.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/get_pose.cpp.s
+.PHONY : include/classes/get_pose.cpp.s
+
 src/advertise_topics_for_UR.o: src/advertise_topics_for_UR.cpp.o
 
 .PHONY : src/advertise_topics_for_UR.o
@@ -1646,6 +1688,33 @@ src/advertise_topics_for_UR.cpp.s:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build.make tars_robot/CMakeFiles/advertise_topics_for_UR.dir/src/advertise_topics_for_UR.cpp.s
 .PHONY : src/advertise_topics_for_UR.cpp.s
 
+src/stop_teaching_mode.o: src/stop_teaching_mode.cpp.o
+
+.PHONY : src/stop_teaching_mode.o
+
+# target to build an object file
+src/stop_teaching_mode.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o
+.PHONY : src/stop_teaching_mode.cpp.o
+
+src/stop_teaching_mode.i: src/stop_teaching_mode.cpp.i
+
+.PHONY : src/stop_teaching_mode.i
+
+# target to preprocess a source file
+src/stop_teaching_mode.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.i
+.PHONY : src/stop_teaching_mode.cpp.i
+
+src/stop_teaching_mode.s: src/stop_teaching_mode.cpp.s
+
+.PHONY : src/stop_teaching_mode.s
+
+# target to generate assembly for a file
+src/stop_teaching_mode.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.s
+.PHONY : src/stop_teaching_mode.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1665,6 +1734,7 @@ help:
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... std_srvs_generate_messages_eus"
+	@echo "... stop_teaching_mode"
 	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... tf_generate_messages_nodejs"
 	@echo "... tf_generate_messages_lisp"
@@ -1757,9 +1827,15 @@ help:
 	@echo "... include/classes/Measurement.o"
 	@echo "... include/classes/Measurement.i"
 	@echo "... include/classes/Measurement.s"
+	@echo "... include/classes/get_pose.o"
+	@echo "... include/classes/get_pose.i"
+	@echo "... include/classes/get_pose.s"
 	@echo "... src/advertise_topics_for_UR.o"
 	@echo "... src/advertise_topics_for_UR.i"
 	@echo "... src/advertise_topics_for_UR.s"
+	@echo "... src/stop_teaching_mode.o"
+	@echo "... src/stop_teaching_mode.i"
+	@echo "... src/stop_teaching_mode.s"
 .PHONY : help
 
 

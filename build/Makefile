@@ -402,6 +402,19 @@ std_srvs_generate_messages_eus/fast:
 .PHONY : std_srvs_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named stop_teaching_mode
+
+# Build rule for target.
+stop_teaching_mode: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stop_teaching_mode
+.PHONY : stop_teaching_mode
+
+# fast build rule for target.
+stop_teaching_mode/fast:
+	$(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/build
+.PHONY : stop_teaching_mode/fast
+
+#=============================================================================
 # Target rules for targets named std_srvs_generate_messages_cpp
 
 # Build rule for target.
@@ -1563,6 +1576,7 @@ help:
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... std_srvs_generate_messages_eus"
+	@echo "... stop_teaching_mode"
 	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... tf_generate_messages_nodejs"
 	@echo "... tf_generate_messages_lisp"

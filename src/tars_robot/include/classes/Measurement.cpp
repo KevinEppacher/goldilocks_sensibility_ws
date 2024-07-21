@@ -8,6 +8,7 @@ Measurement::Sensibility::Sensibility(ros::NodeHandle *nh)
     airskinInterrupt = nh->advertise<std_msgs::String>("AIRSKIN_Interrupt", 100);
     airskinPadNum = nh->advertise<std_msgs::Int16>("AIRSKIN_Pad_Number", 100);
     maxAirskinPads = nh->advertise<std_msgs::Int16>("Maximum_Airskin_Pads", 100);
+    stopTeachingModePub = nh->advertise<std_msgs::Int16>("teaching_mode", 1);
     forceTorqueSensorSub = nh->subscribe("force_torque_sensor", 100, &Measurement::Sensibility::forceTorqueSensorCallback, this);
     airskinPadNumSub = nh->subscribe("AIRSKIN_Pad_Number", 100, &Measurement::Sensibility::airskinPadNumCallback, this);
     airskinInterruptSub = nh->subscribe("AIRSKIN_Interrupt", 100, &Measurement::Sensibility::airskinInterruptCallback, this);
@@ -18,6 +19,13 @@ Measurement::Sensibility::Sensibility(ros::NodeHandle *nh)
 Measurement::Sensibility::~Sensibility()
 {
 
+}
+
+void Measurement::Sensibility::stopTeachingMode()
+{
+    msgStopTeachingMode.data = 0;
+    stopTeachingModePub.publish(msgStopTeachingMode);
+    ROS_INFO("Teaching Mode stopped");
 }
 
 void Measurement::Sensibility::forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr& forceTorque)

@@ -63,6 +63,7 @@
 /goldilocks_sensibility_ws/build/tars_robot/CMakeFiles/std_srvs_generate_messages_nodejs.dir
 /goldilocks_sensibility_ws/build/tars_robot/CMakeFiles/std_srvs_generate_messages_lisp.dir
 /goldilocks_sensibility_ws/build/tars_robot/CMakeFiles/std_srvs_generate_messages_eus.dir
+/goldilocks_sensibility_ws/build/tars_robot/CMakeFiles/stop_teaching_mode.dir
 /goldilocks_sensibility_ws/build/tars_robot/CMakeFiles/std_srvs_generate_messages_cpp.dir
 /goldilocks_sensibility_ws/build/tars_robot/CMakeFiles/tf_generate_messages_nodejs.dir
 /goldilocks_sensibility_ws/build/tars_robot/CMakeFiles/tf_generate_messages_lisp.dir
