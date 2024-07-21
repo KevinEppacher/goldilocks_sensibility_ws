@@ -15,9 +15,12 @@
   <arg name="pipeline" default="ompl" />
   <arg name="allow_trajectory_execution" default="true"/>
   <arg name="moveit_controller_manager" default="simple" />
-  <arg name="fake_execution_type" default="interpolate"/>
+  <arg name="fake_execution_type" default="false"/>
   <arg name="max_safe_path_cost" default="1"/>
+  <arg name="jiggle_fraction" default="0.05" />
   <arg name="publish_monitored_planning_scene" default="true"/>
+  <arg name="fake_execution" default="false"/>
+
 
   <arg name="capabilities" default=""/>
   <arg name="disable_capabilities" default=""/>
@@ -37,7 +40,8 @@
                 " />
   -->
 
-  <arg name="load_robot_description" default="false" />
+  <arg name="load_robot_description" default="true" />
+  <!-- <arg name="load_robot_description" default="false" /> -->
   <!-- load URDF, SRDF and joint_limits configuration -->
   <include file="$(dirname)/planning_context.launch">
     <arg name="load_robot_description" value="$(arg load_robot_description)" />
@@ -69,10 +73,17 @@
   </group>
 
   <!-- Trajectory Execution Functionality -->
-  <include ns="move_group" file="$(dirname)/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
+  <!-- <include ns="move_group" file="$(dirname)/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
     <arg name="moveit_manage_controllers" value="true" />
     <arg name="moveit_controller_manager" value="$(arg moveit_controller_manager)" />
     <arg name="fake_execution_type" value="$(arg fake_execution_type)" />
+  </include> -->
+
+    <!-- Trajectory Execution Functionality -->
+  <include ns="move_group" file="$(find bdr_ur10_moveit_v7)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
+    <arg name="moveit_manage_controllers" value="true" />
+    <arg name="moveit_controller_manager" value="simple" unless="$(arg fake_execution)"/>
+    <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
   </include>
 
   <!-- Sensors Functionality -->
