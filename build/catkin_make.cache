@@ -1,2 +1,2 @@
-bdr_ur10_moveit:bdr_ur10_moveit_v1:bdr_ur10_moveit_v2:bdr_ur10_moveit_v3:bdr_ur10_moveit_v4:bdr_ur10_moveit_v5:ur10_description_v3
+bdr_ur10_moveit:tars_robot:ur10_description_v3
 -DCATKIN_DEVEL_PREFIX=/goldilocks_sensibility_ws/devel -DCMAKE_INSTALL_PREFIX=/goldilocks_sensibility_ws/install -G Unix Makefiles

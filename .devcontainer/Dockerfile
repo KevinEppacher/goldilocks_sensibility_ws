@@ -20,9 +20,6 @@ RUN sudo usermod --append --groups video $USERNAME
 # Update all packages
 RUN sudo apt update && sudo apt upgrade -y
 
-# Install Git
-# RUN sudo apt install -y git
-
 # Rosdep update
 RUN rosdep update
 
@@ -37,6 +34,11 @@ RUN sudo apt install -y ros-${ROS_DISTRO}-ur-robot-driver
 RUN sudo apt-get install -y ros-$ROS_DISTRO-universal-robots
 
 RUN sudo apt-get install -y ros-$ROS_DISTRO-ur10-moveit-config
+
+RUN sudo apt-get install -y ros-noetic-moveit-visual-tools
+
+# Install Git
+RUN sudo apt install -y git
 
 RUN sudo apt update -qq \
 && rosdep update

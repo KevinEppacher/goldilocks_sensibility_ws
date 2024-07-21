@@ -11,6 +11,6 @@ set(bdr_ur10_moveit_RUN_DEPENDS "moveit_ros_move_group" "moveit_fake_controller_
 set(bdr_ur10_moveit_TEST_DEPENDS )
 set(bdr_ur10_moveit_DOC_DEPENDS )
 set(bdr_ur10_moveit_URL_WEBSITE "http://moveit.ros.org/")
-set(bdr_ur10_moveit_URL_BUGTRACKER "https://github.com/ros-planning/moveit/issues")
-set(bdr_ur10_moveit_URL_REPOSITORY "https://github.com/ros-planning/moveit")
+set(bdr_ur10_moveit_URL_BUGTRACKER "https://github.com/moveit/moveit/issues")
+set(bdr_ur10_moveit_URL_REPOSITORY "https://github.com/moveit/moveit")
 set(bdr_ur10_moveit_DEPRECATED "")
