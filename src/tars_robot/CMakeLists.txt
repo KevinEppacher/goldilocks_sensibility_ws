@@ -82,3 +82,14 @@ target_link_libraries(stop_teaching_mode custom_lib ${catkin_LIBRARIES} ${OpenCV
 
 # Add dependencies for the main program
 add_dependencies(stop_teaching_mode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+
+############################################################
+# CMakelist for freedrive_mode node
+############################################################
+
+# Install Python scripts
+catkin_install_python(PROGRAMS
+  src/freedrive_mode.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

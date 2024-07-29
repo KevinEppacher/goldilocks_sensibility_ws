@@ -44,7 +44,7 @@ UR Startup:
 
 cd catkin_ws
 
-192.168.1.101
+Laptop Ip = 192.168.1.101
 
 #temporäre Lösung --> muss automatisch im Dockerfile erfolgen --> alle packages herunterladen
 sudo apt-get update
@@ -69,4 +69,14 @@ Camera Startup:
 roslaunch realsense2_camera demo_pointcloud.launch
 
 
+Starting Program on Laptop:
+roslaunch rosbridge_server rosbridge_tcp.launch
 
+
+
+vscode@Kevin:/goldilocks_sensibility_ws$ rosservice call /ur_hardware_interface/dashboard/load_program ^Cilename: '/programs/Sensitivi
+ty_Measurement/2024_07_29_External_Control.urp'"
+
+vscode@Kevin:/goldilocks_sensibility_ws$ rosservice call /ur_hardware_interface/dashboard/play "{}"
+
+vscode@Kevin:/goldilocks_sensibility_ws$ rosservice call /ur_hardware_interface/dashboard/stop "{}"

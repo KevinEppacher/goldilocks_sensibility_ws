@@ -54,3 +54,4 @@ RUN sudo usermod -a -G dialout $USERNAME
 # Source the ROS setup file
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 
+RUN sudo apt update -y && sudo apt install -y && sudo apt upgrade -y

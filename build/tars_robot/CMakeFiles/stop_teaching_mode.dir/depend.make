@@ -74,6 +74,7 @@ tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o: /opt/
 tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o: /opt/ros/noetic/include/std_msgs/Header.h
 tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o: /opt/ros/noetic/include/std_msgs/Int16.h
 tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o: /opt/ros/noetic/include/std_msgs/String.h
+tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o: /opt/ros/noetic/include/std_msgs/UInt32.h
 tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/MinMax.h
 tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/QuadWord.h
 tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/Quaternion.h

@@ -4,6 +4,7 @@
 #include "std_msgs/Bool.h"
 #include "std_msgs/String.h"
 #include "std_msgs/Int16.h"
+#include "std_msgs/UInt32.h"
 #include "geometry_msgs/Pose.h"
 #include "std_msgs/Float64.h"
 #include <fstream>
@@ -34,7 +35,7 @@ namespace Measurement {
         geometry_msgs::Pose currentPose, lastPose, distanceVektor;
         std_msgs::Float64 msgDistance;
         std_msgs::Float64 scalarDistance;
-        std_msgs::Int16 msgStopTeachingMode;
+        std_msgs::UInt32 msgStopTeachingMode;
 
     private:
         ros::NodeHandle *nodeHandler;

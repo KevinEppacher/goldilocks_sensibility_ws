@@ -67,6 +67,7 @@ tars_robot/CMakeFiles/custom_lib.dir/include/classes/Measurement.cpp.o
  /opt/ros/noetic/include/std_msgs/Float64.h
  /opt/ros/noetic/include/std_msgs/Int16.h
  /opt/ros/noetic/include/std_msgs/String.h
+ /opt/ros/noetic/include/std_msgs/UInt32.h
  /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
 tars_robot/CMakeFiles/custom_lib.dir/include/classes/get_pose.cpp.o

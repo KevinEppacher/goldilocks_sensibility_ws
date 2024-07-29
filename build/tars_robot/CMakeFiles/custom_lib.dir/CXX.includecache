@@ -21,6 +21,8 @@ std_msgs/String.h
 /goldilocks_sensibility_ws/src/tars_robot/include/classes/std_msgs/String.h
 std_msgs/Int16.h
 /goldilocks_sensibility_ws/src/tars_robot/include/classes/std_msgs/Int16.h
+std_msgs/UInt32.h
+/goldilocks_sensibility_ws/src/tars_robot/include/classes/std_msgs/UInt32.h
 geometry_msgs/Pose.h
 /goldilocks_sensibility_ws/src/tars_robot/include/classes/geometry_msgs/Pose.h
 std_msgs/Float64.h
@@ -791,6 +793,22 @@ ros/message_operations.h
 -
 
 /opt/ros/noetic/include/std_msgs/String.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+/opt/ros/noetic/include/std_msgs/UInt32.h
 string
 -
 vector
