@@ -1,51 +1,29 @@
+#!/usr/bin/env python3
+
 import rospy
-from std_srvs.srv import Trigger
+from std_msgs.msg import String
+from ur_dashboard_msgs.msg import RobotMode
+from ur_dashboard_msgs.srv import IsProgramRunning
 
-def deactivate_freedrive_mode():
-    try:
-        # Warte auf den Dienst
-        rospy.wait_for_service('/ur_hardware_interface/dashboard/stop')
-        
-        # Erzeuge einen Dienstaufruf, um den Freedrive-Modus zu deaktivieren
-        stop_service = rospy.ServiceProxy('/ur_hardware_interface/dashboard/stop', Trigger)
-        
-        # Rufe den Dienst auf
-        stop_response = stop_service()
-        if stop_response.success:
-            rospy.loginfo("Freedrive mode deactivated.")
-        else:
-            rospy.logerr("Failed to deactivate Freedrive mode: %s" % stop_response.message)
-            return False
-    except rospy.ServiceException as e:
-        rospy.logerr("Service call failed: %s" % e)
-        return False
-    
-    return True
+def robot_mode_callback(msg):
+    if msg.mode == 6:
+        rospy.loginfo("The robot is in Freedrive Mode.")
+    else:
+        rospy.loginfo("The robot is in mode: %d" % msg.mode)
 
-def activate_external_control():
-    try:
-        # Warte auf den Dienst
-        rospy.wait_for_service('/ur_hardware_interface/resend_robot_program')
-        
-        # Erzeuge einen Dienstaufruf, um den External Control Modus zu aktivieren
-        resend_program_service = rospy.ServiceProxy('/ur_hardware_interface/resend_robot_program', Trigger)
-        
-        # Rufe den Dienst auf
-        resend_program_response = resend_program_service()
-        if resend_program_response.success:
-            rospy.loginfo("External Control mode activated.")
-        else:
-            rospy.logerr("Failed to activate External Control mode: %s" % resend_program_response.message)
-            return False
-    except rospy.ServiceException as e:
-        rospy.logerr("Service call failed: %s" % e)
-        return False
-    
-    return True
+def activate_freedrive_mode():
+    rospy.init_node('activate_freedrive_mode_node', anonymous=True)
+    pub = rospy.Publisher('/ur_hardware_interface/script_command', String, queue_size=10)
+    rospy.Subscriber("/ur_hardware_interface/robot_mode", RobotMode, robot_mode_callback)
+    rospy.sleep(1)  # Warte eine Sekunde, um sicherzustellen, dass der Publisher bereit ist
+    script = String()
+    script.data = 'def myProg():\n  freedrive_mode()\nend\n'
+    pub.publish(script)
+    rospy.loginfo("Freedrive mode activated.")
+    rospy.spin()
 
 if __name__ == '__main__':
-    rospy.init_node('freedrive_mode_control_node')
-    
-    if deactivate_freedrive_mode():
-        rospy.loginfo("Proceeding to activate External Control mode...")
-        activate_external_control()
+    try:
+        activate_freedrive_mode()
+    except rospy.ROSInterruptException:
+        pass

@@ -1,0 +1,6 @@
+<launch>
+
+    <!-- Launch the rosbridge TCP server -->
+    <include file="$(find rosbridge_server)/launch/rosbridge_tcp.launch" />
+
+</launch>
