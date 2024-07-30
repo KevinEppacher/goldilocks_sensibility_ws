@@ -12,7 +12,7 @@ def load_program(action):
     
     try:
         # Load program
-        rospy.sleep(2)
+        rospy.sleep(1)
         load_program_service = rospy.ServiceProxy('/ur_hardware_interface/dashboard/load_program', Load)
         request = LoadRequest()
         request.filename = '/programs/Sensitivity_Measurement/measure_sensibility.urp'

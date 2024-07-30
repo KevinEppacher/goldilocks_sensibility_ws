@@ -489,6 +489,12 @@ dynamic_reconfigure_DIR:PATH=/opt/ros/noetic/share/dynamic_reconfigure/cmake
 //The directory containing a CMake configuration file for eigen_stl_containers.
 eigen_stl_containers_DIR:PATH=/opt/ros/noetic/share/eigen_stl_containers/cmake
 
+//Value Computed by CMake
+ft_sensor_BINARY_DIR:STATIC=/goldilocks_sensibility_ws/build/ft_sensor
+
+//Value Computed by CMake
+ft_sensor_SOURCE_DIR:STATIC=/goldilocks_sensibility_ws/src/ft_sensor
+
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/noetic/share/gencpp/cmake
 
@@ -985,7 +991,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=20
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=21
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
