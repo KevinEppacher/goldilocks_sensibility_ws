@@ -73,6 +73,11 @@ Starting Program on Laptop:
 roslaunch rosbridge_server rosbridge_tcp.launch
 
 
+# Gazebo Simulation
+
+```
+roslaunch tars_robot gazeboi_sim.launch
+```
 
 vscode@Kevin:/goldilocks_sensibility_ws$ rosservice call /ur_hardware_interface/dashboard/load_program ^Cilename: '/programs/Sensitivi
 ty_Measurement/2024_07_29_External_Control.urp'"

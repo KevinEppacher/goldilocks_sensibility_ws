@@ -17,7 +17,7 @@
     <arg name="z" default="0.5" />
 
     <!-- Gazebo parameters -->
-    <arg name="gazebo_model_name" default="pimmel" doc="The name to give to the model in Gazebo (after spawning it)." />
+    <arg name="gazebo_model_name" default="bdr_ur10" doc="The name to give to the model in Gazebo (after spawning it)." />
     <arg name="gazebo_world" default="worlds/empty.world" doc="The '.world' file to load in Gazebo." />
     <arg name="gui" default="true" doc="If true, Gazebo UI is started. If false, only start Gazebo server." />
     <arg name="paused" default="true" doc="If true, start Gazebo in paused mode. If false, start simulation as soon as Gazebo has loaded." />
@@ -49,6 +49,14 @@
       <arg name="gui" value="$(arg gui)"/>
     </include>
 
+    <!-- Load and start the controllers listed in the 'controllers' arg. -->
+    <node name="ros_control_controller_spawner" pkg="controller_manager" type="spawner"
+      args="$(arg controllers)" output="screen" respawn="false" />
+
+    <!-- Load other controllers, but do not start them -->
+    <node name="ros_control_stopped_spawner" pkg="controller_manager" type="spawner"
+      args="--stopped $(arg stopped_controllers)" output="screen" respawn="false" />
+
     <!-- Spawn the model loaded earlier in the simulation just started -->
     <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model"
       args="
@@ -60,15 +68,6 @@
         -z $(arg z)
         $(arg initial_joint_positions)"
       output="screen" respawn="false" />
-
-    <!-- Load and start the controllers listed in the 'controllers' arg. -->
-    <node name="ros_control_controller_spawner" pkg="controller_manager" type="spawner"
-      args="$(arg controllers)" output="screen" respawn="false" />
-
-    <!-- Load other controllers, but do not start them -->
-    <node name="ros_control_stopped_spawner" pkg="controller_manager" type="spawner"
-      args="--stopped $(arg stopped_controllers)" output="screen" respawn="false" />
-
 
     <include file="$(find bdr_ur10_moveit)/launch/moveit_planning_execution.launch" >
         <arg name="sim" value="true" />
