@@ -1,0 +1,16 @@
+<launch>
+
+    <!-- Launch the custom node to advertise topics for UR -->
+    <node name="advertise_topics_for_UR" pkg="tars_robot" type="advertise_topics_for_UR" output="screen" />
+
+    <!-- Launch the UR10 bringup node with specified robot IP -->
+    <include file="$(find ur_robot_driver)/launch/ur10_bringup.launch">
+        <arg name="robot_ip" value="192.168.1.102" />
+        <!-- <arg name="headless_mode" value="True"/> -->
+    </include>
+
+    <!-- Launch the custom node to setup the UR program for touch-up's -->
+    <arg name="action" default="start" />
+    <node name="call_ur_setup_program" pkg="tars_robot" type="call_ur_setup_program.py" args="$(arg action)" output="screen" />
+
+</launch>

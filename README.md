@@ -74,14 +74,12 @@ roslaunch rosbridge_server rosbridge_tcp.launch
 
 
 # Gazebo Simulation
-
 ```
 roslaunch tars_robot gazeboi_sim.launch
 ```
 
-vscode@Kevin:/goldilocks_sensibility_ws$ rosservice call /ur_hardware_interface/dashboard/load_program ^Cilename: '/programs/Sensitivi
-ty_Measurement/2024_07_29_External_Control.urp'"
+rosservice call /ur_hardware_interface/dashboard/load_program "{filename: '/programs/Sensitivity_Measurement/2024_07_29_External_Control.urp'}"
 
-vscode@Kevin:/goldilocks_sensibility_ws$ rosservice call /ur_hardware_interface/dashboard/play "{}"
+rosservice call /ur_hardware_interface/dashboard/play "{}"
 
-vscode@Kevin:/goldilocks_sensibility_ws$ rosservice call /ur_hardware_interface/dashboard/stop "{}"
+rosservice call /ur_hardware_interface/dashboard/stop "{}"

@@ -1,0 +1,4 @@
+<launch>
+    <arg name="action" default="stop" />
+    <node name="call_ur_setup_program" pkg="tars_robot" type="call_ur_setup_program.py" args="$(arg action)" output="screen" />
+</launch>

@@ -85,11 +85,21 @@ add_dependencies(stop_teaching_mode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin
 
 
 ############################################################
-# CMakelist for freedrive_mode node
+# CMakelist for call_ur_setup_program node
 ############################################################
 
 # Install Python scripts
 catkin_install_python(PROGRAMS
-  src/freedrive_mode.py
+  scripts/call_ur_setup_program.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+############################################################
+# CMakelist for call_ur_measurement_program node
+############################################################
+
+# Install Python scripts
+catkin_install_python(PROGRAMS
+  scripts/call_ur_measurement_program.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
