@@ -39,6 +39,10 @@ RUN sudo apt-get install -y ros-noetic-moveit-visual-tools
 
 RUN sudo apt-get install -y ros-noetic-rosbridge-suite
 
+RUN sudo apt-get install -y ros-noetic-ur-gazebo
+
+# RUN sudo apt-get install -y ros-$ROS_DISTRO-ur-kinematics
+
 # Install Git
 RUN sudo apt install -y git
 

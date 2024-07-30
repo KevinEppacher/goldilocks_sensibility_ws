@@ -321,68 +321,76 @@
     <transmission name="trans_shoulder_pan_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="shoulder_pan_joint">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
         <actuator name="shoulder_pan_joint_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_shoulder_lift_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="shoulder_lift_joint">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
         <actuator name="shoulder_lift_joint_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_elbow_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="elbow_joint">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
         <actuator name="elbow_joint_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_wrist_1_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="wrist_1_joint">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
         <actuator name="wrist_1_joint_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_wrist_2_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="wrist_2_joint">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
         <actuator name="wrist_2_joint_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
     <transmission name="trans_wrist_3_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="wrist_3_joint">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
         <actuator name="wrist_3_joint_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
+
     <gazebo>
-        <plugin name="gazebo_ros_control">
-            <robotNamespace>/</robotNamespace>
-        </plugin>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace></robotNamespace>
+    </plugin>
     </gazebo>
+
+    <!-- <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/robot_namespace</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+    </gazebo> -->
 
     <!-- ROS-Industrial 'base' frame: base_link to UR 'Base' Coordinates transform -->
     <link name="base"/>
