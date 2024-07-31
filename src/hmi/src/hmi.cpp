@@ -38,8 +38,9 @@ int main(int argc, char** argv) {
     MainApplication app(nh);
 
     // Main loop
-    while (!glfwWindowShouldClose(window)) {
-        ros::spinOnce(); // Process ROS callbacks
+    while (!glfwWindowShouldClose(window) && ros::ok()) 
+    {
+        ros::spinOnce();
 
         glfwPollEvents();
         ImGui_ImplOpenGL3_NewFrame();
@@ -57,6 +58,8 @@ int main(int argc, char** argv) {
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
+
+        
     }
 
     // Cleanup
