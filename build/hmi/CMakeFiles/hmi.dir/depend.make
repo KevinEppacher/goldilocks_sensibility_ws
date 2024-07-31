@@ -10,6 +10,10 @@ hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /goldilocks_sensibility_ws/src/hmi/include
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /goldilocks_sensibility_ws/src/hmi/include/imgui/imconfig.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /goldilocks_sensibility_ws/src/hmi/include/imgui/imgui.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /goldilocks_sensibility_ws/src/hmi/src/hmi.cpp
+hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/geometry_msgs/Point.h
+hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/geometry_msgs/Pose.h
+hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/geometry_msgs/PoseArray.h
+hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/geometry_msgs/Quaternion.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/ros/advertise_options.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/ros/advertise_service_options.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/ros/assert.h
@@ -66,6 +70,7 @@ hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/ros/types.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/ros/wall_timer.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/ros/wall_timer_options.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/rosconsole/macros_generated.h
+hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/std_msgs/Header.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/std_msgs/Int32.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 hmi/CMakeFiles/hmi.dir/src/hmi.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
