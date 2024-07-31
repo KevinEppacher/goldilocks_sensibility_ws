@@ -30,7 +30,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/goldilocks_sensibility_ws/src/hmi/include"
   "/goldilocks_sensibility_ws/src/hmi/include/imgui"
   "/goldilocks_sensibility_ws/src/hmi/include/imgui/backends"
-  "/goldilocks_sensibility_ws/src/hmi/include/hmi"
   )
 
 # Targets to which this target links.
