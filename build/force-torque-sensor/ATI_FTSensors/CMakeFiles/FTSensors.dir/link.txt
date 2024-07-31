@@ -1,0 +1,2 @@
+/usr/bin/ar qc /goldilocks_sensibility_ws/devel/lib/libFTSensors.a  CMakeFiles/FTSensors.dir/src/FTSensors.cpp.o
+/usr/bin/ranlib /goldilocks_sensibility_ws/devel/lib/libFTSensors.a

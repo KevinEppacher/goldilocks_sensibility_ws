@@ -1,0 +1,8 @@
+<gazebo>
+    <plugin name="ft_sensor_plugin" filename="libforce_torque_sensor_controller.so">
+        <updateRate>200</updateRate>
+        <topicName>ft_sensor/raw</topicName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <jointName>wrist_3_joint</jointName>
+    </plugin>
+</gazebo>

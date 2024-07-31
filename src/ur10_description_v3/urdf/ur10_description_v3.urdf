@@ -250,11 +250,13 @@
     </link>
     <joint name="wrist_3_joint" type="revolute">
         <origin xyz="0 0.0617 0.054" rpy="-1.5707963267949 0.0141025375343068 0" />
-
         <parent link="wrist_2_link" />
         <child link="wrist_3_link" />
         <axis xyz="0 0 1" />
         <limit lower="-6.28" upper="6.28" effort="56" velocity="180" />
+        <!-- <gazebo reference="wrist_3_joint">
+            <provideFeedback>true</provideFeedback>
+        </gazebo> -->
     </joint>
     <link name="tool0_link">
         <inertial>
@@ -385,12 +387,21 @@
     </plugin>
     </gazebo>
 
-    <!-- <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>/robot_namespace</robotNamespace>
-        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-    </plugin>
-    </gazebo> -->
+<!-- BEGIN force/torque sensor -->
+
+    <gazebo>    
+        <plugin name="FT_Sensor"    filename="libgazebo_ros_ft_sensor.so">
+        <updateRate>100.0</updateRate>
+        <topicName>FTsensor_topic</topicName>
+        <always_on>true</always_on>
+        <gaussianNoise>0.0</gaussianNoise>
+        <jointName>wrist_3_joint</jointName>
+        <frameName>ft_sensor_link</frameName>
+        </plugin>    
+    </gazebo>
+
+
+<!-- END force/torque sensor -->
 
     <!-- ROS-Industrial 'base' frame: base_link to UR 'Base' Coordinates transform -->
     <link name="base"/>
