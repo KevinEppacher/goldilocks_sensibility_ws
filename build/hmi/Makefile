@@ -258,6 +258,21 @@ std_srvs_generate_messages_eus/fast:
 .PHONY : std_srvs_generate_messages_eus/fast
 
 # Convenience name for target.
+hmi/CMakeFiles/hmi_sensibility_classes.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi_sensibility_classes.dir/rule
+.PHONY : hmi/CMakeFiles/hmi_sensibility_classes.dir/rule
+
+# Convenience name for target.
+hmi_sensibility_classes: hmi/CMakeFiles/hmi_sensibility_classes.dir/rule
+
+.PHONY : hmi_sensibility_classes
+
+# fast build rule for target.
+hmi_sensibility_classes/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/build
+.PHONY : hmi_sensibility_classes/fast
+
+# Convenience name for target.
 hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
 .PHONY : hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
@@ -1532,6 +1547,114 @@ octomap_msgs_generate_messages_nodejs/fast:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build
 .PHONY : octomap_msgs_generate_messages_nodejs/fast
 
+include/hmi/Control_Panel.o: include/hmi/Control_Panel.cpp.o
+
+.PHONY : include/hmi/Control_Panel.o
+
+# target to build an object file
+include/hmi/Control_Panel.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Control_Panel.cpp.o
+.PHONY : include/hmi/Control_Panel.cpp.o
+
+include/hmi/Control_Panel.i: include/hmi/Control_Panel.cpp.i
+
+.PHONY : include/hmi/Control_Panel.i
+
+# target to preprocess a source file
+include/hmi/Control_Panel.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Control_Panel.cpp.i
+.PHONY : include/hmi/Control_Panel.cpp.i
+
+include/hmi/Control_Panel.s: include/hmi/Control_Panel.cpp.s
+
+.PHONY : include/hmi/Control_Panel.s
+
+# target to generate assembly for a file
+include/hmi/Control_Panel.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Control_Panel.cpp.s
+.PHONY : include/hmi/Control_Panel.cpp.s
+
+include/hmi/Main_Application.o: include/hmi/Main_Application.cpp.o
+
+.PHONY : include/hmi/Main_Application.o
+
+# target to build an object file
+include/hmi/Main_Application.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Main_Application.cpp.o
+.PHONY : include/hmi/Main_Application.cpp.o
+
+include/hmi/Main_Application.i: include/hmi/Main_Application.cpp.i
+
+.PHONY : include/hmi/Main_Application.i
+
+# target to preprocess a source file
+include/hmi/Main_Application.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Main_Application.cpp.i
+.PHONY : include/hmi/Main_Application.cpp.i
+
+include/hmi/Main_Application.s: include/hmi/Main_Application.cpp.s
+
+.PHONY : include/hmi/Main_Application.s
+
+# target to generate assembly for a file
+include/hmi/Main_Application.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Main_Application.cpp.s
+.PHONY : include/hmi/Main_Application.cpp.s
+
+include/hmi/Measurement_Panel.o: include/hmi/Measurement_Panel.cpp.o
+
+.PHONY : include/hmi/Measurement_Panel.o
+
+# target to build an object file
+include/hmi/Measurement_Panel.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Measurement_Panel.cpp.o
+.PHONY : include/hmi/Measurement_Panel.cpp.o
+
+include/hmi/Measurement_Panel.i: include/hmi/Measurement_Panel.cpp.i
+
+.PHONY : include/hmi/Measurement_Panel.i
+
+# target to preprocess a source file
+include/hmi/Measurement_Panel.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Measurement_Panel.cpp.i
+.PHONY : include/hmi/Measurement_Panel.cpp.i
+
+include/hmi/Measurement_Panel.s: include/hmi/Measurement_Panel.cpp.s
+
+.PHONY : include/hmi/Measurement_Panel.s
+
+# target to generate assembly for a file
+include/hmi/Measurement_Panel.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Measurement_Panel.cpp.s
+.PHONY : include/hmi/Measurement_Panel.cpp.s
+
+include/hmi/Plot_Panel.o: include/hmi/Plot_Panel.cpp.o
+
+.PHONY : include/hmi/Plot_Panel.o
+
+# target to build an object file
+include/hmi/Plot_Panel.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Plot_Panel.cpp.o
+.PHONY : include/hmi/Plot_Panel.cpp.o
+
+include/hmi/Plot_Panel.i: include/hmi/Plot_Panel.cpp.i
+
+.PHONY : include/hmi/Plot_Panel.i
+
+# target to preprocess a source file
+include/hmi/Plot_Panel.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Plot_Panel.cpp.i
+.PHONY : include/hmi/Plot_Panel.cpp.i
+
+include/hmi/Plot_Panel.s: include/hmi/Plot_Panel.cpp.s
+
+.PHONY : include/hmi/Plot_Panel.s
+
+# target to generate assembly for a file
+include/hmi/Plot_Panel.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/include/hmi/Plot_Panel.cpp.s
+.PHONY : include/hmi/Plot_Panel.cpp.s
+
 include/imgui/backends/imgui_impl_glfw.o: include/imgui/backends/imgui_impl_glfw.cpp.o
 
 .PHONY : include/imgui/backends/imgui_impl_glfw.o
@@ -1765,6 +1888,7 @@ help:
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... std_srvs_generate_messages_eus"
+	@echo "... hmi_sensibility_classes"
 	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... dynamic_reconfigure_gencfg"
 	@echo "... dynamic_reconfigure_generate_messages_cpp"
@@ -1852,6 +1976,18 @@ help:
 	@echo "... object_recognition_msgs_generate_messages_nodejs"
 	@echo "... octomap_msgs_generate_messages_cpp"
 	@echo "... octomap_msgs_generate_messages_nodejs"
+	@echo "... include/hmi/Control_Panel.o"
+	@echo "... include/hmi/Control_Panel.i"
+	@echo "... include/hmi/Control_Panel.s"
+	@echo "... include/hmi/Main_Application.o"
+	@echo "... include/hmi/Main_Application.i"
+	@echo "... include/hmi/Main_Application.s"
+	@echo "... include/hmi/Measurement_Panel.o"
+	@echo "... include/hmi/Measurement_Panel.i"
+	@echo "... include/hmi/Measurement_Panel.s"
+	@echo "... include/hmi/Plot_Panel.o"
+	@echo "... include/hmi/Plot_Panel.i"
+	@echo "... include/hmi/Plot_Panel.s"
 	@echo "... include/imgui/backends/imgui_impl_glfw.o"
 	@echo "... include/imgui/backends/imgui_impl_glfw.i"
 	@echo "... include/imgui/backends/imgui_impl_glfw.s"

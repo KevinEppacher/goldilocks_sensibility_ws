@@ -24,6 +24,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/goldilocks_sensibility_ws/src/hmi/include"
   "/goldilocks_sensibility_ws/src/hmi/include/imgui"
   "/goldilocks_sensibility_ws/src/hmi/include/imgui/backends"
+  "/goldilocks_sensibility_ws/src/hmi/include/hmi"
   "/usr/include/python3.8"
   "/usr/lib/python3/dist-packages/numpy/core/include"
   )
@@ -31,6 +32,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/goldilocks_sensibility_ws/build/hmi/CMakeFiles/hmi_custom_lib.dir/DependInfo.cmake"
+  "/goldilocks_sensibility_ws/build/hmi/CMakeFiles/hmi_sensibility_classes.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

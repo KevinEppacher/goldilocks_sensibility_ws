@@ -163,6 +163,7 @@ gtest/googletest/clean: gtest/googletest/CMakeFiles/gtest.dir/clean
 # Directory level rules for directory hmi
 
 # Recursive "all" directory target.
+hmi/all: hmi/CMakeFiles/hmi_sensibility_classes.dir/all
 hmi/all: hmi/CMakeFiles/main.dir/all
 hmi/all: hmi/CMakeFiles/hmi.dir/all
 hmi/all: hmi/CMakeFiles/hmi_custom_lib.dir/all
@@ -181,6 +182,7 @@ hmi/clean: hmi/CMakeFiles/tf_generate_messages_cpp.dir/clean
 hmi/clean: hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
 hmi/clean: hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/clean
 hmi/clean: hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/clean
+hmi/clean: hmi/CMakeFiles/hmi_sensibility_classes.dir/clean
 hmi/clean: hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/clean
 hmi/clean: hmi/CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
 hmi/clean: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/clean
@@ -748,6 +750,33 @@ hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/clean:
 .PHONY : hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/clean
 
 #=============================================================================
+# Target rules for target hmi/CMakeFiles/hmi_sensibility_classes.dir
+
+# All Build rule for target.
+hmi/CMakeFiles/hmi_sensibility_classes.dir/all:
+	$(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/depend
+	$(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=23,24,25,26,27 "Built target hmi_sensibility_classes"
+.PHONY : hmi/CMakeFiles/hmi_sensibility_classes.dir/all
+
+# Build rule for subdir invocation for target.
+hmi/CMakeFiles/hmi_sensibility_classes.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi_sensibility_classes.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 0
+.PHONY : hmi/CMakeFiles/hmi_sensibility_classes.dir/rule
+
+# Convenience name for target.
+hmi_sensibility_classes: hmi/CMakeFiles/hmi_sensibility_classes.dir/rule
+
+.PHONY : hmi_sensibility_classes
+
+# clean rule for target.
+hmi/CMakeFiles/hmi_sensibility_classes.dir/clean:
+	$(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/clean
+.PHONY : hmi/CMakeFiles/hmi_sensibility_classes.dir/clean
+
+#=============================================================================
 # Target rules for target hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir
 
 # All Build rule for target.
@@ -950,7 +979,7 @@ hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_cpp.d
 hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/all
 	$(MAKE) -f hmi/CMakeFiles/main.dir/build.make hmi/CMakeFiles/main.dir/depend
 	$(MAKE) -f hmi/CMakeFiles/main.dir/build.make hmi/CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=23,24 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=28,29 "Built target main"
 .PHONY : hmi/CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1547,6 +1576,7 @@ hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/tf_generate_messages_cpp.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/all
+hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/hmi_sensibility_classes.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/dynamic_reconfigure_gencfg.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
@@ -1637,7 +1667,7 @@ hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_nodejs
 
 # Build rule for subdir invocation for target.
 hmi/CMakeFiles/hmi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 0
 .PHONY : hmi/CMakeFiles/hmi.dir/rule
@@ -3345,7 +3375,7 @@ tars_robot/CMakeFiles/stop_teaching_mode.dir/all: tars_robot/CMakeFiles/custom_l
 tars_robot/CMakeFiles/stop_teaching_mode.dir/all: tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/depend
 	$(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=25,26 "Built target stop_teaching_mode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=30,31 "Built target stop_teaching_mode"
 .PHONY : tars_robot/CMakeFiles/stop_teaching_mode.dir/all
 
 # Build rule for subdir invocation for target.
