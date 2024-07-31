@@ -7,6 +7,7 @@
 subdirs("gtest")
 subdirs("bdr_ur10_moveit")
 subdirs("universal_robot/universal_robots")
+subdirs("force-torque-sensor")
 subdirs("ft_sensor")
 subdirs("universal_robot/ur10_moveit_config")
 subdirs("universal_robot/ur10e_moveit_config")
