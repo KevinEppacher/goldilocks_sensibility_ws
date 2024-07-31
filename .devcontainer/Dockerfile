@@ -35,11 +35,17 @@ RUN sudo apt-get install -y ros-$ROS_DISTRO-universal-robots
 
 RUN sudo apt-get install -y ros-$ROS_DISTRO-ur10-moveit-config
 
+RUN sudo apt-get update -y
+
 RUN sudo apt-get install -y ros-noetic-moveit-visual-tools
 
 RUN sudo apt-get install -y ros-noetic-rosbridge-suite
 
 RUN sudo apt-get install -y ros-noetic-ur-gazebo
+
+RUN sudo apt-get install -y ros-noetic-moveit-commander
+
+RUN sudo apt-get install -y libglfw3-dev
 
 # RUN sudo apt-get install -y ros-$ROS_DISTRO-ur-kinematics
 
