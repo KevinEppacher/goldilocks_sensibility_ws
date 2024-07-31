@@ -34,14 +34,12 @@ include_directories(
   include
   include/imgui
   include/imgui/backends
-  include/hmi
   ${GLFW3_INCLUDE_DIR}
 )
 
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES hmi_custom_lib
-  LIBRARIES hmi_sensibility_classes
   CATKIN_DEPENDS roscpp rospy std_msgs
 )
 
@@ -55,18 +53,8 @@ add_library(hmi_custom_lib
   include/imgui/backends/imgui_impl_opengl3.cpp
 )
 
-# Add a library for sensor fusion
-add_library(hmi_sensibility_classes
-  include/hmi/Main_Application.cpp
-  include/hmi/Control_Panel.cpp
-  include/hmi/Measurement_Panel.cpp
-  include/hmi/Plot_Panel.cpp
-)
-
 # Link the sensor fusion library with the catkin libraries
 target_link_libraries(hmi_custom_lib ${catkin_LIBRARIES} glfw OpenGL::GL)
-target_link_libraries(hmi_sensibility_classes ${catkin_LIBRARIES} glfw OpenGL::GL)
-
 
 ############################################################
 # CMakelist for advertise_topics_for_UR node
@@ -74,10 +62,8 @@ target_link_libraries(hmi_sensibility_classes ${catkin_LIBRARIES} glfw OpenGL::G
 
 # Add an executable for the main node
 add_executable(main src/main.cpp)
-
 # Link the main executable with the sensor fusion library and catkin libraries
 target_link_libraries(main hmi_custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS} Python3::Python Python3::NumPy)
-
 # Add dependencies for the main executable
 add_dependencies(main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
@@ -87,10 +73,8 @@ add_dependencies(main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARG
 
 # Add an executable for the hmi node
 add_executable(hmi src/hmi.cpp)
-
 # Link the hmi executable with the sensor fusion library and catkin libraries
-target_link_libraries(hmi hmi_custom_lib hmi_sensibility_classes ${catkin_LIBRARIES} ${OpenCV_LIBS} Python3::Python Python3::NumPy)
-
+target_link_libraries(hmi hmi_custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS} Python3::Python Python3::NumPy)
 # Add dependencies for the hmi executable
 add_dependencies(hmi ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
