@@ -12,12 +12,11 @@ public:
     void render();
 private:
     void setupButtonCallback();
-    void beginExternalControlButtonCallback();
-    void defaultButtonCallback();
+    void beginMeasurementButtonCallback();
 
-
-    ros::Publisher indexControlURProgramPub;
-    int setupValue = 1, externalControlValue = 2, defaultValue = 0;
+    ros::Publisher int_publisher_;
+    int setup_value_;
+    int measurement_value_;
 };
 
 #endif // CONTROL_PANEL_H

@@ -2001,6 +2001,19 @@ std_srvs_generate_messages_eus/fast:
 .PHONY : std_srvs_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named hmi_sensibility_classes
+
+# Build rule for target.
+hmi_sensibility_classes: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hmi_sensibility_classes
+.PHONY : hmi_sensibility_classes
+
+# fast build rule for target.
+hmi_sensibility_classes/fast:
+	$(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/build
+.PHONY : hmi_sensibility_classes/fast
+
+#=============================================================================
 # Target rules for targets named std_srvs_generate_messages_cpp
 
 # Build rule for target.
@@ -4025,6 +4038,7 @@ help:
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... std_srvs_generate_messages_eus"
+	@echo "... hmi_sensibility_classes"
 	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... dynamic_reconfigure_gencfg"
 	@echo "... dynamic_reconfigure_generate_messages_cpp"
