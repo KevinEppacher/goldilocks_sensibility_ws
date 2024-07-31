@@ -103,3 +103,13 @@ catkin_install_python(PROGRAMS
   scripts/call_ur_measurement_program.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+############################################################
+# CMakelist for open_moveit_robot node
+############################################################
+
+# Install Python scripts
+catkin_install_python(PROGRAMS
+  scripts/open_moveit_robot.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

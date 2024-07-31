@@ -75,3 +75,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/tars_robot" TYPE PROGRAM FILES "/goldilocks_sensibility_ws/build/tars_robot/catkin_generated/installspace/call_ur_measurement_program.py")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/tars_robot" TYPE PROGRAM FILES "/goldilocks_sensibility_ws/build/tars_robot/catkin_generated/installspace/open_moveit_robot.py")
+endif()
+
