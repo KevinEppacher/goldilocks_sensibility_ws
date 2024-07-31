@@ -36,7 +36,7 @@ include_directories(
   ${Python3_NumPy_INCLUDE_DIRS}
   ${matplotlib_SOURCE_DIR}
   include
-  include/classes  # Include the directory where your headers are located
+  include/classes
 )
 
 # Declare catkin package
@@ -57,30 +57,30 @@ target_link_libraries(custom_lib ${catkin_LIBRARIES})
 
 
 ############################################################
-# CMakelist for main node
+# CMakelist for advertise_topics_for_UR node
 ############################################################
 
-# Add an executable for the main program
+# Add an executable for the advertise_topics_for_UR program
 add_executable(advertise_topics_for_UR src/advertise_topics_for_UR.cpp)
 
-# Link the main program with the sensor fusion library and catkin libraries
+# Link the advertise_topics_for_UR program with the sensor fusion library and catkin libraries
 target_link_libraries(advertise_topics_for_UR custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS} Python3::Python Python3::NumPy)
 
-# Add dependencies for the main program
+# Add dependencies for the advertise_topics_for_UR program
 add_dependencies(advertise_topics_for_UR ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 
 ############################################################
-# CMakelist for main node
+# CMakelist for stop_teaching_mode node
 ############################################################
 
-# Add an executable for the main program
+# Add an executable for the stop_teaching_mode program
 add_executable(stop_teaching_mode src/stop_teaching_mode.cpp)
 
-# Link the main program with the sensor fusion library and catkin libraries
+# Link the stop_teaching_mode program with the sensor fusion library and catkin libraries
 target_link_libraries(stop_teaching_mode custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS} Python3::Python Python3::NumPy)
 
-# Add dependencies for the main program
+# Add dependencies for the stop_teaching_mode program
 add_dependencies(stop_teaching_mode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 

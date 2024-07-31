@@ -132,6 +132,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/goldilocks_sensibility_ws/build/gtest/cmake_install.cmake")
   include("/goldilocks_sensibility_ws/build/bdr_ur10_moveit/cmake_install.cmake")
+<<<<<<< HEAD
   include("/goldilocks_sensibility_ws/build/universal_robot/universal_robots/cmake_install.cmake")
   include("/goldilocks_sensibility_ws/build/force-torque-sensor/cmake_install.cmake")
   include("/goldilocks_sensibility_ws/build/ft_sensor/cmake_install.cmake")
@@ -146,8 +147,10 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/goldilocks_sensibility_ws/build/universal_robot/ur5e_moveit_config/cmake_install.cmake")
   include("/goldilocks_sensibility_ws/build/universal_robot/ur_description/cmake_install.cmake")
   include("/goldilocks_sensibility_ws/build/universal_robot/ur_gazebo/cmake_install.cmake")
+=======
+>>>>>>> Anfang HMI
   include("/goldilocks_sensibility_ws/build/ur10_description_v3/cmake_install.cmake")
-  include("/goldilocks_sensibility_ws/build/universal_robot/ur_kinematics/cmake_install.cmake")
+  include("/goldilocks_sensibility_ws/build/hmi/cmake_install.cmake")
   include("/goldilocks_sensibility_ws/build/tars_robot/cmake_install.cmake")
 
 endif()

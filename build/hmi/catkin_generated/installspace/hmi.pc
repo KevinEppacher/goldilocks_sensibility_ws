@@ -1,0 +1,8 @@
+prefix=/goldilocks_sensibility_ws/install
+
+Name: hmi
+Description: Description of hmi
+Version: 0.1.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lhmi_custom_lib
+Requires: roscpp rospy std_msgs

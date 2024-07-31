@@ -298,6 +298,7 @@ _catkin_empty_exported_target/fast:
 .PHONY : _catkin_empty_exported_target/fast
 
 #=============================================================================
+<<<<<<< HEAD
 # Target rules for targets named rosgraph_msgs_generate_messages_py
 
 # Build rule for target.
@@ -1921,6 +1922,97 @@ _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur30.xml: cmake_c
 _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur30.xml/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur30.xml.dir/build.make universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur30.xml.dir/build
 .PHONY : _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur30.xml/fast
+=======
+# Target rules for targets named tf_generate_messages_nodejs
+
+# Build rule for target.
+tf_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_nodejs
+.PHONY : tf_generate_messages_nodejs
+
+# fast build rule for target.
+tf_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_lisp
+
+# Build rule for target.
+tf_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_lisp
+.PHONY : tf_generate_messages_lisp
+
+# fast build rule for target.
+tf_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf_generate_messages_lisp.dir/build.make hmi/CMakeFiles/tf_generate_messages_lisp.dir/build
+.PHONY : tf_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_cpp
+
+# Build rule for target.
+tf_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_cpp
+.PHONY : tf_generate_messages_cpp
+
+# fast build rule for target.
+tf_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf_generate_messages_cpp.dir/build.make hmi/CMakeFiles/tf_generate_messages_cpp.dir/build
+.PHONY : tf_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_nodejs
+
+# Build rule for target.
+std_srvs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_nodejs
+.PHONY : std_srvs_generate_messages_nodejs
+
+# fast build rule for target.
+std_srvs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
+.PHONY : std_srvs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_lisp
+
+# Build rule for target.
+std_srvs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_lisp
+.PHONY : std_srvs_generate_messages_lisp
+
+# fast build rule for target.
+std_srvs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
+.PHONY : std_srvs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_eus
+
+# Build rule for target.
+std_srvs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_eus
+.PHONY : std_srvs_generate_messages_eus
+
+# fast build rule for target.
+std_srvs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/build
+.PHONY : std_srvs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_cpp
+
+# Build rule for target.
+std_srvs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_cpp
+.PHONY : std_srvs_generate_messages_cpp
+
+# fast build rule for target.
+std_srvs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
+.PHONY : std_srvs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml
@@ -1931,9 +2023,15 @@ _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml: cmake_c
 .PHONY : _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml.dir/build.make universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml.dir/build
 .PHONY : _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml/fast
+=======
+dynamic_reconfigure_gencfg/fast:
+	$(MAKE) -f hmi/CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make hmi/CMakeFiles/dynamic_reconfigure_gencfg.dir/build
+.PHONY : dynamic_reconfigure_gencfg/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml
@@ -1944,9 +2042,15 @@ run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml: cmake_che
 .PHONY : run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml.dir/build.make universal_robot/ur_description/CMakeFiles/run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml.dir/build
 .PHONY : run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml/fast
+=======
+dynamic_reconfigure_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make hmi/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml
@@ -1957,6 +2061,7 @@ _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml: cmake_ch
 .PHONY : _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml.dir/build.make universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml.dir/build
 .PHONY : _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3.xml/fast
@@ -1986,6 +2091,37 @@ _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5e.xml: cmake_c
 _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5e.xml/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5e.xml.dir/build.make universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5e.xml.dir/build
 .PHONY : _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5e.xml/fast
+=======
+actionlib_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_generate_messages_py.dir/build.make hmi/CMakeFiles/actionlib_generate_messages_py.dir/build
+.PHONY : actionlib_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named main
+
+# Build rule for target.
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	$(MAKE) -f hmi/CMakeFiles/main.dir/build.make hmi/CMakeFiles/main.dir/build
+.PHONY : main/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_generate_messages_nodejs
+
+# Build rule for target.
+actionlib_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_generate_messages_nodejs
+.PHONY : actionlib_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
+.PHONY : actionlib_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml
@@ -1996,9 +2132,15 @@ _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml: cmake_ch
 .PHONY : _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml.dir/build.make universal_robot/ur_description/CMakeFiles/_run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml.dir/build
 .PHONY : _run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml/fast
+=======
+actionlib_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make hmi/CMakeFiles/actionlib_generate_messages_lisp.dir/build
+.PHONY : actionlib_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml
@@ -2009,9 +2151,15 @@ run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml: cmake_ch
 .PHONY : run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml.dir/build.make universal_robot/ur_description/CMakeFiles/run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml.dir/build
 .PHONY : run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur3e.xml/fast
+=======
+actionlib_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make hmi/CMakeFiles/actionlib_generate_messages_cpp.dir/build
+.PHONY : actionlib_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml
@@ -2022,9 +2170,15 @@ run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml: cmake_che
 .PHONY : run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml.dir/build.make universal_robot/ur_description/CMakeFiles/run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml.dir/build
 .PHONY : run_tests_ur_description_roslaunch-check_tests_roslaunch_test_ur5.xml/fast
+=======
+dynamic_reconfigure_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_description_roslaunch-check
@@ -2035,9 +2189,15 @@ run_tests_ur_description_roslaunch-check: cmake_check_build_system
 .PHONY : run_tests_ur_description_roslaunch-check
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_description_roslaunch-check/fast:
 	$(MAKE) -f universal_robot/ur_description/CMakeFiles/run_tests_ur_description_roslaunch-check.dir/build.make universal_robot/ur_description/CMakeFiles/run_tests_ur_description_roslaunch-check.dir/build
 .PHONY : run_tests_ur_description_roslaunch-check/fast
+=======
+tf2_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
+.PHONY : tf2_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5e.xml
@@ -2048,9 +2208,15 @@ _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5e.xml: cmake_check_
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5e.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5e.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5e.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5e.xml.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5e.xml/fast
+=======
+tf2_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
+.PHONY : tf2_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml
@@ -2061,9 +2227,15 @@ _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml: cmake_check_
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml/fast
+=======
+dynamic_reconfigure_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make hmi/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml
@@ -2074,9 +2246,15 @@ _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml: cmake_check_b
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml/fast
+=======
+tf2_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
+.PHONY : tf2_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml
@@ -2087,9 +2265,15 @@ run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml: cmake_check_bu
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml.dir/build
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5.xml/fast
+=======
+octomap_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/octomap_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/octomap_msgs_generate_messages_py.dir/build
+.PHONY : octomap_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml
@@ -2100,9 +2284,15 @@ run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml: cmake_check_b
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml.dir/build
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3e.xml/fast
+=======
+visualization_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
+.PHONY : visualization_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml
@@ -2113,9 +2303,15 @@ run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml: cmake_check_b
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml.dir/build
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml/fast
+=======
+visualization_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
+.PHONY : visualization_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml
@@ -2126,9 +2322,15 @@ _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml: cmake_check_b
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml/fast
+=======
+dynamic_reconfigure_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build.make hmi/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named clean_test_results_ur_gazebo
@@ -2139,9 +2341,15 @@ clean_test_results_ur_gazebo: cmake_check_build_system
 .PHONY : clean_test_results_ur_gazebo
 
 # fast build rule for target.
+<<<<<<< HEAD
 clean_test_results_ur_gazebo/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/clean_test_results_ur_gazebo.dir/build.make universal_robot/ur_gazebo/CMakeFiles/clean_test_results_ur_gazebo.dir/build
 .PHONY : clean_test_results_ur_gazebo/fast
+=======
+geometry_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml
@@ -2152,9 +2360,15 @@ run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml: cmake_check_bu
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml.dir/build
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur3.xml/fast
+=======
+visualization_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
+.PHONY : visualization_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml
@@ -2165,9 +2379,15 @@ _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml: cmake_check_
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur20.xml/fast
+=======
+geometry_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check
@@ -2178,9 +2398,15 @@ _run_tests_ur_gazebo_roslaunch-check: cmake_check_build_system
 .PHONY : _run_tests_ur_gazebo_roslaunch-check
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check/fast
+=======
+moveit_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/moveit_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/moveit_msgs_generate_messages_py.dir/build
+.PHONY : moveit_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml
@@ -2191,12 +2417,60 @@ _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml: cmake_check_
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml/fast
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo
+=======
+object_recognition_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/build
+.PHONY : object_recognition_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named geometry_msgs_generate_messages_eus
+
+# Build rule for target.
+geometry_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_eus
+.PHONY : geometry_msgs_generate_messages_eus
+
+# fast build rule for target.
+geometry_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_nodejs
+
+# Build rule for target.
+std_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+std_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named octomap_msgs_generate_messages_lisp
+
+# Build rule for target.
+octomap_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 octomap_msgs_generate_messages_lisp
+.PHONY : octomap_msgs_generate_messages_lisp
+
+# fast build rule for target.
+octomap_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/octomap_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/octomap_msgs_generate_messages_lisp.dir/build
+.PHONY : octomap_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named shape_msgs_generate_messages_eus
+>>>>>>> Anfang HMI
 
 # Build rule for target.
 _run_tests_ur_gazebo: cmake_check_build_system
@@ -2204,6 +2478,7 @@ _run_tests_ur_gazebo: cmake_check_build_system
 .PHONY : _run_tests_ur_gazebo
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo.dir/build
 .PHONY : _run_tests_ur_gazebo/fast
@@ -2220,6 +2495,37 @@ run_tests_ur_gazebo_roslaunch-check: cmake_check_build_system
 run_tests_ur_gazebo_roslaunch-check/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check.dir/build
 .PHONY : run_tests_ur_gazebo_roslaunch-check/fast
+=======
+shape_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/shape_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/shape_msgs_generate_messages_eus.dir/build
+.PHONY : shape_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named hmi
+
+# Build rule for target.
+hmi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hmi
+.PHONY : hmi
+
+# fast build rule for target.
+hmi/fast:
+	$(MAKE) -f hmi/CMakeFiles/hmi.dir/build.make hmi/CMakeFiles/hmi.dir/build
+.PHONY : hmi/fast
+
+#=============================================================================
+# Target rules for targets named moveit_ros_manipulation_gencfg
+
+# Build rule for target.
+moveit_ros_manipulation_gencfg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 moveit_ros_manipulation_gencfg
+.PHONY : moveit_ros_manipulation_gencfg
+
+# fast build rule for target.
+moveit_ros_manipulation_gencfg/fast:
+	$(MAKE) -f hmi/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make hmi/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
+.PHONY : moveit_ros_manipulation_gencfg/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_gazebo
@@ -2230,9 +2536,15 @@ run_tests_ur_gazebo: cmake_check_build_system
 .PHONY : run_tests_ur_gazebo
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_gazebo/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo.dir/build
 .PHONY : run_tests_ur_gazebo/fast
+=======
+shape_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build
+.PHONY : shape_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml
@@ -2243,6 +2555,7 @@ run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml: cmake_check_b
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml.dir/build
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur10.xml/fast
@@ -2288,6 +2601,14 @@ run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur5e.xml/fast:
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml
+=======
+roscpp_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make hmi/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_py
+>>>>>>> Anfang HMI
 
 # Build rule for target.
 run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml: cmake_check_build_system
@@ -2295,9 +2616,15 @@ run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml: cmake_check_
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml.dir/build
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml/fast
+=======
+std_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml
@@ -2308,9 +2635,15 @@ run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml: cmake_check_b
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml.dir/build
 .PHONY : run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml/fast
+=======
+geometry_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml
@@ -2321,9 +2654,15 @@ _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml: cmake_check
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur16e.xml/fast
+=======
+moveit_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/moveit_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/moveit_msgs_generate_messages_eus.dir/build
+.PHONY : moveit_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml
@@ -2334,9 +2673,15 @@ _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml: cmake_check_
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml
 
 # fast build rule for target.
+<<<<<<< HEAD
 _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml/fast:
 	$(MAKE) -f universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml.dir/build.make universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml.dir/build
 .PHONY : _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test_ur30.xml/fast
+=======
+tf2_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build
+.PHONY : tf2_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named octomap_msgs_generate_messages_lisp
@@ -2347,9 +2692,15 @@ octomap_msgs_generate_messages_lisp: cmake_check_build_system
 .PHONY : octomap_msgs_generate_messages_lisp
 
 # fast build rule for target.
+<<<<<<< HEAD
 octomap_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_lisp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_lisp.dir/build
 .PHONY : octomap_msgs_generate_messages_lisp/fast
+=======
+sensor_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named moveit_ros_planning_gencfg
@@ -2360,9 +2711,15 @@ moveit_ros_planning_gencfg: cmake_check_build_system
 .PHONY : moveit_ros_planning_gencfg
 
 # fast build rule for target.
+<<<<<<< HEAD
 moveit_ros_planning_gencfg/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/moveit_ros_planning_gencfg.dir/build.make universal_robot/ur_kinematics/CMakeFiles/moveit_ros_planning_gencfg.dir/build
 .PHONY : moveit_ros_planning_gencfg/fast
+=======
+roscpp_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make hmi/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur16e_kin
@@ -2373,9 +2730,15 @@ ur16e_kin: cmake_check_build_system
 .PHONY : ur16e_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur16e_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur16e_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur16e_kin.dir/build
 .PHONY : ur16e_kin/fast
+=======
+roscpp_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/roscpp_generate_messages_eus.dir/build.make hmi/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named object_recognition_msgs_generate_messages_nodejs
@@ -2386,9 +2749,15 @@ object_recognition_msgs_generate_messages_nodejs: cmake_check_build_system
 .PHONY : object_recognition_msgs_generate_messages_nodejs
 
 # fast build rule for target.
+<<<<<<< HEAD
 object_recognition_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_nodejs.dir/build.make universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_nodejs.dir/build
 .PHONY : object_recognition_msgs_generate_messages_nodejs/fast
+=======
+actionlib_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+.PHONY : actionlib_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named object_recognition_msgs_generate_messages_eus
@@ -2399,6 +2768,7 @@ object_recognition_msgs_generate_messages_eus: cmake_check_build_system
 .PHONY : object_recognition_msgs_generate_messages_eus
 
 # fast build rule for target.
+<<<<<<< HEAD
 object_recognition_msgs_generate_messages_eus/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/build.make universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/build
 .PHONY : object_recognition_msgs_generate_messages_eus/fast
@@ -2418,6 +2788,14 @@ trajectory_msgs_generate_messages_py/fast:
 
 #=============================================================================
 # Target rules for targets named visualization_msgs_generate_messages_nodejs
+=======
+actionlib_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+.PHONY : actionlib_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_lisp
+>>>>>>> Anfang HMI
 
 # Build rule for target.
 visualization_msgs_generate_messages_nodejs: cmake_check_build_system
@@ -2425,9 +2803,15 @@ visualization_msgs_generate_messages_nodejs: cmake_check_build_system
 .PHONY : visualization_msgs_generate_messages_nodejs
 
 # fast build rule for target.
+<<<<<<< HEAD
 visualization_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
 .PHONY : visualization_msgs_generate_messages_nodejs/fast
+=======
+std_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named octomap_msgs_generate_messages_nodejs
@@ -2438,9 +2822,15 @@ octomap_msgs_generate_messages_nodejs: cmake_check_build_system
 .PHONY : octomap_msgs_generate_messages_nodejs
 
 # fast build rule for target.
+<<<<<<< HEAD
 octomap_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build.make universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build
 .PHONY : octomap_msgs_generate_messages_nodejs/fast
+=======
+tf2_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
+.PHONY : tf2_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur3_kin
@@ -2451,9 +2841,15 @@ ur3_kin: cmake_check_build_system
 .PHONY : ur3_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur3_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_kin.dir/build
 .PHONY : ur3_kin/fast
+=======
+moveit_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/build
+.PHONY : moveit_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named trajectory_msgs_generate_messages_nodejs
@@ -2464,9 +2860,15 @@ trajectory_msgs_generate_messages_nodejs: cmake_check_build_system
 .PHONY : trajectory_msgs_generate_messages_nodejs
 
 # fast build rule for target.
+<<<<<<< HEAD
 trajectory_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make universal_robot/ur_kinematics/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
 .PHONY : trajectory_msgs_generate_messages_nodejs/fast
+=======
+geometry_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named trajectory_msgs_generate_messages_eus
@@ -2477,9 +2879,15 @@ trajectory_msgs_generate_messages_eus: cmake_check_build_system
 .PHONY : trajectory_msgs_generate_messages_eus
 
 # fast build rule for target.
+<<<<<<< HEAD
 trajectory_msgs_generate_messages_eus/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make universal_robot/ur_kinematics/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
 .PHONY : trajectory_msgs_generate_messages_eus/fast
+=======
+roscpp_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named moveit_msgs_generate_messages_py
@@ -2490,9 +2898,15 @@ moveit_msgs_generate_messages_py: cmake_check_build_system
 .PHONY : moveit_msgs_generate_messages_py
 
 # fast build rule for target.
+<<<<<<< HEAD
 moveit_msgs_generate_messages_py/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_py.dir/build.make universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_py.dir/build
 .PHONY : moveit_msgs_generate_messages_py/fast
+=======
+actionlib_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_generate_messages_eus.dir/build.make hmi/CMakeFiles/actionlib_generate_messages_eus.dir/build
+.PHONY : actionlib_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named visualization_msgs_generate_messages_eus
@@ -2503,9 +2917,15 @@ visualization_msgs_generate_messages_eus: cmake_check_build_system
 .PHONY : visualization_msgs_generate_messages_eus
 
 # fast build rule for target.
+<<<<<<< HEAD
 visualization_msgs_generate_messages_eus/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
 .PHONY : visualization_msgs_generate_messages_eus/fast
+=======
+trajectory_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
+.PHONY : trajectory_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named object_recognition_msgs_generate_messages_lisp
@@ -2516,12 +2936,34 @@ object_recognition_msgs_generate_messages_lisp: cmake_check_build_system
 .PHONY : object_recognition_msgs_generate_messages_lisp
 
 # fast build rule for target.
+<<<<<<< HEAD
 object_recognition_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/build
 .PHONY : object_recognition_msgs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named moveit_msgs_generate_messages_nodejs
+=======
+rosgraph_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named hmi_custom_lib
+
+# Build rule for target.
+hmi_custom_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hmi_custom_lib
+.PHONY : hmi_custom_lib
+
+# fast build rule for target.
+hmi_custom_lib/fast:
+	$(MAKE) -f hmi/CMakeFiles/hmi_custom_lib.dir/build.make hmi/CMakeFiles/hmi_custom_lib.dir/build
+.PHONY : hmi_custom_lib/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_cpp
+>>>>>>> Anfang HMI
 
 # Build rule for target.
 moveit_msgs_generate_messages_nodejs: cmake_check_build_system
@@ -2529,12 +2971,34 @@ moveit_msgs_generate_messages_nodejs: cmake_check_build_system
 .PHONY : moveit_msgs_generate_messages_nodejs
 
 # fast build rule for target.
+<<<<<<< HEAD
 moveit_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_nodejs.dir/build.make universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_nodejs.dir/build
 .PHONY : moveit_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
 # Target rules for targets named dynamic_reconfigure_generate_messages_lisp
+=======
+std_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_py
+
+# Build rule for target.
+std_srvs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_py
+.PHONY : std_srvs_generate_messages_py
+
+# fast build rule for target.
+std_srvs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_py.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_py.dir/build
+.PHONY : std_srvs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named moveit_ros_planning_gencfg
+>>>>>>> Anfang HMI
 
 # Build rule for target.
 dynamic_reconfigure_generate_messages_lisp: cmake_check_build_system
@@ -2542,9 +3006,15 @@ dynamic_reconfigure_generate_messages_lisp: cmake_check_build_system
 .PHONY : dynamic_reconfigure_generate_messages_lisp
 
 # fast build rule for target.
+<<<<<<< HEAD
 dynamic_reconfigure_generate_messages_lisp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
 .PHONY : dynamic_reconfigure_generate_messages_lisp/fast
+=======
+moveit_ros_planning_gencfg/fast:
+	$(MAKE) -f hmi/CMakeFiles/moveit_ros_planning_gencfg.dir/build.make hmi/CMakeFiles/moveit_ros_planning_gencfg.dir/build
+.PHONY : moveit_ros_planning_gencfg/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur5_moveit_plugin
@@ -2555,9 +3025,15 @@ ur5_moveit_plugin: cmake_check_build_system
 .PHONY : ur5_moveit_plugin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur5_moveit_plugin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_moveit_plugin.dir/build
 .PHONY : ur5_moveit_plugin/fast
+=======
+rosgraph_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur10_moveit_plugin
@@ -2568,9 +3044,15 @@ ur10_moveit_plugin: cmake_check_build_system
 .PHONY : ur10_moveit_plugin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur10_moveit_plugin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_moveit_plugin.dir/build
 .PHONY : ur10_moveit_plugin/fast
+=======
+tf_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf_generate_messages_eus.dir/build.make hmi/CMakeFiles/tf_generate_messages_eus.dir/build
+.PHONY : tf_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named visualization_msgs_generate_messages_py
@@ -2581,9 +3063,15 @@ visualization_msgs_generate_messages_py: cmake_check_build_system
 .PHONY : visualization_msgs_generate_messages_py
 
 # fast build rule for target.
+<<<<<<< HEAD
 visualization_msgs_generate_messages_py/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
 .PHONY : visualization_msgs_generate_messages_py/fast
+=======
+rosgraph_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named octomap_msgs_generate_messages_eus
@@ -2594,9 +3082,15 @@ octomap_msgs_generate_messages_eus: cmake_check_build_system
 .PHONY : octomap_msgs_generate_messages_eus
 
 # fast build rule for target.
+<<<<<<< HEAD
 octomap_msgs_generate_messages_eus/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_eus.dir/build.make universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_eus.dir/build
 .PHONY : octomap_msgs_generate_messages_eus/fast
+=======
+dynamic_reconfigure_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make hmi/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named object_recognition_msgs_generate_messages_cpp
@@ -2607,6 +3101,7 @@ object_recognition_msgs_generate_messages_cpp: cmake_check_build_system
 .PHONY : object_recognition_msgs_generate_messages_cpp
 
 # fast build rule for target.
+<<<<<<< HEAD
 object_recognition_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir/build
 .PHONY : object_recognition_msgs_generate_messages_cpp/fast
@@ -2639,6 +3134,14 @@ ur20_moveit_plugin/fast:
 
 #=============================================================================
 # Target rules for targets named trajectory_msgs_generate_messages_cpp
+=======
+actionlib_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+.PHONY : actionlib_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named shape_msgs_generate_messages_py
+>>>>>>> Anfang HMI
 
 # Build rule for target.
 trajectory_msgs_generate_messages_cpp: cmake_check_build_system
@@ -2646,9 +3149,15 @@ trajectory_msgs_generate_messages_cpp: cmake_check_build_system
 .PHONY : trajectory_msgs_generate_messages_cpp
 
 # fast build rule for target.
+<<<<<<< HEAD
 trajectory_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
 .PHONY : trajectory_msgs_generate_messages_cpp/fast
+=======
+shape_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/shape_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/shape_msgs_generate_messages_py.dir/build
+.PHONY : shape_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named shape_msgs_generate_messages_nodejs
@@ -2660,7 +3169,7 @@ shape_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 shape_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/build.make universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f hmi/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/build
 .PHONY : shape_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -2672,9 +3181,15 @@ octomap_msgs_generate_messages_cpp: cmake_check_build_system
 .PHONY : octomap_msgs_generate_messages_cpp
 
 # fast build rule for target.
+<<<<<<< HEAD
 octomap_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_cpp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_cpp.dir/build
 .PHONY : octomap_msgs_generate_messages_cpp/fast
+=======
+rosgraph_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named dynamic_reconfigure_generate_messages_eus
@@ -2685,9 +3200,15 @@ dynamic_reconfigure_generate_messages_eus: cmake_check_build_system
 .PHONY : dynamic_reconfigure_generate_messages_eus
 
 # fast build rule for target.
+<<<<<<< HEAD
 dynamic_reconfigure_generate_messages_eus/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build.make universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build
 .PHONY : dynamic_reconfigure_generate_messages_eus/fast
+=======
+visualization_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
+.PHONY : visualization_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named dynamic_reconfigure_gencfg
@@ -2698,9 +3219,15 @@ dynamic_reconfigure_gencfg: cmake_check_build_system
 .PHONY : dynamic_reconfigure_gencfg
 
 # fast build rule for target.
+<<<<<<< HEAD
 dynamic_reconfigure_gencfg/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_gencfg.dir/build
 .PHONY : dynamic_reconfigure_gencfg/fast
+=======
+moveit_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/build
+.PHONY : moveit_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named visualization_msgs_generate_messages_lisp
@@ -2711,6 +3238,7 @@ visualization_msgs_generate_messages_lisp: cmake_check_build_system
 .PHONY : visualization_msgs_generate_messages_lisp
 
 # fast build rule for target.
+<<<<<<< HEAD
 visualization_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
 .PHONY : visualization_msgs_generate_messages_lisp/fast
@@ -2740,6 +3268,11 @@ dynamic_reconfigure_generate_messages_py: cmake_check_build_system
 dynamic_reconfigure_generate_messages_py/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
 .PHONY : dynamic_reconfigure_generate_messages_py/fast
+=======
+moveit_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/moveit_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/moveit_msgs_generate_messages_nodejs.dir/build
+.PHONY : moveit_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur3_moveit_plugin
@@ -2750,9 +3283,15 @@ ur3_moveit_plugin: cmake_check_build_system
 .PHONY : ur3_moveit_plugin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur3_moveit_plugin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3_moveit_plugin.dir/build
 .PHONY : ur3_moveit_plugin/fast
+=======
+tf_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/tf_generate_messages_py.dir/build.make hmi/CMakeFiles/tf_generate_messages_py.dir/build
+.PHONY : tf_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named shape_msgs_generate_messages_lisp
@@ -2763,9 +3302,15 @@ shape_msgs_generate_messages_lisp: cmake_check_build_system
 .PHONY : shape_msgs_generate_messages_lisp
 
 # fast build rule for target.
+<<<<<<< HEAD
 shape_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_lisp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_lisp.dir/build
 .PHONY : shape_msgs_generate_messages_lisp/fast
+=======
+actionlib_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+.PHONY : actionlib_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named trajectory_msgs_generate_messages_lisp
@@ -2776,9 +3321,15 @@ trajectory_msgs_generate_messages_lisp: cmake_check_build_system
 .PHONY : trajectory_msgs_generate_messages_lisp
 
 # fast build rule for target.
+<<<<<<< HEAD
 trajectory_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
 .PHONY : trajectory_msgs_generate_messages_lisp/fast
+=======
+std_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named moveit_msgs_generate_messages_cpp
@@ -2789,9 +3340,15 @@ moveit_msgs_generate_messages_cpp: cmake_check_build_system
 .PHONY : moveit_msgs_generate_messages_cpp
 
 # fast build rule for target.
+<<<<<<< HEAD
 moveit_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/build
 .PHONY : moveit_msgs_generate_messages_cpp/fast
+=======
+actionlib_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+.PHONY : actionlib_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named moveit_msgs_generate_messages_eus
@@ -2802,9 +3359,15 @@ moveit_msgs_generate_messages_eus: cmake_check_build_system
 .PHONY : moveit_msgs_generate_messages_eus
 
 # fast build rule for target.
+<<<<<<< HEAD
 moveit_msgs_generate_messages_eus/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_eus.dir/build.make universal_robot/ur_kinematics/CMakeFiles/moveit_msgs_generate_messages_eus.dir/build
 .PHONY : moveit_msgs_generate_messages_eus/fast
+=======
+trajectory_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
+.PHONY : trajectory_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named octomap_msgs_generate_messages_py
@@ -2815,6 +3378,7 @@ octomap_msgs_generate_messages_py: cmake_check_build_system
 .PHONY : octomap_msgs_generate_messages_py
 
 # fast build rule for target.
+<<<<<<< HEAD
 octomap_msgs_generate_messages_py/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_py.dir/build.make universal_robot/ur_kinematics/CMakeFiles/octomap_msgs_generate_messages_py.dir/build
 .PHONY : octomap_msgs_generate_messages_py/fast
@@ -2834,6 +3398,14 @@ dynamic_reconfigure_generate_messages_cpp/fast:
 
 #=============================================================================
 # Target rules for targets named dynamic_reconfigure_generate_messages_nodejs
+=======
+sensor_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_eus
+>>>>>>> Anfang HMI
 
 # Build rule for target.
 dynamic_reconfigure_generate_messages_nodejs: cmake_check_build_system
@@ -2841,9 +3413,15 @@ dynamic_reconfigure_generate_messages_nodejs: cmake_check_build_system
 .PHONY : dynamic_reconfigure_generate_messages_nodejs
 
 # fast build rule for target.
+<<<<<<< HEAD
 dynamic_reconfigure_generate_messages_nodejs/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make universal_robot/ur_kinematics/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
 .PHONY : dynamic_reconfigure_generate_messages_nodejs/fast
+=======
+sensor_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur3e_kin
@@ -2854,9 +3432,15 @@ ur3e_kin: cmake_check_build_system
 .PHONY : ur3e_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur3e_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3e_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3e_kin.dir/build
 .PHONY : ur3e_kin/fast
+=======
+visualization_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build
+.PHONY : visualization_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur5e_kin
@@ -2867,9 +3451,15 @@ ur5e_kin: cmake_check_build_system
 .PHONY : ur5e_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur5e_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5e_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5e_kin.dir/build
 .PHONY : ur5e_kin/fast
+=======
+sensor_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur10_kin
@@ -2880,9 +3470,15 @@ ur10_kin: cmake_check_build_system
 .PHONY : ur10_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur10_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/build
 .PHONY : ur10_kin/fast
+=======
+sensor_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur10e_kin
@@ -2893,9 +3489,15 @@ ur10e_kin: cmake_check_build_system
 .PHONY : ur10e_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur10e_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10e_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10e_kin.dir/build
 .PHONY : ur10e_kin/fast
+=======
+rosgraph_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named shape_msgs_generate_messages_cpp
@@ -2906,9 +3508,15 @@ shape_msgs_generate_messages_cpp: cmake_check_build_system
 .PHONY : shape_msgs_generate_messages_cpp
 
 # fast build rule for target.
+<<<<<<< HEAD
 shape_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build
 .PHONY : shape_msgs_generate_messages_cpp/fast
+=======
+object_recognition_msgs_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/object_recognition_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/object_recognition_msgs_generate_messages_py.dir/build
+.PHONY : object_recognition_msgs_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur20_kin
@@ -2919,9 +3527,15 @@ ur20_kin: cmake_check_build_system
 .PHONY : ur20_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur20_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur20_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur20_kin.dir/build
 .PHONY : ur20_kin/fast
+=======
+roscpp_generate_messages_py/fast:
+	$(MAKE) -f hmi/CMakeFiles/roscpp_generate_messages_py.dir/build.make hmi/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur10e_moveit_plugin
@@ -2932,9 +3546,15 @@ ur10e_moveit_plugin: cmake_check_build_system
 .PHONY : ur10e_moveit_plugin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur10e_moveit_plugin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur10e_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur10e_moveit_plugin.dir/build
 .PHONY : ur10e_moveit_plugin/fast
+=======
+trajectory_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
+.PHONY : trajectory_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named shape_msgs_generate_messages_py
@@ -2945,9 +3565,15 @@ shape_msgs_generate_messages_py: cmake_check_build_system
 .PHONY : shape_msgs_generate_messages_py
 
 # fast build rule for target.
+<<<<<<< HEAD
 shape_msgs_generate_messages_py/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_py.dir/build.make universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_py.dir/build
 .PHONY : shape_msgs_generate_messages_py/fast
+=======
+trajectory_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
+.PHONY : trajectory_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur5_kin
@@ -2958,9 +3584,15 @@ ur5_kin: cmake_check_build_system
 .PHONY : ur5_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur5_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5_kin.dir/build
 .PHONY : ur5_kin/fast
+=======
+object_recognition_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir/build
+.PHONY : object_recognition_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur30_kin
@@ -2971,9 +3603,15 @@ ur30_kin: cmake_check_build_system
 .PHONY : ur30_kin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur30_kin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur30_kin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur30_kin.dir/build
 .PHONY : ur30_kin/fast
+=======
+octomap_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/octomap_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/octomap_msgs_generate_messages_eus.dir/build
+.PHONY : octomap_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur3e_moveit_plugin
@@ -2984,9 +3622,15 @@ ur3e_moveit_plugin: cmake_check_build_system
 .PHONY : ur3e_moveit_plugin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur3e_moveit_plugin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur3e_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur3e_moveit_plugin.dir/build
 .PHONY : ur3e_moveit_plugin/fast
+=======
+shape_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/shape_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/shape_msgs_generate_messages_lisp.dir/build
+.PHONY : shape_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named visualization_msgs_generate_messages_cpp
@@ -2997,9 +3641,15 @@ visualization_msgs_generate_messages_cpp: cmake_check_build_system
 .PHONY : visualization_msgs_generate_messages_cpp
 
 # fast build rule for target.
+<<<<<<< HEAD
 visualization_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build.make universal_robot/ur_kinematics/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build
 .PHONY : visualization_msgs_generate_messages_cpp/fast
+=======
+trajectory_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
+.PHONY : trajectory_msgs_generate_messages_lisp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur5e_moveit_plugin
@@ -3010,9 +3660,15 @@ ur5e_moveit_plugin: cmake_check_build_system
 .PHONY : ur5e_moveit_plugin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur5e_moveit_plugin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur5e_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur5e_moveit_plugin.dir/build
 .PHONY : ur5e_moveit_plugin/fast
+=======
+object_recognition_msgs_generate_messages_eus/fast:
+	$(MAKE) -f hmi/CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/build
+.PHONY : object_recognition_msgs_generate_messages_eus/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur16e_moveit_plugin
@@ -3023,9 +3679,15 @@ ur16e_moveit_plugin: cmake_check_build_system
 .PHONY : ur16e_moveit_plugin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur16e_moveit_plugin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur16e_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur16e_moveit_plugin.dir/build
 .PHONY : ur16e_moveit_plugin/fast
+=======
+object_recognition_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/object_recognition_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/object_recognition_msgs_generate_messages_nodejs.dir/build
+.PHONY : object_recognition_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named ur30_moveit_plugin
@@ -3036,9 +3698,15 @@ ur30_moveit_plugin: cmake_check_build_system
 .PHONY : ur30_moveit_plugin
 
 # fast build rule for target.
+<<<<<<< HEAD
 ur30_moveit_plugin/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/ur30_moveit_plugin.dir/build.make universal_robot/ur_kinematics/CMakeFiles/ur30_moveit_plugin.dir/build
 .PHONY : ur30_moveit_plugin/fast
+=======
+octomap_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f hmi/CMakeFiles/octomap_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/octomap_msgs_generate_messages_cpp.dir/build
+.PHONY : octomap_msgs_generate_messages_cpp/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named shape_msgs_generate_messages_eus
@@ -3049,113 +3717,15 @@ shape_msgs_generate_messages_eus: cmake_check_build_system
 .PHONY : shape_msgs_generate_messages_eus
 
 # fast build rule for target.
+<<<<<<< HEAD
 shape_msgs_generate_messages_eus/fast:
 	$(MAKE) -f universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_eus.dir/build.make universal_robot/ur_kinematics/CMakeFiles/shape_msgs_generate_messages_eus.dir/build
 .PHONY : shape_msgs_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named stop_teaching_mode
-
-# Build rule for target.
-stop_teaching_mode: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 stop_teaching_mode
-.PHONY : stop_teaching_mode
-
-# fast build rule for target.
-stop_teaching_mode/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/build
-.PHONY : stop_teaching_mode/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_cpp
-
-# Build rule for target.
-std_srvs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_cpp
-.PHONY : std_srvs_generate_messages_cpp
-
-# fast build rule for target.
-std_srvs_generate_messages_cpp/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make tars_robot/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
-.PHONY : std_srvs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_eus
-
-# Build rule for target.
-std_srvs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_eus
-.PHONY : std_srvs_generate_messages_eus
-
-# fast build rule for target.
-std_srvs_generate_messages_eus/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make tars_robot/CMakeFiles/std_srvs_generate_messages_eus.dir/build
-.PHONY : std_srvs_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_nodejs
-
-# Build rule for target.
-std_srvs_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_nodejs
-.PHONY : std_srvs_generate_messages_nodejs
-
-# fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make tars_robot/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named graph_msgs_generate_messages_lisp
-
-# Build rule for target.
-graph_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 graph_msgs_generate_messages_lisp
-.PHONY : graph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-graph_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build
-.PHONY : graph_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named moveit_ros_manipulation_gencfg
-
-# Build rule for target.
-moveit_ros_manipulation_gencfg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 moveit_ros_manipulation_gencfg
-.PHONY : moveit_ros_manipulation_gencfg
-
-# fast build rule for target.
-moveit_ros_manipulation_gencfg/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make tars_robot/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
-.PHONY : moveit_ros_manipulation_gencfg/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_py
-
-# Build rule for target.
-std_srvs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_py
-.PHONY : std_srvs_generate_messages_py
-
-# fast build rule for target.
-std_srvs_generate_messages_py/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/std_srvs_generate_messages_py.dir/build.make tars_robot/CMakeFiles/std_srvs_generate_messages_py.dir/build
-.PHONY : std_srvs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named custom_lib
-
-# Build rule for target.
-custom_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 custom_lib
-.PHONY : custom_lib
-
-# fast build rule for target.
-custom_lib/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/build
-.PHONY : custom_lib/fast
+=======
+octomap_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f hmi/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build
+.PHONY : octomap_msgs_generate_messages_nodejs/fast
+>>>>>>> Anfang HMI
 
 #=============================================================================
 # Target rules for targets named graph_msgs_generate_messages_cpp
@@ -3169,6 +3739,19 @@ graph_msgs_generate_messages_cpp: cmake_check_build_system
 graph_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build
 .PHONY : graph_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named stop_teaching_mode
+
+# Build rule for target.
+stop_teaching_mode: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stop_teaching_mode
+.PHONY : stop_teaching_mode
+
+# fast build rule for target.
+stop_teaching_mode/fast:
+	$(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/build
+.PHONY : stop_teaching_mode/fast
 
 #=============================================================================
 # Target rules for targets named graph_msgs_generate_messages_eus
@@ -3197,19 +3780,6 @@ graph_msgs_generate_messages_nodejs/fast:
 .PHONY : graph_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named std_srvs_generate_messages_lisp
-
-# Build rule for target.
-std_srvs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_lisp
-.PHONY : std_srvs_generate_messages_lisp
-
-# fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make tars_robot/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
-
-#=============================================================================
 # Target rules for targets named graph_msgs_generate_messages_py
 
 # Build rule for target.
@@ -3223,6 +3793,19 @@ graph_msgs_generate_messages_py/fast:
 .PHONY : graph_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named custom_lib
+
+# Build rule for target.
+custom_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 custom_lib
+.PHONY : custom_lib
+
+# fast build rule for target.
+custom_lib/fast:
+	$(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/build
+.PHONY : custom_lib/fast
+
+#=============================================================================
 # Target rules for targets named advertise_topics_for_UR
 
 # Build rule for target.
@@ -3234,6 +3817,19 @@ advertise_topics_for_UR: cmake_check_build_system
 advertise_topics_for_UR/fast:
 	$(MAKE) -f tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build.make tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build
 .PHONY : advertise_topics_for_UR/fast
+
+#=============================================================================
+# Target rules for targets named graph_msgs_generate_messages_lisp
+
+# Build rule for target.
+graph_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 graph_msgs_generate_messages_lisp
+.PHONY : graph_msgs_generate_messages_lisp
+
+# fast build rule for target.
+graph_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build
+.PHONY : graph_msgs_generate_messages_lisp/fast
 
 # Help Target
 help:
@@ -3258,6 +3854,7 @@ help:
 	@echo "... gtest_main"
 	@echo "... gtest"
 	@echo "... _catkin_empty_exported_target"
+<<<<<<< HEAD
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_cpp"
@@ -3421,6 +4018,28 @@ help:
 	@echo "... object_recognition_msgs_generate_messages_nodejs"
 	@echo "... object_recognition_msgs_generate_messages_eus"
 	@echo "... trajectory_msgs_generate_messages_py"
+=======
+	@echo "... tf_generate_messages_nodejs"
+	@echo "... tf_generate_messages_lisp"
+	@echo "... tf_generate_messages_cpp"
+	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... std_srvs_generate_messages_lisp"
+	@echo "... std_srvs_generate_messages_eus"
+	@echo "... std_srvs_generate_messages_cpp"
+	@echo "... dynamic_reconfigure_gencfg"
+	@echo "... dynamic_reconfigure_generate_messages_cpp"
+	@echo "... actionlib_generate_messages_py"
+	@echo "... main"
+	@echo "... actionlib_generate_messages_nodejs"
+	@echo "... actionlib_generate_messages_lisp"
+	@echo "... actionlib_generate_messages_cpp"
+	@echo "... dynamic_reconfigure_generate_messages_nodejs"
+	@echo "... tf2_msgs_generate_messages_py"
+	@echo "... tf2_msgs_generate_messages_lisp"
+	@echo "... dynamic_reconfigure_generate_messages_lisp"
+	@echo "... tf2_msgs_generate_messages_cpp"
+	@echo "... octomap_msgs_generate_messages_py"
+>>>>>>> Anfang HMI
 	@echo "... visualization_msgs_generate_messages_nodejs"
 	@echo "... octomap_msgs_generate_messages_nodejs"
 	@echo "... ur3_kin"
@@ -3429,11 +4048,70 @@ help:
 	@echo "... moveit_msgs_generate_messages_py"
 	@echo "... visualization_msgs_generate_messages_eus"
 	@echo "... object_recognition_msgs_generate_messages_lisp"
+<<<<<<< HEAD
 	@echo "... moveit_msgs_generate_messages_nodejs"
 	@echo "... dynamic_reconfigure_generate_messages_lisp"
 	@echo "... ur5_moveit_plugin"
 	@echo "... ur10_moveit_plugin"
 	@echo "... visualization_msgs_generate_messages_py"
+=======
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... octomap_msgs_generate_messages_lisp"
+	@echo "... shape_msgs_generate_messages_eus"
+	@echo "... hmi"
+	@echo "... moveit_ros_manipulation_gencfg"
+	@echo "... shape_msgs_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_lisp"
+	@echo "... std_msgs_generate_messages_py"
+	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... moveit_msgs_generate_messages_eus"
+	@echo "... tf2_msgs_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_py"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... actionlib_msgs_generate_messages_py"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... tf2_msgs_generate_messages_nodejs"
+	@echo "... moveit_msgs_generate_messages_lisp"
+	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... actionlib_generate_messages_eus"
+	@echo "... trajectory_msgs_generate_messages_py"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... hmi_custom_lib"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... std_srvs_generate_messages_py"
+	@echo "... moveit_ros_planning_gencfg"
+	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... tf_generate_messages_eus"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... dynamic_reconfigure_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... shape_msgs_generate_messages_py"
+	@echo "... shape_msgs_generate_messages_nodejs"
+	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... visualization_msgs_generate_messages_py"
+	@echo "... moveit_msgs_generate_messages_cpp"
+	@echo "... moveit_msgs_generate_messages_nodejs"
+	@echo "... tf_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... actionlib_msgs_generate_messages_nodejs"
+	@echo "... trajectory_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... visualization_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... object_recognition_msgs_generate_messages_py"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... trajectory_msgs_generate_messages_eus"
+	@echo "... trajectory_msgs_generate_messages_nodejs"
+	@echo "... object_recognition_msgs_generate_messages_cpp"
+>>>>>>> Anfang HMI
 	@echo "... octomap_msgs_generate_messages_eus"
 	@echo "... object_recognition_msgs_generate_messages_cpp"
 	@echo "... object_recognition_msgs_generate_messages_py"
@@ -3449,6 +4127,7 @@ help:
 	@echo "... ur3_moveit_plugin"
 	@echo "... shape_msgs_generate_messages_lisp"
 	@echo "... trajectory_msgs_generate_messages_lisp"
+<<<<<<< HEAD
 	@echo "... moveit_msgs_generate_messages_cpp"
 	@echo "... moveit_msgs_generate_messages_eus"
 	@echo "... octomap_msgs_generate_messages_py"
@@ -3478,12 +4157,20 @@ help:
 	@echo "... moveit_ros_manipulation_gencfg"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... custom_lib"
+=======
+	@echo "... object_recognition_msgs_generate_messages_eus"
+	@echo "... object_recognition_msgs_generate_messages_nodejs"
+	@echo "... octomap_msgs_generate_messages_cpp"
+	@echo "... octomap_msgs_generate_messages_nodejs"
+>>>>>>> Anfang HMI
 	@echo "... graph_msgs_generate_messages_cpp"
+	@echo "... stop_teaching_mode"
 	@echo "... graph_msgs_generate_messages_eus"
 	@echo "... graph_msgs_generate_messages_nodejs"
-	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... graph_msgs_generate_messages_py"
+	@echo "... custom_lib"
 	@echo "... advertise_topics_for_UR"
+	@echo "... graph_msgs_generate_messages_lisp"
 .PHONY : help
 
 
