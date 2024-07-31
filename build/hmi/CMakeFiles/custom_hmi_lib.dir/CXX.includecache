@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/goldilocks_sensibility_ws/src/hmi/include/hmi/Control_Panel.cpp
+ControlPanel.h
+/goldilocks_sensibility_ws/src/hmi/include/hmi/ControlPanel.h
+
+/goldilocks_sensibility_ws/src/hmi/include/hmi/Main_Application.cpp
+MainApplication.h
+/goldilocks_sensibility_ws/src/hmi/include/hmi/MainApplication.h
+
+/goldilocks_sensibility_ws/src/hmi/include/hmi/Measurement_Panel.cpp
+MeasurementPanel.h
+/goldilocks_sensibility_ws/src/hmi/include/hmi/MeasurementPanel.h
+
+/goldilocks_sensibility_ws/src/hmi/include/hmi/Plot_Panel.cpp
+PlotPanel.h
+/goldilocks_sensibility_ws/src/hmi/include/hmi/PlotPanel.h
+

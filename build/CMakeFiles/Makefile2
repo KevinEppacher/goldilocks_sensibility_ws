@@ -298,6 +298,7 @@ gtest/googletest/clean: gtest/googletest/CMakeFiles/gtest.dir/clean
 # Directory level rules for directory hmi
 
 # Recursive "all" directory target.
+hmi/all: hmi/CMakeFiles/hmi_sensibility_classes.dir/all
 hmi/all: hmi/CMakeFiles/main.dir/all
 hmi/all: hmi/CMakeFiles/hmi.dir/all
 hmi/all: hmi/CMakeFiles/hmi_custom_lib.dir/all
@@ -316,6 +317,7 @@ hmi/clean: hmi/CMakeFiles/tf_generate_messages_cpp.dir/clean
 hmi/clean: hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
 hmi/clean: hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/clean
 hmi/clean: hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/clean
+hmi/clean: hmi/CMakeFiles/hmi_sensibility_classes.dir/clean
 hmi/clean: hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/clean
 hmi/clean: hmi/CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
 hmi/clean: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/clean
@@ -1290,7 +1292,38 @@ force-torque-sensor/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
 .PHONY : force-torque-sensor/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 #=============================================================================
+<<<<<<< HEAD
 # Target rules for target force-torque-sensor/CMakeFiles/roscpp_generate_messages_nodejs.dir
+=======
+# Target rules for target hmi/CMakeFiles/hmi_sensibility_classes.dir
+
+# All Build rule for target.
+hmi/CMakeFiles/hmi_sensibility_classes.dir/all:
+	$(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/depend
+	$(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=23,24,25,26,27 "Built target hmi_sensibility_classes"
+.PHONY : hmi/CMakeFiles/hmi_sensibility_classes.dir/all
+
+# Build rule for subdir invocation for target.
+hmi/CMakeFiles/hmi_sensibility_classes.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi_sensibility_classes.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 0
+.PHONY : hmi/CMakeFiles/hmi_sensibility_classes.dir/rule
+
+# Convenience name for target.
+hmi_sensibility_classes: hmi/CMakeFiles/hmi_sensibility_classes.dir/rule
+
+.PHONY : hmi_sensibility_classes
+
+# clean rule for target.
+hmi/CMakeFiles/hmi_sensibility_classes.dir/clean:
+	$(MAKE) -f hmi/CMakeFiles/hmi_sensibility_classes.dir/build.make hmi/CMakeFiles/hmi_sensibility_classes.dir/clean
+.PHONY : hmi/CMakeFiles/hmi_sensibility_classes.dir/clean
+
+#=============================================================================
+# Target rules for target hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir
+>>>>>>> Publihsher HMI
 
 # All Build rule for target.
 force-torque-sensor/CMakeFiles/roscpp_generate_messages_nodejs.dir/all:
@@ -1401,11 +1434,107 @@ force-torque-sensor/CMakeFiles/roscpp_generate_messages_py.dir/clean:
 # Target rules for target force-torque-sensor/CMakeFiles/ati_sensor_node.dir
 
 # All Build rule for target.
+<<<<<<< HEAD
 force-torque-sensor/CMakeFiles/ati_sensor_node.dir/all:
 	$(MAKE) -f force-torque-sensor/CMakeFiles/ati_sensor_node.dir/build.make force-torque-sensor/CMakeFiles/ati_sensor_node.dir/depend
 	$(MAKE) -f force-torque-sensor/CMakeFiles/ati_sensor_node.dir/build.make force-torque-sensor/CMakeFiles/ati_sensor_node.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=5,6,7 "Built target ati_sensor_node"
 .PHONY : force-torque-sensor/CMakeFiles/ati_sensor_node.dir/all
+=======
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/dynamic_reconfigure_gencfg.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf2_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/moveit_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/shape_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/moveit_ros_manipulation_gencfg.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/shape_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/moveit_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf2_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/roscpp_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/trajectory_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/hmi_custom_lib.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/moveit_ros_planning_gencfg.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/shape_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/visualization_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/moveit_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/tf_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/object_recognition_msgs_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/roscpp_generate_messages_py.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/shape_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/object_recognition_msgs_generate_messages_nodejs.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_cpp.dir/all
+hmi/CMakeFiles/main.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f hmi/CMakeFiles/main.dir/build.make hmi/CMakeFiles/main.dir/depend
+	$(MAKE) -f hmi/CMakeFiles/main.dir/build.make hmi/CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=28,29 "Built target main"
+.PHONY : hmi/CMakeFiles/main.dir/all
+>>>>>>> Publihsher HMI
 
 # Build rule for subdir invocation for target.
 force-torque-sensor/CMakeFiles/ati_sensor_node.dir/rule: cmake_check_build_system
@@ -1995,6 +2124,7 @@ ft_sensor/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
 # Target rules for target ft_sensor/CMakeFiles/tf_generate_messages_nodejs.dir
 
 # All Build rule for target.
+<<<<<<< HEAD
 ft_sensor/CMakeFiles/tf_generate_messages_nodejs.dir/all:
 	$(MAKE) -f ft_sensor/CMakeFiles/tf_generate_messages_nodejs.dir/build.make ft_sensor/CMakeFiles/tf_generate_messages_nodejs.dir/depend
 	$(MAKE) -f ft_sensor/CMakeFiles/tf_generate_messages_nodejs.dir/build.make ft_sensor/CMakeFiles/tf_generate_messages_nodejs.dir/build
@@ -3290,12 +3420,18 @@ hmi/CMakeFiles/shape_msgs_generate_messages_eus.dir/clean:
 # Target rules for target hmi/CMakeFiles/hmi.dir
 
 # All Build rule for target.
+=======
+>>>>>>> Publihsher HMI
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/tf_generate_messages_nodejs.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/tf_generate_messages_lisp.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/tf_generate_messages_cpp.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_eus.dir/all
+<<<<<<< HEAD
+=======
+hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/hmi_sensibility_classes.dir/all
+>>>>>>> Publihsher HMI
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/dynamic_reconfigure_gencfg.dir/all
 hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
@@ -3386,6 +3522,7 @@ hmi/CMakeFiles/hmi.dir/all: hmi/CMakeFiles/octomap_msgs_generate_messages_nodejs
 
 # Build rule for subdir invocation for target.
 hmi/CMakeFiles/hmi.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 0
@@ -7985,6 +8122,10 @@ universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/all:
 universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/all
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 14
+	$(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi.dir/all
+>>>>>>> Publihsher HMI
 	$(CMAKE_COMMAND) -E cmake_progress_start /goldilocks_sensibility_ws/build/CMakeFiles 0
 .PHONY : universal_robot/ur_kinematics/CMakeFiles/ur10_kin.dir/rule
 
@@ -9890,7 +10031,7 @@ tars_robot/CMakeFiles/stop_teaching_mode.dir/all: tars_robot/CMakeFiles/custom_l
 tars_robot/CMakeFiles/stop_teaching_mode.dir/all: tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/depend
 	$(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=25,26 "Built target stop_teaching_mode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/goldilocks_sensibility_ws/build/CMakeFiles --progress-num=30,31 "Built target stop_teaching_mode"
 .PHONY : tars_robot/CMakeFiles/stop_teaching_mode.dir/all
 
 # Build rule for subdir invocation for target.

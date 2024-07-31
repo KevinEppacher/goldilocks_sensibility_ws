@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++11
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"hmi\"
 
-CXX_INCLUDES = -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/bullet -I/goldilocks_sensibility_ws/src/hmi/include -I/goldilocks_sensibility_ws/src/hmi/include/imgui -I/goldilocks_sensibility_ws/src/hmi/include/imgui/backends -isystem /usr/include/python3.8 -isystem /usr/lib/python3/dist-packages/numpy/core/include 
+CXX_INCLUDES = -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/bullet -I/goldilocks_sensibility_ws/src/hmi/include -I/goldilocks_sensibility_ws/src/hmi/include/imgui -I/goldilocks_sensibility_ws/src/hmi/include/imgui/backends -I/goldilocks_sensibility_ws/src/hmi/include/hmi -isystem /usr/include/python3.8 -isystem /usr/lib/python3/dist-packages/numpy/core/include 
 
