@@ -6,15 +6,16 @@
     <!-- Launch the UR10 bringup node with specified robot IP -->
     <include file="$(find ur_robot_driver)/launch/ur10_bringup.launch">
         <arg name="robot_ip" value="192.168.1.102" />
-        <!-- <arg name="headless_mode" value="True"/> -->
     </include>
 
-    <!-- Launch the custom node to setup the UR program for touch-up's -->
-    <arg name="setup_action" default="stop" />
-    <node name="call_ur_setup_program" pkg="tars_robot" type="call_ur_setup_program.py" args="$(arg setup_action)" output="screen" />
+    <include file="$(find rosbridge_server)/launch/rosbridge_tcp.launch" />
 
-    <!-- Launch the custom node to setup the UR program for touch-up's -->
-    <arg name="measure_action" default="start" />
-    <node name="call_ur_measurement_program" pkg="tars_robot" type="call_ur_measurement_program.py" args="$(arg measure_action)" output="screen" />
+    <node name="call_ur_setup_program" pkg="tars_robot" type="call_ur_setup_program.py" output="screen" />
+
+    <node name="call_ur_measurement_program" pkg="tars_robot" type="call_ur_measurement_program.py" output="screen" />
+
+    <node name="hmi" pkg="hmi" type="hmi" output="screen" />
+
+    <node name="open_moveit_robot" pkg="tars_robot" type="open_moveit_robot.py" output="screen" />
 
 </launch>
