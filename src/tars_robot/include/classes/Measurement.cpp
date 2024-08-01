@@ -13,7 +13,7 @@ namespace Measurement
 
         // Publisher and Subscriber for sensibility measurement
         measurementPointsSub = nh.subscribe("measurement_points", 1, &Sensibility::measurementPointsCallback, this);
-
+        
     }
 
     Sensibility::~Sensibility()
@@ -49,23 +49,18 @@ namespace Measurement
 
     void Sensibility::measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr& measurementsPointsMsg)
     {
-        poses = *measurementsPointsMsg;
-        ROS_INFO_NAMED(nodeName, "Received %ld measurement points", poses.poses.size());
-        for(auto& pose : poses.poses)
+        for(auto& pose : measurementsPointsMsg->poses)
         {
-            ROS_INFO_NAMED(nodeName, "Pose: x=%f, y=%f, z=%f", pose.position.x, pose.position.y, pose.position.z);
+            poses.poses.push_back(pose);
         }
     }
 
     void Sensibility::run_measurement()
     {
-        ros::Rate loop_rate(10);
-
-        while (ros::ok())
+        for(auto& pose : poses.poses)
         {
-
-            loop_rate.sleep();
-            ros::spinOnce();
+            
+            ROS_INFO_NAMED("Sensibility", "Pose: x=%f, y=%f, z=%f", pose.position.x, pose.position.y, pose.position.z);
         }
     }
 

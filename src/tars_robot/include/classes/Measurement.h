@@ -16,6 +16,7 @@
 #include <ctime>
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseArray.h>
+#include <iostream>
 
 namespace Measurement
 {

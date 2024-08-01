@@ -8,6 +8,7 @@
 int main(int argc, char** argv) {
     ros::init(argc, argv, "hmi_node");
     ros::NodeHandle nh;
+    ros::Rate loop_rate(10);      
 
     // Setup GLFW and OpenGL
     if (!glfwInit())
@@ -41,6 +42,7 @@ int main(int argc, char** argv) {
     while (!glfwWindowShouldClose(window) && ros::ok()) 
     {
         ros::spinOnce();
+        
 
         glfwPollEvents();
         ImGui_ImplOpenGL3_NewFrame();
@@ -58,7 +60,7 @@ int main(int argc, char** argv) {
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
-
+        loop_rate.sleep();
         
     }
 
