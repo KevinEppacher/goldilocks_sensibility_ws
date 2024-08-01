@@ -281,7 +281,7 @@ int main(int argc, char** argv)
     ImGui::DestroyContext();
 
     glfwDestroyWindow(window);
-    glfwTerminate();
-
+    glfwTerminate();    
+    
     return 0;
 }
