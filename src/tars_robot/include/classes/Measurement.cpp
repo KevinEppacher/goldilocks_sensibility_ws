@@ -49,19 +49,27 @@ namespace Measurement
 
     void Sensibility::measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr& measurementsPointsMsg)
     {
-        for(auto& pose : measurementsPointsMsg->poses)
-        {
-            poses.poses.push_back(pose);
-        }
+        poses = *measurementsPointsMsg;
+        // std::cout<<"Number of poses: "<<poses.poses.size()<<std::endl;
+        // for(auto& pose : poses.poses)
+        // {
+        //     ROS_INFO_NAMED("Sensibility", "Pose: x=%f, y=%f, z=%f", pose.position.x, pose.position.y, pose.position.z);
+        // }
     }
 
     void Sensibility::run_measurement()
     {
-        for(auto& pose : poses.poses)
-        {
-            
-            ROS_INFO_NAMED("Sensibility", "Pose: x=%f, y=%f, z=%f", pose.position.x, pose.position.y, pose.position.z);
-        }
+        Robot::ArticulatedRobot myRobot;
+
+        geometry_msgs::Pose target1;
+        target1.position.x = 0.11;
+        target1.position.y = 0.5;
+        target1.position.z = 0.479;
+        target1.orientation.x = -3.1407636;
+        target1.orientation.y = -0.000013; 
+        target1.orientation.z = -3.1415883;
+        myRobot.PTP( target1 );
+        
     }
 
 

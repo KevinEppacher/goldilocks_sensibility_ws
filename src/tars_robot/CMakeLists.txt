@@ -49,6 +49,7 @@ catkin_package(
 # Add a library for sensor fusion
 add_library(custom_lib
   include/classes/Measurement.cpp
+  include/classes/Robot.cpp
 )
 
 # Link the sensor fusion library with the catkin libraries

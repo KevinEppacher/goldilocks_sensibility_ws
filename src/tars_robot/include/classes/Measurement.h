@@ -1,4 +1,6 @@
 
+
+// Libraries
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "std_msgs/Bool.h"
@@ -17,6 +19,9 @@
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseArray.h>
 #include <iostream>
+
+// Custom classes
+#include "Robot.h"
 
 namespace Measurement
 {

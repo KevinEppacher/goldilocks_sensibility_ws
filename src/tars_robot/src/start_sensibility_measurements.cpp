@@ -1,4 +1,5 @@
 #include "ros/ros.h"
+#include <iostream>
 #include <sstream>
 #include "Measurement.h"
 
@@ -31,6 +32,6 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
     Measurement::Sensibility sens(nh);
     sens.run_measurement();    
-    ros::spin();
+    ros::shutdown();
     return 0;
 }

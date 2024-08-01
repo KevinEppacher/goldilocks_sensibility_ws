@@ -9,7 +9,7 @@
         
         
     ],
-    "cmake.sourceDirectory": "/goldilocks_sensibility_ws/src/bdr_ur10_moveit",
+    "cmake.sourceDirectory": "/home/kevin/RobotikMaster/Semester2/ROD/goldilocks_sensibility_ws/src/tars_robot",
     "files.associations": {
         "unordered_map": "cpp",
         "unordered_set": "cpp",
