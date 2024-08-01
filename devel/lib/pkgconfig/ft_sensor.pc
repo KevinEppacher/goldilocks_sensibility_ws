@@ -1,8 +1,0 @@
-prefix=/goldilocks_sensibility_ws/devel
-
-Name: ft_sensor
-Description: Description of ft_sensor
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,2 +1,0 @@
-bdr_ur10_moveit:ft_sensor:hmi:tars_robot:ur10_description_v3
--DCATKIN_DEVEL_PREFIX=/home/robat/catkin_ws/src/goldilocks_sensibility_ws/devel -DCMAKE_INSTALL_PREFIX=/home/robat/catkin_ws/src/goldilocks_sensibility_ws/install -G Unix Makefiles

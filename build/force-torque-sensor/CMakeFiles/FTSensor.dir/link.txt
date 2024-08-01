@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC   -shared -Wl,-soname,libFTSensor.so -o /goldilocks_sensibility_ws/devel/lib/libFTSensor.so CMakeFiles/FTSensor.dir/src/FTSensor.cpp.o 

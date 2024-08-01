@@ -1,8 +1,0 @@
-prefix=/goldilocks_sensibility_ws/install
-
-Name: ur10_description_v3
-Description: Description of ur10_description_v3
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
