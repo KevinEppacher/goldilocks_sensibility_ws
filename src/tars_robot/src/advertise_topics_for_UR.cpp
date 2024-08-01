@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 
     ros::init(argc, argv, "advertising_topics");
     ros::NodeHandle nh;
-    Measurement::Sensibility ur10(&nh);
+    Measurement::Sensibility ur10(nh);
     ros::Rate loop_rate(10);      
     
     while (ros::ok())

@@ -2,16 +2,19 @@
 
 namespace Measurement
 {
-    Sensibility::Sensibility(ros::NodeHandle *nh)
+    Sensibility::Sensibility(ros::NodeHandle& nodehandler) : nh(nodehandler)
     {
-        forceTorqueSensor = nh->advertise<geometry_msgs::Pose>("force_torque_sensor", 100);
-        absoluteForce = nh->advertise<std_msgs::Float64>("absolute_force", 100);
-        forceTorqueSensorSub = nh->subscribe("force_torque_sensor", 100, &Sensibility::forceTorqueSensorCallback, this);
-        poseUR = nh->advertise<geometry_msgs::Pose>("pose_ur_robot", 100);
-        poseUrSub = nh->subscribe("pose_ur_robot", 100, &Sensibility::poseUrCallback, this);
-    }
+        // Publisher and Subscriber 
+        forceTorqueSensor = nh.advertise<geometry_msgs::Pose>("force_torque_sensor", 100);
+        absoluteForce = nh.advertise<std_msgs::Float64>("absolute_force", 100);
+        forceTorqueSensorSub = nh.subscribe("force_torque_sensor", 100, &Sensibility::forceTorqueSensorCallback, this);
+        poseUR = nh.advertise<geometry_msgs::Pose>("pose_ur_robot", 100);
+        poseUrSub = nh.subscribe("pose_ur_robot", 100, &Sensibility::poseUrCallback, this);
 
-    
+        // Publisher and Subscriber for sensibility measurement
+        measurementPointsSub = nh.subscribe("measurement_points", 1, &Sensibility::measurementPointsCallback, this);
+
+    }
 
     Sensibility::~Sensibility()
     {
@@ -42,6 +45,28 @@ namespace Measurement
         }
         
         lastPose = currentPose;
+    }
+
+    void Sensibility::measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr& measurementsPointsMsg)
+    {
+        poses = *measurementsPointsMsg;
+        ROS_INFO_NAMED(nodeName, "Received %ld measurement points", poses.poses.size());
+        for(auto& pose : poses.poses)
+        {
+            ROS_INFO_NAMED(nodeName, "Pose: x=%f, y=%f, z=%f", pose.position.x, pose.position.y, pose.position.z);
+        }
+    }
+
+    void Sensibility::run_measurement()
+    {
+        ros::Rate loop_rate(10);
+
+        while (ros::ok())
+        {
+
+            loop_rate.sleep();
+            ros::spinOnce();
+        }
     }
 
 
