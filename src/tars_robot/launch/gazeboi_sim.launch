@@ -62,7 +62,7 @@
     </include>
 
     <include file="$(find bdr_ur10_moveit)/launch/moveit_rviz.launch" >
-        <arg name="rviz_config" value="/home/robat/catkin_ws/src/goldilocks_sensibility_ws/src/tars_robot/config/config.rviz" />
+        <arg name="rviz_config" value="$(find tars_robot)/config/config.rviz" />
     </include>
 
     <!-- Spawn the model loaded earlier in the simulation just started -->
