@@ -9,5 +9,10 @@
         
         
     ],
-    "cmake.sourceDirectory": "/goldilocks_sensibility_ws/src/bdr_ur10_moveit"
+    "cmake.sourceDirectory": "/goldilocks_sensibility_ws/src/bdr_ur10_moveit",
+    "files.associations": {
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp"
+    }
 }
