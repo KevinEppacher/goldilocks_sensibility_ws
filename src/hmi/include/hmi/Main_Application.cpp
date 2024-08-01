@@ -1,8 +1,9 @@
 #include "Main_Application.h"
 
 MainApplication::MainApplication(ros::NodeHandle &nh)
-    : controlPanel(nh), measurementPanel(), plotPanel(), currentTab(0)
+    : controlPanel(nh), measurementPanel(nh), plotPanel(), currentTab(0)
 {
+
 }
 
 void MainApplication::render()

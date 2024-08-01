@@ -39,18 +39,11 @@ namespace Measurement {
 
     private:
         ros::NodeHandle *nodeHandler;
-        ros::Subscriber absoluteForceSub;
         ros::Publisher forceTorqueSensor;
         ros::Publisher absoluteForce;
-        ros::Publisher airskinInterrupt;
-        ros::Publisher airskinPadNum;
-        ros::Publisher maxAirskinPads;
         ros::Subscriber forceTorqueSensorSub;
-        ros::Subscriber airskinPadNumSub;
-        ros::Subscriber airskinInterruptSub;
         ros::Publisher poseUR;
         ros::Subscriber poseUrSub;
-        ros::Publisher stopTeachingModePub;
 
     };
 

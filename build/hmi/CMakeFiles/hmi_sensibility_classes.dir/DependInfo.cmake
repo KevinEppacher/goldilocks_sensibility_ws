@@ -25,6 +25,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
   "/usr/include/bullet"
+  "/usr/include/OGRE"
   "/goldilocks_sensibility_ws/src/hmi/include"
   "/goldilocks_sensibility_ws/src/hmi/include/imgui"
   "/goldilocks_sensibility_ws/src/hmi/include/imgui/backends"

@@ -49,7 +49,6 @@ catkin_package(
 # Add a library for sensor fusion
 add_library(custom_lib
   include/classes/Measurement.cpp
-  include/classes/get_pose.cpp
 )
 
 # Link the sensor fusion library with the catkin libraries
@@ -68,21 +67,6 @@ target_link_libraries(advertise_topics_for_UR custom_lib ${catkin_LIBRARIES} ${O
 
 # Add dependencies for the advertise_topics_for_UR program
 add_dependencies(advertise_topics_for_UR ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-
-############################################################
-# CMakelist for stop_teaching_mode node
-############################################################
-
-# Add an executable for the stop_teaching_mode program
-add_executable(stop_teaching_mode src/stop_teaching_mode.cpp)
-
-# Link the stop_teaching_mode program with the sensor fusion library and catkin libraries
-target_link_libraries(stop_teaching_mode custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS} Python3::Python Python3::NumPy)
-
-# Add dependencies for the stop_teaching_mode program
-add_dependencies(stop_teaching_mode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
 
 ############################################################
 # CMakelist for call_ur_setup_program node
@@ -113,3 +97,16 @@ catkin_install_python(PROGRAMS
   scripts/open_moveit_robot.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+############################################################
+# CMakelist for start_sensibility_measurements node
+############################################################
+
+# Add an executable for the start_sensibility_measurements program
+add_executable(start_sensibility_measurements src/start_sensibility_measurements.cpp)
+
+# Link the start_sensibility_measurements program with the sensor fusion library and catkin libraries
+target_link_libraries(start_sensibility_measurements custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS} Python3::Python Python3::NumPy)
+
+# Add dependencies for the start_sensibility_measurements program
+add_dependencies(start_sensibility_measurements ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

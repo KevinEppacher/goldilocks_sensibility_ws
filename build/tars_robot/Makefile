@@ -80,27 +80,27 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
-.PHONY : test/fast
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
+.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -113,27 +113,27 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : list_install_components/fast
+.PHONY : edit_cache/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,94 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule
-.PHONY : tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule
+tars_robot/CMakeFiles/start_sensibility_measurements.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/start_sensibility_measurements.dir/rule
+.PHONY : tars_robot/CMakeFiles/start_sensibility_measurements.dir/rule
 
 # Convenience name for target.
-graph_msgs_generate_messages_cpp: tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule
+start_sensibility_measurements: tars_robot/CMakeFiles/start_sensibility_measurements.dir/rule
 
-.PHONY : graph_msgs_generate_messages_cpp
+.PHONY : start_sensibility_measurements
 
 # fast build rule for target.
-graph_msgs_generate_messages_cpp/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build
-.PHONY : graph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-tars_robot/CMakeFiles/stop_teaching_mode.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/stop_teaching_mode.dir/rule
-.PHONY : tars_robot/CMakeFiles/stop_teaching_mode.dir/rule
-
-# Convenience name for target.
-stop_teaching_mode: tars_robot/CMakeFiles/stop_teaching_mode.dir/rule
-
-.PHONY : stop_teaching_mode
-
-# fast build rule for target.
-stop_teaching_mode/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/build
-.PHONY : stop_teaching_mode/fast
-
-# Convenience name for target.
-tars_robot/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
-.PHONY : tars_robot/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-graph_msgs_generate_messages_eus: tars_robot/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : graph_msgs_generate_messages_eus
-
-# fast build rule for target.
-graph_msgs_generate_messages_eus/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_eus.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_eus.dir/build
-.PHONY : graph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-tars_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : tars_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-graph_msgs_generate_messages_nodejs: tars_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : graph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-graph_msgs_generate_messages_nodejs/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build
-.PHONY : graph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/rule
-.PHONY : tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-graph_msgs_generate_messages_py: tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/rule
-
-.PHONY : graph_msgs_generate_messages_py
-
-# fast build rule for target.
-graph_msgs_generate_messages_py/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/build
-.PHONY : graph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-tars_robot/CMakeFiles/custom_lib.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/custom_lib.dir/rule
-.PHONY : tars_robot/CMakeFiles/custom_lib.dir/rule
-
-# Convenience name for target.
-custom_lib: tars_robot/CMakeFiles/custom_lib.dir/rule
-
-.PHONY : custom_lib
-
-# fast build rule for target.
-custom_lib/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/build
-.PHONY : custom_lib/fast
+start_sensibility_measurements/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/start_sensibility_measurements.dir/build.make tars_robot/CMakeFiles/start_sensibility_measurements.dir/build
+.PHONY : start_sensibility_measurements/fast
 
 # Convenience name for target.
 tars_robot/CMakeFiles/advertise_topics_for_UR.dir/rule:
@@ -273,19 +198,19 @@ advertise_topics_for_UR/fast:
 .PHONY : advertise_topics_for_UR/fast
 
 # Convenience name for target.
-tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule
-.PHONY : tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule
+tars_robot/CMakeFiles/custom_lib.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tars_robot/CMakeFiles/custom_lib.dir/rule
+.PHONY : tars_robot/CMakeFiles/custom_lib.dir/rule
 
 # Convenience name for target.
-graph_msgs_generate_messages_lisp: tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule
+custom_lib: tars_robot/CMakeFiles/custom_lib.dir/rule
 
-.PHONY : graph_msgs_generate_messages_lisp
+.PHONY : custom_lib
 
 # fast build rule for target.
-graph_msgs_generate_messages_lisp/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build
-.PHONY : graph_msgs_generate_messages_lisp/fast
+custom_lib/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/build
+.PHONY : custom_lib/fast
 
 include/classes/Measurement.o: include/classes/Measurement.cpp.o
 
@@ -314,33 +239,6 @@ include/classes/Measurement.cpp.s:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/Measurement.cpp.s
 .PHONY : include/classes/Measurement.cpp.s
 
-include/classes/get_pose.o: include/classes/get_pose.cpp.o
-
-.PHONY : include/classes/get_pose.o
-
-# target to build an object file
-include/classes/get_pose.cpp.o:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/get_pose.cpp.o
-.PHONY : include/classes/get_pose.cpp.o
-
-include/classes/get_pose.i: include/classes/get_pose.cpp.i
-
-.PHONY : include/classes/get_pose.i
-
-# target to preprocess a source file
-include/classes/get_pose.cpp.i:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/get_pose.cpp.i
-.PHONY : include/classes/get_pose.cpp.i
-
-include/classes/get_pose.s: include/classes/get_pose.cpp.s
-
-.PHONY : include/classes/get_pose.s
-
-# target to generate assembly for a file
-include/classes/get_pose.cpp.s:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/include/classes/get_pose.cpp.s
-.PHONY : include/classes/get_pose.cpp.s
-
 src/advertise_topics_for_UR.o: src/advertise_topics_for_UR.cpp.o
 
 .PHONY : src/advertise_topics_for_UR.o
@@ -368,32 +266,32 @@ src/advertise_topics_for_UR.cpp.s:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/advertise_topics_for_UR.dir/build.make tars_robot/CMakeFiles/advertise_topics_for_UR.dir/src/advertise_topics_for_UR.cpp.s
 .PHONY : src/advertise_topics_for_UR.cpp.s
 
-src/stop_teaching_mode.o: src/stop_teaching_mode.cpp.o
+src/start_sensibility_measurements.o: src/start_sensibility_measurements.cpp.o
 
-.PHONY : src/stop_teaching_mode.o
+.PHONY : src/start_sensibility_measurements.o
 
 # target to build an object file
-src/stop_teaching_mode.cpp.o:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.o
-.PHONY : src/stop_teaching_mode.cpp.o
+src/start_sensibility_measurements.cpp.o:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/start_sensibility_measurements.dir/build.make tars_robot/CMakeFiles/start_sensibility_measurements.dir/src/start_sensibility_measurements.cpp.o
+.PHONY : src/start_sensibility_measurements.cpp.o
 
-src/stop_teaching_mode.i: src/stop_teaching_mode.cpp.i
+src/start_sensibility_measurements.i: src/start_sensibility_measurements.cpp.i
 
-.PHONY : src/stop_teaching_mode.i
+.PHONY : src/start_sensibility_measurements.i
 
 # target to preprocess a source file
-src/stop_teaching_mode.cpp.i:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.i
-.PHONY : src/stop_teaching_mode.cpp.i
+src/start_sensibility_measurements.cpp.i:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/start_sensibility_measurements.dir/build.make tars_robot/CMakeFiles/start_sensibility_measurements.dir/src/start_sensibility_measurements.cpp.i
+.PHONY : src/start_sensibility_measurements.cpp.i
 
-src/stop_teaching_mode.s: src/stop_teaching_mode.cpp.s
+src/start_sensibility_measurements.s: src/start_sensibility_measurements.cpp.s
 
-.PHONY : src/stop_teaching_mode.s
+.PHONY : src/start_sensibility_measurements.s
 
 # target to generate assembly for a file
-src/stop_teaching_mode.cpp.s:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/src/stop_teaching_mode.cpp.s
-.PHONY : src/stop_teaching_mode.cpp.s
+src/start_sensibility_measurements.cpp.s:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f tars_robot/CMakeFiles/start_sensibility_measurements.dir/build.make tars_robot/CMakeFiles/start_sensibility_measurements.dir/src/start_sensibility_measurements.cpp.s
+.PHONY : src/start_sensibility_measurements.cpp.s
 
 # Help Target
 help:
@@ -403,31 +301,23 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... graph_msgs_generate_messages_cpp"
-	@echo "... stop_teaching_mode"
-	@echo "... graph_msgs_generate_messages_eus"
-	@echo "... graph_msgs_generate_messages_nodejs"
-	@echo "... test"
-	@echo "... graph_msgs_generate_messages_py"
-	@echo "... custom_lib"
-	@echo "... advertise_topics_for_UR"
-	@echo "... graph_msgs_generate_messages_lisp"
-	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... list_install_components"
 	@echo "... install"
+	@echo "... list_install_components"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... start_sensibility_measurements"
+	@echo "... advertise_topics_for_UR"
+	@echo "... custom_lib"
 	@echo "... include/classes/Measurement.o"
 	@echo "... include/classes/Measurement.i"
 	@echo "... include/classes/Measurement.s"
-	@echo "... include/classes/get_pose.o"
-	@echo "... include/classes/get_pose.i"
-	@echo "... include/classes/get_pose.s"
 	@echo "... src/advertise_topics_for_UR.o"
 	@echo "... src/advertise_topics_for_UR.i"
 	@echo "... src/advertise_topics_for_UR.s"
-	@echo "... src/stop_teaching_mode.o"
-	@echo "... src/stop_teaching_mode.i"
-	@echo "... src/stop_teaching_mode.s"
+	@echo "... src/start_sensibility_measurements.o"
+	@echo "... src/start_sensibility_measurements.i"
+	@echo "... src/start_sensibility_measurements.s"
 .PHONY : help
 
 

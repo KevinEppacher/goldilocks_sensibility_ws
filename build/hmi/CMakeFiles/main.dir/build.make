@@ -90,6 +90,11 @@ main_EXTERNAL_OBJECTS =
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libmoveit_pick_place_planner.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libmoveit_move_group_capabilities_base.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libmoveit_robot_interaction.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libmoveit_visual_tools.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librviz_visual_tools.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librviz_visual_tools_gui.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librviz_visual_tools_remote_control.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librviz_visual_tools_imarker_simple.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libinteractive_markers.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libmoveit_rdf_loader.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libmoveit_kinematics_plugin_loader.so
@@ -137,6 +142,9 @@ main_EXTERNAL_OBJECTS =
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libBulletDynamics.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libBulletCollision.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libLinearMath.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libgeometric_shapes.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/liboctomap.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/liboctomath.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libkdl_parser.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/liburdf.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so
@@ -144,12 +152,6 @@ main_EXTERNAL_OBJECTS =
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/liburdfdom_model.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/liburdfdom_world.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libtinyxml.so
-/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librosconsole_bridge.so
-/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libsrdfdom.so
-/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libgeometric_shapes.so
-/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/liboctomap.so
-/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/liboctomath.so
-/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librandom_numbers.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libclass_loader.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libPocoFoundation.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libdl.so
@@ -157,6 +159,9 @@ main_EXTERNAL_OBJECTS =
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librospack.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libpython3.8.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.71.0
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librosconsole_bridge.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/librandom_numbers.so
+/goldilocks_sensibility_ws/devel/lib/hmi/main: /opt/ros/noetic/lib/libsrdfdom.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/liborocos-kdl.so
 /goldilocks_sensibility_ws/devel/lib/hmi/main: /usr/lib/liborocos-kdl.so

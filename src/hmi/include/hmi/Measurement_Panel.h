@@ -9,21 +9,28 @@
 #include <tf2_ros/transform_listener.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+#include <visualization_msgs/MarkerArray.h> 
+#include <visualization_msgs/Marker.h>  
 
-class MeasurementPanel
-{
+class MeasurementPanel {
 public:
-    MeasurementPanel();
+    MeasurementPanel(ros::NodeHandle &nodehandler);
     void render();
-    geometry_msgs::Pose getCurrentPose(const std::string &startFrame, const std::string &endFrame);
+    geometry_msgs::Pose getCurrentPose(const std::string& startFrame, const std::string& endFrame);
 
 private:
-    void addPose(const geometry_msgs::Pose &pose);
+    void addPose(const geometry_msgs::Pose &pose, const std::string &poseName);
     void updatePose(int index, const geometry_msgs::Pose &pose);
+    void updateMarkers();
 
+    ros::NodeHandle nh;
+    ros::Publisher measurementPoseArrayPub;
+    ros::Publisher markerArrayPub;
     tf2_ros::Buffer tfBuffer;
-    tf2_ros::TransformListener tfListener; // Muss nach tfBuffer deklariert werden
+    tf2_ros::TransformListener tfListener;
     geometry_msgs::PoseArray poses;
+    std::vector<std::string> poseNames;
     int selectedPoseIndex;
 };
+
 #endif // MEASUREMENT_PANEL_H

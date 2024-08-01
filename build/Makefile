@@ -3015,6 +3015,19 @@ octomap_msgs_generate_messages_nodejs/fast:
 .PHONY : octomap_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named hmi
+
+# Build rule for target.
+hmi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hmi
+.PHONY : hmi
+
+# fast build rule for target.
+hmi/fast:
+	$(MAKE) -f hmi/CMakeFiles/hmi.dir/build.make hmi/CMakeFiles/hmi.dir/build
+.PHONY : hmi/fast
+
+#=============================================================================
 # Target rules for targets named std_srvs_generate_messages_cpp
 
 # Build rule for target.
@@ -3041,19 +3054,6 @@ std_srvs_generate_messages_eus/fast:
 .PHONY : std_srvs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named std_srvs_generate_messages_lisp
-
-# Build rule for target.
-std_srvs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_lisp
-.PHONY : std_srvs_generate_messages_lisp
-
-# fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	$(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
-
-#=============================================================================
 # Target rules for targets named hmi_custom_lib
 
 # Build rule for target.
@@ -3078,6 +3078,19 @@ std_srvs_generate_messages_nodejs: cmake_check_build_system
 std_srvs_generate_messages_nodejs/fast:
 	$(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
 .PHONY : std_srvs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named graph_msgs_generate_messages_lisp
+
+# Build rule for target.
+graph_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 graph_msgs_generate_messages_lisp
+.PHONY : graph_msgs_generate_messages_lisp
+
+# fast build rule for target.
+graph_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build
+.PHONY : graph_msgs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named moveit_ros_manipulation_gencfg
@@ -3132,19 +3145,6 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named hmi
-
-# Build rule for target.
-hmi: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hmi
-.PHONY : hmi
-
-# fast build rule for target.
-hmi/fast:
-	$(MAKE) -f hmi/CMakeFiles/hmi.dir/build.make hmi/CMakeFiles/hmi.dir/build
-.PHONY : hmi/fast
-
-#=============================================================================
 # Target rules for targets named graph_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -3154,21 +3154,8 @@ graph_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 graph_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build
 .PHONY : graph_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named stop_teaching_mode
-
-# Build rule for target.
-stop_teaching_mode: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 stop_teaching_mode
-.PHONY : stop_teaching_mode
-
-# fast build rule for target.
-stop_teaching_mode/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/stop_teaching_mode.dir/build.make tars_robot/CMakeFiles/stop_teaching_mode.dir/build
-.PHONY : stop_teaching_mode/fast
 
 #=============================================================================
 # Target rules for targets named graph_msgs_generate_messages_eus
@@ -3180,7 +3167,7 @@ graph_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 graph_msgs_generate_messages_eus/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_eus.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_eus.dir/build
 .PHONY : graph_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -3193,8 +3180,21 @@ graph_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 graph_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build
 .PHONY : graph_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_lisp
+
+# Build rule for target.
+std_srvs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_lisp
+.PHONY : std_srvs_generate_messages_lisp
+
+# fast build rule for target.
+std_srvs_generate_messages_lisp/fast:
+	$(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
+.PHONY : std_srvs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named graph_msgs_generate_messages_py
@@ -3206,21 +3206,21 @@ graph_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 graph_msgs_generate_messages_py/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_py.dir/build
+	$(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_py.dir/build
 .PHONY : graph_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named custom_lib
+# Target rules for targets named start_sensibility_measurements
 
 # Build rule for target.
-custom_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 custom_lib
-.PHONY : custom_lib
+start_sensibility_measurements: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 start_sensibility_measurements
+.PHONY : start_sensibility_measurements
 
 # fast build rule for target.
-custom_lib/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/build
-.PHONY : custom_lib/fast
+start_sensibility_measurements/fast:
+	$(MAKE) -f tars_robot/CMakeFiles/start_sensibility_measurements.dir/build.make tars_robot/CMakeFiles/start_sensibility_measurements.dir/build
+.PHONY : start_sensibility_measurements/fast
 
 #=============================================================================
 # Target rules for targets named advertise_topics_for_UR
@@ -3236,17 +3236,17 @@ advertise_topics_for_UR/fast:
 .PHONY : advertise_topics_for_UR/fast
 
 #=============================================================================
-# Target rules for targets named graph_msgs_generate_messages_lisp
+# Target rules for targets named custom_lib
 
 # Build rule for target.
-graph_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 graph_msgs_generate_messages_lisp
-.PHONY : graph_msgs_generate_messages_lisp
+custom_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 custom_lib
+.PHONY : custom_lib
 
 # fast build rule for target.
-graph_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build.make tars_robot/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build
-.PHONY : graph_msgs_generate_messages_lisp/fast
+custom_lib/fast:
+	$(MAKE) -f tars_robot/CMakeFiles/custom_lib.dir/build.make tars_robot/CMakeFiles/custom_lib.dir/build
+.PHONY : custom_lib/fast
 
 # Help Target
 help:
@@ -3480,24 +3480,24 @@ help:
 	@echo "... object_recognition_msgs_generate_messages_nodejs"
 	@echo "... octomap_msgs_generate_messages_cpp"
 	@echo "... octomap_msgs_generate_messages_nodejs"
+	@echo "... hmi"
 	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_eus"
-	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... hmi_custom_lib"
 	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... graph_msgs_generate_messages_lisp"
 	@echo "... moveit_ros_manipulation_gencfg"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... hmi_sensibility_classes"
 	@echo "... main"
-	@echo "... hmi"
 	@echo "... graph_msgs_generate_messages_cpp"
-	@echo "... stop_teaching_mode"
 	@echo "... graph_msgs_generate_messages_eus"
 	@echo "... graph_msgs_generate_messages_nodejs"
+	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... graph_msgs_generate_messages_py"
-	@echo "... custom_lib"
+	@echo "... start_sensibility_measurements"
 	@echo "... advertise_topics_for_UR"
-	@echo "... graph_msgs_generate_messages_lisp"
+	@echo "... custom_lib"
 .PHONY : help
 
 

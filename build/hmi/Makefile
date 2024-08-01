@@ -90,6 +90,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -101,17 +112,6 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+hmi/CMakeFiles/hmi.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi.dir/rule
+.PHONY : hmi/CMakeFiles/hmi.dir/rule
+
+# Convenience name for target.
+hmi: hmi/CMakeFiles/hmi.dir/rule
+
+.PHONY : hmi
+
+# fast build rule for target.
+hmi/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi.dir/build.make hmi/CMakeFiles/hmi.dir/build
+.PHONY : hmi/fast
+
+# Convenience name for target.
 hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
 .PHONY : hmi/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
@@ -198,21 +213,6 @@ std_srvs_generate_messages_eus/fast:
 .PHONY : std_srvs_generate_messages_eus/fast
 
 # Convenience name for target.
-hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-.PHONY : hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_lisp: hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-.PHONY : std_srvs_generate_messages_lisp
-
-# fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
-
-# Convenience name for target.
 hmi/CMakeFiles/hmi_custom_lib.dir/rule:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi_custom_lib.dir/rule
 .PHONY : hmi/CMakeFiles/hmi_custom_lib.dir/rule
@@ -241,6 +241,21 @@ std_srvs_generate_messages_nodejs: hmi/CMakeFiles/std_srvs_generate_messages_nod
 std_srvs_generate_messages_nodejs/fast:
 	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
 .PHONY : std_srvs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+hmi/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule
+.PHONY : hmi/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+graph_msgs_generate_messages_lisp: hmi/CMakeFiles/graph_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : graph_msgs_generate_messages_lisp
+
+# fast build rule for target.
+graph_msgs_generate_messages_lisp/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_lisp.dir/build
+.PHONY : graph_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 hmi/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule:
@@ -303,19 +318,79 @@ main/fast:
 .PHONY : main/fast
 
 # Convenience name for target.
-hmi/CMakeFiles/hmi.dir/rule:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/hmi.dir/rule
-.PHONY : hmi/CMakeFiles/hmi.dir/rule
+hmi/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule
+.PHONY : hmi/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-hmi: hmi/CMakeFiles/hmi.dir/rule
+graph_msgs_generate_messages_cpp: hmi/CMakeFiles/graph_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : hmi
+.PHONY : graph_msgs_generate_messages_cpp
 
 # fast build rule for target.
-hmi/fast:
-	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/hmi.dir/build.make hmi/CMakeFiles/hmi.dir/build
-.PHONY : hmi/fast
+graph_msgs_generate_messages_cpp/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_cpp.dir/build
+.PHONY : graph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+hmi/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
+.PHONY : hmi/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+graph_msgs_generate_messages_eus: hmi/CMakeFiles/graph_msgs_generate_messages_eus.dir/rule
+
+.PHONY : graph_msgs_generate_messages_eus
+
+# fast build rule for target.
+graph_msgs_generate_messages_eus/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_eus.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_eus.dir/build
+.PHONY : graph_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+hmi/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : hmi/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+graph_msgs_generate_messages_nodejs: hmi/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : graph_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+graph_msgs_generate_messages_nodejs/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build
+.PHONY : graph_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+.PHONY : hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_lisp: hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+
+.PHONY : std_srvs_generate_messages_lisp
+
+# fast build rule for target.
+std_srvs_generate_messages_lisp/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make hmi/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
+.PHONY : std_srvs_generate_messages_lisp/fast
+
+# Convenience name for target.
+hmi/CMakeFiles/graph_msgs_generate_messages_py.dir/rule:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hmi/CMakeFiles/graph_msgs_generate_messages_py.dir/rule
+.PHONY : hmi/CMakeFiles/graph_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+graph_msgs_generate_messages_py: hmi/CMakeFiles/graph_msgs_generate_messages_py.dir/rule
+
+.PHONY : graph_msgs_generate_messages_py
+
+# fast build rule for target.
+graph_msgs_generate_messages_py/fast:
+	cd /goldilocks_sensibility_ws/build && $(MAKE) -f hmi/CMakeFiles/graph_msgs_generate_messages_py.dir/build.make hmi/CMakeFiles/graph_msgs_generate_messages_py.dir/build
+.PHONY : graph_msgs_generate_messages_py/fast
 
 include/hmi/Control_Panel.o: include/hmi/Control_Panel.cpp.o
 
@@ -650,20 +725,25 @@ help:
 	@echo "... install/strip"
 	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... test"
+	@echo "... install/local"
+	@echo "... hmi"
 	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_eus"
-	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... hmi_custom_lib"
 	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... graph_msgs_generate_messages_lisp"
 	@echo "... moveit_ros_manipulation_gencfg"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... hmi_sensibility_classes"
 	@echo "... main"
-	@echo "... install/local"
-	@echo "... hmi"
-	@echo "... test"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
+	@echo "... graph_msgs_generate_messages_cpp"
+	@echo "... graph_msgs_generate_messages_eus"
+	@echo "... graph_msgs_generate_messages_nodejs"
+	@echo "... std_srvs_generate_messages_lisp"
+	@echo "... graph_msgs_generate_messages_py"
 	@echo "... include/hmi/Control_Panel.o"
 	@echo "... include/hmi/Control_Panel.i"
 	@echo "... include/hmi/Control_Panel.s"

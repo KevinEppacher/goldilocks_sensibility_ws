@@ -1,9 +1,14 @@
 #include "Measurement_Panel.h"
 
-MeasurementPanel::MeasurementPanel()
-    : tfListener(tfBuffer), selectedPoseIndex(-1) // Richtige Initialisierung hier
+MeasurementPanel::MeasurementPanel(ros::NodeHandle &nodehandler)
+    : nh(nodehandler),                  // Initialize the NodeHandle
+      tfBuffer(),                       // Initialize the buffer
+      tfListener(tfBuffer),             // Correctly initialize the TransformListener
+      selectedPoseIndex(-1)             // Initialize the selected pose index
 {
-    // Initialisieren Sie hier Ihre Datenmitglieder falls nötig
+    // Advertise the pose array publisher
+    measurementPoseArrayPub = nh.advertise<geometry_msgs::PoseArray>("measurement_points", 1);
+    markerArrayPub = nh.advertise<visualization_msgs::MarkerArray>("measurement_points_names", 1);
 }
 
 void MeasurementPanel::render()
@@ -12,14 +17,20 @@ void MeasurementPanel::render()
     {
         // Code um die aktuelle Roboterpose hinzuzufügen
         geometry_msgs::Pose currentPose;
-        currentPose = getCurrentPose("base", "tool0_controller");
-        addPose(currentPose);
+        currentPose = getCurrentPose("base_link", "tool0_link");
+
+        std::string poseName = "Pose " + std::to_string(poses.poses.size()); // Geben Sie der neuen Pose einen Namen
+        addPose(currentPose, poseName);
+        poses.header.frame_id = "base_link";
+
+        measurementPoseArrayPub.publish(poses);
+        updateMarkers(); // Aktualisieren der Marker nach dem Hinzufügen der Pose
     }
 
     ImGui::Text("Poses:");
     for (int i = 0; i < poses.poses.size(); ++i)
     {
-        if (ImGui::Selectable(("Pose " + std::to_string(i)).c_str(), selectedPoseIndex == i))
+        if (ImGui::Selectable((poseNames[i]).c_str(), selectedPoseIndex == i)) // Namen anzeigen
         {
             selectedPoseIndex = i;
         }
@@ -58,15 +69,21 @@ void MeasurementPanel::render()
         if (ImGui::Button("Update Pose"))
         {
             geometry_msgs::Pose currentPose;
-            currentPose = getCurrentPose("base", "tool0_controller");
+            currentPose = getCurrentPose("base", "tool0_link");
             updatePose(selectedPoseIndex, currentPose);
+            poses.header.frame_id = "base_link";
+            measurementPoseArrayPub.publish(poses);
+            updateMarkers(); // Aktualisieren der Marker nach dem Aktualisieren der Pose
         }
     }
+    measurementPoseArrayPub.publish(poses);
 }
 
-void MeasurementPanel::addPose(const geometry_msgs::Pose &pose)
+void MeasurementPanel::addPose(const geometry_msgs::Pose &pose, const std::string &poseName)
 {
     poses.poses.push_back(pose);
+    poseNames.push_back(poseName);
+    updateMarkers(); // Aktualisieren der Marker nach dem Hinzufügen der Pose
 }
 
 void MeasurementPanel::updatePose(int index, const geometry_msgs::Pose &pose)
@@ -74,7 +91,39 @@ void MeasurementPanel::updatePose(int index, const geometry_msgs::Pose &pose)
     if (index >= 0 && index < poses.poses.size())
     {
         poses.poses[index] = pose;
+        updateMarkers(); // Aktualisieren der Marker nach dem Aktualisieren der Pose
     }
+}
+
+void MeasurementPanel::updateMarkers()
+{
+    visualization_msgs::MarkerArray markerArray;
+
+    for (int i = 0; i < poses.poses.size(); ++i)
+    {
+        const auto& pose = poses.poses[i];
+
+        // Erstellen Sie einen Marker für den Namen der Pose
+        visualization_msgs::Marker textMarker;
+        textMarker.header.frame_id = "base_link";
+        textMarker.header.stamp = ros::Time::now();
+        textMarker.ns = "pose_names";
+        textMarker.id = i + poses.poses.size(); // Unterscheidung der IDs zwischen Pfeilen und Text
+        textMarker.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
+        textMarker.action = visualization_msgs::Marker::ADD;
+        textMarker.pose.position = pose.position; // Position des Textes auf der Pose
+        textMarker.pose.position.z += 0.1; // Text etwas über der Pose anzeigen
+        textMarker.scale.z = 0.05; // Schriftgröße
+        textMarker.color.a = 1.0;  // Alpha
+        textMarker.color.r = 1.0;  // Rot
+        textMarker.color.g = 1.0;  // Grün
+        textMarker.color.b = 1.0;  // Blau
+        textMarker.text = poseNames[i]; // Name der Pose
+
+        markerArray.markers.push_back(textMarker);
+    }
+
+    markerArrayPub.publish(markerArray);
 }
 
 geometry_msgs::Pose MeasurementPanel::getCurrentPose(const std::string &startFrame, const std::string &endFrame)
@@ -83,20 +132,26 @@ geometry_msgs::Pose MeasurementPanel::getCurrentPose(const std::string &startFra
 
     ROS_INFO("Getting current pose from %s to %s", startFrame.c_str(), endFrame.c_str());
 
+    // Check if startFrame or endFrame is empty
+    if (startFrame.empty() || endFrame.empty()) {
+        ROS_WARN("One or both of the frame IDs are empty: startFrame='%s', endFrame='%s'", startFrame.c_str(), endFrame.c_str());
+        return currentPose; // Return an empty pose
+    }
+
     try
     {
-        // Warte auf die Transformation (Timeout von 3 Sekunden)
+        // Wait for the transformation (timeout of 3 seconds)
         bool transform_available = tfBuffer.canTransform(startFrame, endFrame, ros::Time(0), ros::Duration(3.0));
 
         if (!transform_available)
         {
             ROS_WARN("Transform from %s to %s not available.", startFrame.c_str(), endFrame.c_str());
-            return currentPose; // Rückgabe einer leeren Pose im Fehlerfall
+            return currentPose; // Return an empty pose in case of error
         }
 
         geometry_msgs::TransformStamped transformStamped = tfBuffer.lookupTransform(startFrame, endFrame, ros::Time(0));
 
-        // Wenn die Transformation erfolgreich war
+        // If the transformation was successful
         currentPose.position.x = transformStamped.transform.translation.x;
         currentPose.position.y = transformStamped.transform.translation.y;
         currentPose.position.z = transformStamped.transform.translation.z;
@@ -105,7 +160,7 @@ geometry_msgs::Pose MeasurementPanel::getCurrentPose(const std::string &startFra
         currentPose.orientation.z = transformStamped.transform.rotation.z;
         currentPose.orientation.w = transformStamped.transform.rotation.w;
 
-        // Ausgabe der Transformationsdaten
+        // Output transformation data
         ROS_INFO("Translation: x=%f, y=%f, z=%f",
                  transformStamped.transform.translation.x,
                  transformStamped.transform.translation.y,
@@ -119,7 +174,7 @@ geometry_msgs::Pose MeasurementPanel::getCurrentPose(const std::string &startFra
     catch (tf2::TransformException &ex)
     {
         ROS_WARN("Could not transform %s to %s: %s", startFrame.c_str(), endFrame.c_str(), ex.what());
-        // Optional: Rückgabe einer leeren Pose oder standardmäßige Pose im Fehlerfall
+        // Optional: Return an empty pose or default pose in case of error
     }
 
     return currentPose;

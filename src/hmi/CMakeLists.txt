@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_planning
   moveit_ros_planning_interface
   moveit_ros_robot_interaction
+  moveit_visual_tools
 )
 
 # Ensure compatibility for CMP0072
@@ -66,6 +67,9 @@ add_library(hmi_sensibility_classes
 # Link the sensor fusion library with the catkin libraries
 target_link_libraries(hmi_custom_lib ${catkin_LIBRARIES} glfw OpenGL::GL)
 target_link_libraries(hmi_sensibility_classes ${catkin_LIBRARIES} glfw OpenGL::GL)
+
+find_package(moveit_visual_tools REQUIRED)
+include_directories(${moveit_visual_tools_INCLUDE_DIRS})
 
 
 ############################################################
