@@ -26,7 +26,7 @@
     <arg name="start_gazebo" default="true" doc="If true, Gazebo will be started. If false, Gazebo will be assumed to have been started elsewhere." />
 
     <!--Setting initial configuration -->
-    <arg name="initial_joint_positions" default=" -J shoulder_pan_joint 0.0  -J shoulder_lift_joint -1.57 -J elbow_joint 0.0 -J wrist_1_joint 0.0 -J wrist_2_joint 0.0 -J wrist_3_joint 0.0" doc="Initial joint configuration of the robot"/>
+    <arg name="initial_joint_positions" default=" -J shoulder_pan_joint 0.0  -J shoulder_lift_joint -1.57 -J elbow_joint 0.0 -J wrist_1_joint 0.0 -J wrist_2_joint 0.0 -J wrist_3_joint 0.0 -unpause" doc="Initial joint configuration of the robot"/>
 
     <!-- Associate to the robot description parameter, the urdf file that model the robot-->
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find ur10_description_v3)/urdf/ur10_description_v3.urdf
@@ -57,6 +57,14 @@
     <node name="ros_control_stopped_spawner" pkg="controller_manager" type="spawner"
       args="--stopped $(arg stopped_controllers)" output="screen" respawn="false" />
 
+    <include file="$(find bdr_ur10_moveit)/launch/moveit_planning_execution.launch" >
+        <arg name="sim" value="true" />
+    </include>
+
+    <include file="$(find bdr_ur10_moveit)/launch/moveit_rviz.launch" >
+        <arg name="rviz_config" value="$(find tars_robot)/config/config.rviz" />
+    </include>
+
     <!-- Spawn the model loaded earlier in the simulation just started -->
     <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model"
       args="
@@ -69,12 +77,7 @@
         $(arg initial_joint_positions)"
       output="screen" respawn="false" />
 
-    <include file="$(find bdr_ur10_moveit)/launch/moveit_planning_execution.launch" >
-        <arg name="sim" value="true" />
-    </include>
-
-    <include file="$(find bdr_ur10_moveit)/launch/moveit_rviz.launch" >
-        <arg name="rviz_config" value="true" />
-    </include>
+    <!-- spawn him -->
+    <node name="hmi" pkg="hmi" type="hmi" output="screen" />
 
 </launch>

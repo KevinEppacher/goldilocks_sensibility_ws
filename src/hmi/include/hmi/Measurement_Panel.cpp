@@ -9,6 +9,9 @@ MeasurementPanel::MeasurementPanel(ros::NodeHandle &nodehandler)
     // Advertise the pose array publisher
     measurementPoseArrayPub = nh.advertise<geometry_msgs::PoseArray>("measurement_points", 1);
     markerArrayPub = nh.advertise<visualization_msgs::MarkerArray>("measurement_points_names", 1);
+
+    // Subscribe to the WrenchStamped topic
+    wrenchSub = nh.subscribe("wrench", 1, &MeasurementPanel::wrenchCallback, this);
 }
 
 void MeasurementPanel::render()
@@ -77,6 +80,8 @@ void MeasurementPanel::render()
         }
     }
     measurementPoseArrayPub.publish(poses);
+
+    plotWrenchData(latestWrench);
 }
 
 void MeasurementPanel::addPose(const geometry_msgs::Pose &pose, const std::string &poseName)
@@ -179,3 +184,56 @@ geometry_msgs::Pose MeasurementPanel::getCurrentPose(const std::string &startFra
 
     return currentPose;
 }
+
+void MeasurementPanel::plotWrenchData(const geometry_msgs::WrenchStamped &wrench)
+{
+    // Append the new data to the vectors
+    forceX.push_back(wrench.wrench.force.x);
+    forceY.push_back(wrench.wrench.force.y);
+    forceZ.push_back(wrench.wrench.force.z);
+    torqueX.push_back(wrench.wrench.torque.x);
+    torqueY.push_back(wrench.wrench.torque.y);
+    torqueZ.push_back(wrench.wrench.torque.z);
+
+    // Ensure the vectors don't grow indefinitely
+    if (forceX.size() > 100)
+    {
+        forceX.erase(forceX.begin());
+        forceY.erase(forceY.begin());
+        forceZ.erase(forceZ.begin());
+        torqueX.erase(torqueX.begin());
+        torqueY.erase(torqueY.begin());
+        torqueZ.erase(torqueZ.begin());
+    }
+
+    // Convert double vectors to float vectors for ImGui
+    std::vector<float> floatForceX(forceX.begin(), forceX.end());
+    std::vector<float> floatForceY(forceY.begin(), forceY.end());
+    std::vector<float> floatForceZ(forceZ.begin(), forceZ.end());
+    std::vector<float> floatTorqueX(torqueX.begin(), torqueX.end());
+    std::vector<float> floatTorqueY(torqueY.begin(), torqueY.end());
+    std::vector<float> floatTorqueZ(torqueZ.begin(), torqueZ.end());
+
+    // Plotting with ImGui
+    // ImGui::Begin("Wrench Data Plot");
+
+    // Force plot
+    if (ImGui::CollapsingHeader("Force"))
+    {
+        ImGui::PlotLines("Force X", floatForceX.data(), floatForceX.size(), 0, nullptr, FLT_MIN, FLT_MAX, ImVec2(0, 80));
+        ImGui::PlotLines("Force Y", floatForceY.data(), floatForceY.size(), 0, nullptr, FLT_MIN, FLT_MAX, ImVec2(0, 80));
+        ImGui::PlotLines("Force Z", floatForceZ.data(), floatForceZ.size(), 0, nullptr, FLT_MIN, FLT_MAX, ImVec2(0, 80));
+    }
+
+    // Torque plot
+    if (ImGui::CollapsingHeader("Torque"))
+    {
+        ImGui::PlotLines("Torque X", floatTorqueX.data(), floatTorqueX.size(), 0, nullptr, FLT_MIN, FLT_MAX, ImVec2(0, 80));
+        ImGui::PlotLines("Torque Y", floatTorqueY.data(), floatTorqueY.size(), 0, nullptr, FLT_MIN, FLT_MAX, ImVec2(0, 80));
+        ImGui::PlotLines("Torque Z", floatTorqueZ.data(), floatTorqueZ.size(), 0, nullptr, FLT_MIN, FLT_MAX, ImVec2(0, 80));
+    }
+
+    // ImGui::End();
+}
+
+
