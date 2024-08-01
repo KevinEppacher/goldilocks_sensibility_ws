@@ -25,17 +25,11 @@ namespace Measurement {
         ~Sensibility();
         void publishAbsoluteForce();
         void forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr& forceTorque);
-        void airskinPadNumCallback(const std_msgs::Int16::ConstPtr& airskinPadNumber);
-        void airskinInterruptCallback(const std_msgs::String::ConstPtr& airskinState);
         void poseUrCallback(const geometry_msgs::Pose::ConstPtr& poseUR);
-        void stopTeachingMode();
-        std_msgs::String msgAirskinState;
         std_msgs::Float64 msgAbsoluteForce;
-        std_msgs::Int16 msgAirskinPadNum;     
         geometry_msgs::Pose currentPose, lastPose, distanceVektor;
         std_msgs::Float64 msgDistance;
         std_msgs::Float64 scalarDistance;
-        std_msgs::UInt32 msgStopTeachingMode;
 
     private:
         ros::NodeHandle *nodeHandler;

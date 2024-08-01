@@ -18,11 +18,6 @@ namespace Measurement
 
     }
 
-    void Sensibility::stopTeachingMode()
-    {
-
-    }
-
     void Sensibility::forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr& forceTorque)
     {
         msgAbsoluteForce.data = sqrt( pow(forceTorque->position.x , 2) + pow(forceTorque->position.y , 2) + pow(forceTorque->position.z , 2));
@@ -31,16 +26,6 @@ namespace Measurement
     void Sensibility::publishAbsoluteForce()
     {
         absoluteForce.publish(msgAbsoluteForce);
-    }
-
-    void Sensibility::airskinPadNumCallback(const std_msgs::Int16::ConstPtr& airskinPadNumber)
-    {
-        msgAirskinPadNum.data = airskinPadNumber->data;
-    }
-
-    void Sensibility::airskinInterruptCallback(const std_msgs::String::ConstPtr& airskinState)
-    {
-        msgAirskinState.data = airskinState->data;
     }
 
     void Sensibility::poseUrCallback(const geometry_msgs::Pose::ConstPtr& poseUR)
