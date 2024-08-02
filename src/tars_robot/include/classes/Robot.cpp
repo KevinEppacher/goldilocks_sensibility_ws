@@ -21,7 +21,7 @@ Robot::ArticulatedRobot::ArticulatedRobot() :
     visual_tools.trigger();
 
     // Set the maximum planning time
-    move_group_interface.setPlanningTime(60.0); // Increase planning time to 10 seconds
+    move_group_interface.setPlanningTime(10.0); // Increase planning time to 10 seconds
 }
 
 void Robot::ArticulatedRobot::PTP(geometry_msgs::Pose target)
