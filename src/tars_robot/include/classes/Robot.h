@@ -18,8 +18,9 @@ namespace Robot {
     public:
         ArticulatedRobot();
         void PTP(geometry_msgs::Pose target);
-        void setupVisualisation();
         void planAndVisualize(geometry_msgs::Pose target);
+        void logRobotState();
+        void debugPlanningFailure(const geometry_msgs::Pose& target_pose);
 
     private:
         std::string planningGroup;

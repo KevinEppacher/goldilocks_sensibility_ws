@@ -71,7 +71,12 @@ namespace Measurement
         // tar
 
         ROS_INFO_NAMED("Sensibility", "Number of poses: %ld", poses.poses.size());
-        myRobot.PTP( poses.poses[0] );
+
+        for(auto& pose : poses.poses)
+        {
+            myRobot.PTP( pose );
+        }
+        // myRobot.PTP( poses.poses[0] );
         
     }
 
