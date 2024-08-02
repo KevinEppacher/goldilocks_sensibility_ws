@@ -4,7 +4,7 @@ namespace Robot {
 
     ArticulatedRobot::ArticulatedRobot() : 
         spinner(1), 
-        move_group_interface("bdr_ur10"), 
+        move_group("bdr_ur10"), 
         visual_tools_base("base_link"), // For base_link
         visual_tools_table("table_link") // For table_link
     {
@@ -21,22 +21,27 @@ namespace Robot {
 
         // Set the text pose for the RViz visual tools
         text_pose = Eigen::Isometry3d::Identity();
-        text_pose.translation().z() = 1.25; // Position the text above the robot base
+        text_pose.translation().z() = 1.25; // Position the text above the robot bases
 
         // Display initial messages
         visual_tools_base.trigger();
         visual_tools_table.trigger();
 
+        // configureMoveGroup();
+
+    }
+
+    void ArticulatedRobot::configureMoveGroup()
+    {
         // Set the maximum planning time
-        move_group_interface.setPlanningTime(30.0);
+        move_group.setPlanningTime(5.0);
 
         // Set a different planner algorithm
-        move_group_interface.setPlannerId("RRTConnectkConfigDefault");
+        move_group.setPlannerId("RRT");
 
-        move_group_interface.setPoseReferenceFrame("base_link");
-
-        // Log the initial robot state
-        logRobotState();
+        // Set position and orientation tolerances
+        move_group.setGoalPositionTolerance(0.01);
+        move_group.setGoalOrientationTolerance(0.05);
     }
 
     void ArticulatedRobot::PTP(geometry_msgs::Pose target)
@@ -50,18 +55,18 @@ namespace Robot {
         visual_tools_base.trigger(); // Trigger to display changes in RViz
 
         // Set the pose target for MoveIt
-        move_group_interface.setPoseTarget(target);
+        move_group.setPoseTarget(target);
 
         // Plan and move to the target
         moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-        bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+        bool success = (move_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
 
         if (success)
         {
             ROS_INFO("Planning successful. Executing the motion...");
             
             // Retrieve joint model group for visualization
-            const moveit::core::JointModelGroup* joint_model_group = move_group_interface.getCurrentState()->getJointModelGroup(move_group_interface.getName());
+            const moveit::core::JointModelGroup* joint_model_group = move_group.getCurrentState()->getJointModelGroup(move_group.getName());
             
             // Visualize the plan using table_link reference frame
             visual_tools_table.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
@@ -69,12 +74,84 @@ namespace Robot {
             visual_tools_table.trigger(); // Trigger to display trajectory line
 
             // Execute the plan
-            move_group_interface.move();
+            move_group.move();
         }
         else
         {
-            ROS_WARN("Planning failed. Unable to move to target pose.");
-            debugPlanningFailure(target);
+            ROS_INFO_NAMED(className,"Planning failed. Unable to move to target pose.");
+        }
+    }
+
+    void ArticulatedRobot::LIN(const std::string& reference_link, double distance, double velocity_scaling_factor)
+    {
+        // Aktuelle Pose des Endeffektors abrufen
+        geometry_msgs::PoseStamped current_pose = move_group.getCurrentPose(reference_link);
+
+        // Transformation der aktuellen Pose
+        tf2::Transform current_transform;
+        tf2::fromMsg(current_pose.pose, current_transform);
+
+        // Definieren der Translation entlang der Z-Achse
+        tf2::Vector3 translation(0, 0, distance);
+
+        // Berechnung der Translation relativ zur aktuellen Werkzeugorientierung
+        tf2::Vector3 translated_vector = current_transform.getBasis() * translation;
+
+        // Neue Zielpose basierend auf der Translation definieren
+        geometry_msgs::Pose target_pose = current_pose.pose;
+        target_pose.position.x += translated_vector.x();
+        target_pose.position.y += translated_vector.y();
+        target_pose.position.z += translated_vector.z();
+
+        // Visualisierung der Zielpose im Bezug auf den Baseline-Link
+        visual_tools_base.publishAxisLabeled(target_pose, "target_pose_base");
+        visual_tools_base.trigger(); // Anzeigen der Änderungen in RViz
+
+        // Vektor für Wegpunkte erstellen und die Zielpose hinzufügen
+        std::vector<geometry_msgs::Pose> waypoints;
+        waypoints.push_back(target_pose);
+
+        // Kartesischen Pfad berechnen
+        moveit_msgs::RobotTrajectory trajectory;
+        const double jump_threshold = 0.0; // Kein Sprung erlaubt
+        const double eef_step = 0.01; // Schrittweite für den Endeffektor
+        double fraction = move_group.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+        // Trajektorie zeitlich parametrisieren
+        robot_trajectory::RobotTrajectory rt(move_group.getCurrentState()->getRobotModel(), move_group.getName());
+        rt.setRobotTrajectoryMsg(*move_group.getCurrentState(), trajectory);
+
+        trajectory_processing::IterativeParabolicTimeParameterization iptp;
+        bool success = iptp.computeTimeStamps(rt, velocity_scaling_factor);
+
+        // Wenn die Zeitparametrisierung erfolgreich war, aktualisieren Sie die Trajektorie
+        if (success)
+        {
+            rt.getRobotTrajectoryMsg(trajectory);
+
+            // Plan erstellen und ausführen
+            moveit::planning_interface::MoveGroupInterface::Plan plan;
+            plan.trajectory_ = trajectory;
+
+            // Prüfen, ob der kartesische Pfad erfolgreich war
+            if (fraction > 0.3) // Sicherstellen, dass mindestens 90% der Trajektorie erfolgreich geplant wurden
+            {
+                ROS_INFO_NAMED(className,"Planning successful. Executing the motion...");
+                // Trajektorie visualisieren
+                const moveit::core::JointModelGroup* joint_model_group = move_group.getCurrentState()->getJointModelGroup(move_group.getName());
+                visual_tools_table.publishTrajectoryLine(plan.trajectory_, joint_model_group);
+                visual_tools_table.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+                visual_tools_table.trigger(); // Anzeigen der Trajektorielinie
+                move_group.execute(plan);
+            }
+            else
+            {
+                ROS_WARN_NAMED(className,"Planning failed. The Cartesian path was not sufficiently achieved.");
+            }
+        }
+        else
+        {
+            ROS_WARN_NAMED(className,"Time parameterization failed. Unable to move to target pose.");
         }
     }
 
@@ -91,41 +168,40 @@ namespace Robot {
         visual_tools_base.trigger(); // Trigger to display changes in RViz
 
         // Set the pose target for MoveIt
-        move_group_interface.setPoseTarget(target);
+        move_group.setPoseTarget(target);
 
         // Plan and move to the target
         moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-        bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+        bool success = (move_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
 
         if (success)
         {
             ROS_INFO("Planning successful. Executing the motion...");
 
             // Retrieve joint model group for visualization
-            const moveit::core::JointModelGroup* joint_model_group = move_group_interface.getCurrentState()->getJointModelGroup(move_group_interface.getName());
+            const moveit::core::JointModelGroup* joint_model_group = move_group.getCurrentState()->getJointModelGroup(move_group.getName());
 
             // Visualize the trajectory using table_link reference frame
             visual_tools_table.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
             visual_tools_table.trigger(); // Trigger to display trajectory line
 
             // Execute the plan
-            move_group_interface.move();
+            move_group.move();
         }
         else
         {
             ROS_WARN("Planning failed. Unable to move to target pose.");
-            debugPlanningFailure(target);
         }
     }
 
     void ArticulatedRobot::logRobotState()
     {
         // Get the current robot state
-        moveit::core::RobotStatePtr current_state = move_group_interface.getCurrentState();
+        moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
         
         // Get current joint values
         std::vector<double> joint_values;
-        const moveit::core::JointModelGroup* joint_model_group = current_state->getRobotModel()->getJointModelGroup(move_group_interface.getName());
+        const moveit::core::JointModelGroup* joint_model_group = current_state->getRobotModel()->getJointModelGroup(move_group.getName());
         current_state->copyJointGroupPositions(joint_model_group, joint_values);
 
         ROS_INFO("Current joint values:");
@@ -135,74 +211,9 @@ namespace Robot {
         }
 
         // Check the end effector's current pose
-        geometry_msgs::PoseStamped current_pose = move_group_interface.getCurrentPose();
+        geometry_msgs::PoseStamped current_pose = move_group.getCurrentPose();
         ROS_INFO("Current end effector pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
                 current_pose.pose.position.x, current_pose.pose.position.y, current_pose.pose.position.z,
                 current_pose.pose.orientation.w, current_pose.pose.orientation.x, current_pose.pose.orientation.y, current_pose.pose.orientation.z);
     }
-
-    void ArticulatedRobot::debugPlanningFailure(const geometry_msgs::Pose& target_pose)
-    {
-        // Log detailed information about the planning scene and robot state
-        logRobotState();
-
-        // Check the constraints and other factors
-        moveit_msgs::Constraints constraints = move_group_interface.getPathConstraints();
-        ROS_INFO("Path constraints are set: %s", constraints.name.c_str());
-
-        // Log planning scene details if available
-        moveit::planning_interface::PlanningSceneInterface psi;
-        std::map<std::string, moveit_msgs::CollisionObject> co = psi.getObjects();
-        ROS_INFO("Number of collision objects in the planning scene: %zu", co.size());
-
-        for (const auto& obj : co)
-        {
-            ROS_INFO("Collision Object: %s", obj.first.c_str());
-        }
-
-        // Get the robot's current planning frame
-        std::string planning_frame = move_group_interface.getPlanningFrame();
-        ROS_INFO("Planning frame: %s", planning_frame.c_str());
-
-        // Log the name of the end effector link
-        std::string end_effector_link = move_group_interface.getEndEffectorLink();
-        ROS_INFO("End effector link: %s", end_effector_link.c_str());
-
-        // Check the current allowed collision matrix
-        planning_scene_monitor::PlanningSceneMonitorPtr psm(new planning_scene_monitor::PlanningSceneMonitor("robot_description"));
-        psm->requestPlanningSceneState(); // Ensure we have the latest planning scene
-        collision_detection::AllowedCollisionMatrix acm = psm->getPlanningScene()->getAllowedCollisionMatrix();
-
-        std::vector<std::string> entry_names;
-        acm.getAllEntryNames(entry_names);
-
-        ROS_INFO("Allowed collision matrix size: %zu", entry_names.size());
-
-        for (const std::string& link_name : entry_names)
-        {
-            for (const std::string& other_link_name : entry_names)
-            {
-                collision_detection::AllowedCollision::Type type;
-                if (acm.getEntry(link_name, other_link_name, type))
-                {
-                    ROS_INFO("Link: %s with %s has allowed collision type: %d", link_name.c_str(), other_link_name.c_str(), type);
-                }
-            }
-        }
-
-        // Additional debugging: check if the target is reachable by using an IK solver
-        moveit::core::RobotStatePtr current_state = move_group_interface.getCurrentState();
-        const moveit::core::JointModelGroup* joint_model_group = current_state->getRobotModel()->getJointModelGroup(move_group_interface.getName());
-
-        bool ik_success = current_state->setFromIK(joint_model_group, target_pose, 0.1);  // Updated the deprecated method
-        if (!ik_success)
-        {
-            ROS_WARN("Inverse Kinematics could not find a solution for the target pose.");
-        }
-        else
-        {
-            ROS_INFO("Inverse Kinematics found a valid solution for the target pose.");
-        }
-    }
-
 }

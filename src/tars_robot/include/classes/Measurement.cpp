@@ -59,25 +59,14 @@ namespace Measurement
 
     void Sensibility::run_measurement()
     {
-        Robot::ArticulatedRobot myRobot;
+        Robot::ArticulatedRobot ur10;
 
-        // geometry_msgs::Pose target1;
-        // target1.position.x = 0.557;
-        // target1.position.y = 0.322;
-        // target1.position.z = 0.574;
-        // target1.orientation.x = -3.1407636;
-        // target1.orientation.y = -0.000013; 
-        // target1.orientation.z = -3.1415883;
-        // tar
+        ur10.LIN("tool0_link", 0.1, 0.1);
 
-        ROS_INFO_NAMED("Sensibility", "Number of poses: %ld", poses.poses.size());
-
-        for(auto& pose : poses.poses)
-        {
-            myRobot.PTP( pose );
-        }
-        // myRobot.PTP( poses.poses[0] );
-        
+        // for(auto& pose : poses.poses)
+        // {
+        //     ur10.PTP( pose );
+        // }        
     }
 
 

@@ -111,3 +111,17 @@ target_link_libraries(start_sensibility_measurements custom_lib ${catkin_LIBRARI
 
 # Add dependencies for the start_sensibility_measurements program
 add_dependencies(start_sensibility_measurements ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+
+############################################################
+# CMakelist for move_in_z_example node
+############################################################
+
+# Add an executable for the move_in_z_example program
+add_executable(move_in_z_example src/move_in_z_example.cpp)
+
+# Link the move_in_z_example program with the sensor fusion library and catkin libraries
+target_link_libraries(move_in_z_example custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS} Python3::Python Python3::NumPy)
+
+# Add dependencies for the move_in_z_example program
+add_dependencies(move_in_z_example ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

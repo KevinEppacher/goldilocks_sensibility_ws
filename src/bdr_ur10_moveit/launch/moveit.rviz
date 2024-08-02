@@ -347,7 +347,7 @@ Visualization Manager:
       Marker Topic: /measurement_points_names
       Name: MarkerArray
       Namespaces:
-        pose_names: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/InteractiveMarkers
@@ -364,13 +364,15 @@ Visualization Manager:
       Marker Topic: /rviz_visual_tools
       Name: MarkerArray
       Namespaces:
+        Path: true
+        Sphere: true
         Text: true
-        target_pose: true
+        target_pose_base: true
       Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
-    Background Color: 46; 52; 54
+    Background Color: 238; 238; 236
     Default Light: true
     Fixed Frame: base_link
     Frame Rate: 30
@@ -384,7 +386,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.233967304229736
+      Distance: 4.2225141525268555
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -392,17 +394,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.420226126909256
-        Y: 0.4562464952468872
-        Z: 0.7830508947372437
+        X: 0.3466152846813202
+        Y: 0.4203055799007416
+        Z: 1.059734582901001
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2553980350494385
+      Pitch: 0.27539804577827454
       Target Frame: table_link
-      Yaw: 1.0572102069854736
+      Yaw: 0.5672072172164917
     Saved: ~
 Window Geometry:
   Displays:
