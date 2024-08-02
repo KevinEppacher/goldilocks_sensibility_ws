@@ -5,25 +5,30 @@ namespace Robot {
     ArticulatedRobot::ArticulatedRobot() : 
         spinner(1), 
         move_group_interface("bdr_ur10"), 
-        visual_tools("base_link")
+        visual_tools_base("base_link"), // For base_link
+        visual_tools_table("table_link") // For table_link
     {
         // Initialize ROS spinner
         spinner.start();
 
-        // Load MoveIt Visual Tools
-        visual_tools.loadRemoteControl();
-        visual_tools.deleteAllMarkers();
+        // Load MoveIt Visual Tools for base_link
+        visual_tools_base.loadRemoteControl();
+        visual_tools_base.deleteAllMarkers();
+
+        // Load MoveIt Visual Tools for table_link
+        visual_tools_table.loadRemoteControl();
+        visual_tools_table.deleteAllMarkers();
 
         // Set the text pose for the RViz visual tools
         text_pose = Eigen::Isometry3d::Identity();
         text_pose.translation().z() = 1.25; // Position the text above the robot base
 
         // Display initial messages
-        visual_tools.publishText(text_pose, "MoveIt Demo", rviz_visual_tools::WHITE, rviz_visual_tools::XLARGE);
-        visual_tools.trigger();
+        visual_tools_base.trigger();
+        visual_tools_table.trigger();
 
         // Set the maximum planning time
-        move_group_interface.setPlanningTime(20.0); // Increase planning time to 20 seconds
+        move_group_interface.setPlanningTime(30.0);
 
         // Set a different planner algorithm
         move_group_interface.setPlannerId("RRTConnectkConfigDefault");
@@ -40,9 +45,9 @@ namespace Robot {
                 target.position.x, target.position.y, target.position.z,
                 target.orientation.w, target.orientation.x, target.orientation.y, target.orientation.z);
 
-        // Visualize the target pose
-        visual_tools.publishAxisLabeled(target, "target_pose");
-        visual_tools.trigger(); // Trigger to display changes in RViz
+        // Visualize the target pose using base_link reference frame
+        visual_tools_base.publishAxisLabeled(target, "target_pose_base");
+        visual_tools_base.trigger(); // Trigger to display changes in RViz
 
         // Set the pose target for MoveIt
         move_group_interface.setPoseTarget(target);
@@ -54,6 +59,16 @@ namespace Robot {
         if (success)
         {
             ROS_INFO("Planning successful. Executing the motion...");
+            
+            // Retrieve joint model group for visualization
+            const moveit::core::JointModelGroup* joint_model_group = move_group_interface.getCurrentState()->getJointModelGroup(move_group_interface.getName());
+            
+            // Visualize the plan using table_link reference frame
+            visual_tools_table.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+            visual_tools_table.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+            visual_tools_table.trigger(); // Trigger to display trajectory line
+
+            // Execute the plan
             move_group_interface.move();
         }
         else
@@ -63,15 +78,17 @@ namespace Robot {
         }
     }
 
+
+
     void ArticulatedRobot::planAndVisualize(geometry_msgs::Pose target)
     {
         ROS_INFO("Plan and visualize to target pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
                 target.position.x, target.position.y, target.position.z,
                 target.orientation.w, target.orientation.x, target.orientation.y, target.orientation.z);
 
-        // Visualize the target pose
-        visual_tools.publishAxisLabeled(target, "target_pose");
-        visual_tools.trigger(); // Trigger to display changes in RViz
+        // Visualize the target pose using base_link reference frame
+        visual_tools_base.publishAxisLabeled(target, "target_pose_base");
+        visual_tools_base.trigger(); // Trigger to display changes in RViz
 
         // Set the pose target for MoveIt
         move_group_interface.setPoseTarget(target);
@@ -83,6 +100,15 @@ namespace Robot {
         if (success)
         {
             ROS_INFO("Planning successful. Executing the motion...");
+
+            // Retrieve joint model group for visualization
+            const moveit::core::JointModelGroup* joint_model_group = move_group_interface.getCurrentState()->getJointModelGroup(move_group_interface.getName());
+
+            // Visualize the trajectory using table_link reference frame
+            visual_tools_table.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+            visual_tools_table.trigger(); // Trigger to display trajectory line
+
+            // Execute the plan
             move_group_interface.move();
         }
         else

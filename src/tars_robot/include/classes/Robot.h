@@ -13,6 +13,8 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <Eigen/Geometry>
 
+namespace rvt = rviz_visual_tools;
+
 namespace Robot {
     class ArticulatedRobot {
     public:
@@ -27,8 +29,10 @@ namespace Robot {
         ros::AsyncSpinner spinner;
         moveit::planning_interface::MoveGroupInterface move_group_interface;
         moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-        moveit_visual_tools::MoveItVisualTools visual_tools;
-        Eigen::Isometry3d text_pose;
+        // Separate visual tools for each reference frame
+        moveit_visual_tools::MoveItVisualTools visual_tools_base;
+        moveit_visual_tools::MoveItVisualTools visual_tools_table;
+                Eigen::Isometry3d text_pose;
     };
 }
 
