@@ -5,8 +5,10 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1/Planned Path1
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
-    Tree Height: 484
+    Tree Height: 1022
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -41,7 +43,7 @@ Visualization Manager:
       Value: true
     - Acceleration_Scaling_Factor: 0.1
       Class: moveit_rviz_plugin/MotionPlanning
-      Enabled: true
+      Enabled: false
       JointsTab_Use_Radians: true
       Move Group Namespace: ""
       MoveIt_Allow_Approximate_IK: false
@@ -238,7 +240,7 @@ Visualization Manager:
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: true
-      Value: true
+      Value: false
       Velocity_Scaling_Factor: 0.1
     - Alpha: 1
       Arrow Length: 0.30000001192092896
@@ -326,22 +328,76 @@ Visualization Manager:
       Use rainbow: true
       Value: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Filter (blacklist): ""
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
+        adapter_link:
+          Value: true
+        base:
+          Value: true
+        base_link:
+          Value: true
+        camera_color_frame:
+          Value: false
+        camera_color_optical_frame:
+          Value: false
+        camera_depth_frame:
+          Value: false
+        camera_depth_optical_frame:
+          Value: false
+        camera_link:
+          Value: true
+        forearm_link:
+          Value: true
+        shoulder_link:
+          Value: true
+        table_link:
+          Value: true
+        tool0_controller:
+          Value: true
+        tool0_link:
+          Value: true
+        upper_arm_link:
+          Value: true
+        wrist_1_link:
+          Value: true
+        wrist_2_link:
+          Value: true
+        wrist_3_link:
+          Value: true
       Marker Alpha: 1
-      Marker Scale: 1
+      Marker Scale: 0.05000000074505806
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        table_link:
+          adapter_link:
+            base_link:
+              base:
+                tool0_controller:
+                  {}
+              shoulder_link:
+                upper_arm_link:
+                  forearm_link:
+                    wrist_1_link:
+                      wrist_2_link:
+                        wrist_3_link:
+                          camera_link:
+                            camera_color_frame:
+                              camera_color_optical_frame:
+                                {}
+                            camera_depth_frame:
+                              camera_depth_optical_frame:
+                                {}
+                          tool0_link:
+                            {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Class: rviz/MarkerArray
       Enabled: true
       Marker Topic: /measurement_points_names
@@ -364,10 +420,7 @@ Visualization Manager:
       Marker Topic: /rviz_visual_tools
       Name: MarkerArray
       Namespaces:
-        Path: true
-        Sphere: true
-        Text: true
-        target_pose_base: true
+        {}
       Queue Size: 100
       Value: true
   Enabled: true
@@ -386,7 +439,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.2225141525268555
+      Distance: 0.49466168880462646
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -394,17 +447,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.3466152846813202
-        Y: 0.4203055799007416
-        Z: 1.059734582901001
+        X: 0.2023157775402069
+        Y: -0.48206865787506104
+        Z: 0.8796713352203369
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.27539804577827454
+      Pitch: 0.21539807319641113
       Target Frame: table_link
-      Yaw: 0.5672072172164917
+      Yaw: 5.4403910636901855
     Saved: ~
 Window Geometry:
   Displays:
@@ -420,7 +473,7 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001f300000521fc0200000009fb000000100044006900730070006c006100790073010000003d00000267000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a00560069006500770073000000010c000000a4000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000002aa0000025c0000017d00fffffffb0000000a0049006d006100670065010000050c000000520000001600fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000000008070000052100000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001f300000521fc0200000009fb000000100044006900730070006c006100790073010000003d00000481000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a00560069006500770073000000010c000000a4000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006700000002aa0000025c0000017d00fffffffb0000000a0049006d00610067006501000004c40000009a0000001600fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000000008070000052100000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 2560

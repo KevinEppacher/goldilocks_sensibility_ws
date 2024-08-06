@@ -283,6 +283,8 @@
         <child link="tool0_link" />
         <axis xyz="0 0 0" />
     </joint>
+
+    
     <link name="camera_link">
         <inertial>
             <origin xyz="-1.61524861117535E-05 -0.00212700504491092 -0.0193765848255853" rpy="0 0 0" />
