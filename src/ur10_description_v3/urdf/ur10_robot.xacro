@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ur10_description_v3.urdf -->
+
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="ur10_description_v3" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:property name="deg_to_rad" value="0.017453292519943295" />
+    <xacro:include filename="$(find ur10_description_v3)/urdf/ft_sensor.gazebo.xacro"/>
+    <xacro:include filename="$(find ur10_description_v3)/urdf/kinetic_rgbd.urdf.xacro"/>
+    <xacro:include filename="$(find ur10_description_v3)/urdf/kinetic_rgbd.gazebo.xacro"/>
+
+    <xacro:macro name="ur10_robot" params="">
+
+        <link name="table_link">
+            <inertial>
+                <origin xyz="0.503679778923471 0.436750246454337 0.533162239913515" rpy="0 0 0" />
+                <mass value="164.427518164029" />
+                <inertia ixx="17.5438109681455" ixy="1.00173029919582" ixz="-0.84554880731535" iyy="27.9962527469498" iyz="0.32261270489944" izz="25.3196927520228" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/table_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/table_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <link name="adapter_link">
+            <inertial>
+                <origin xyz="0.00148762870939384 -5.55111512312578E-17 0.0184969952138566" rpy="0 0 0" />
+                <mass value="1.3940393775037" />
+                <inertia ixx="0.00480218257555222" ixy="-3.32761202584861E-19" ixz="-6.23136456619299E-09" iyy="0.00460995913579551" iyz="-9.9318015210222E-20" izz="0.00909416459764461" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/adapter_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/adapter_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="adapter_joint" type="fixed">
+            <origin xyz="0.17 0.4 0.9" rpy="0 0 0" />
+            <parent link="table_link" />
+            <child link="adapter_link" />
+            <axis xyz="0 0 0" />
+        </joint>
+        <link name="base_link">
+            <inertial>
+                <origin xyz="0.0011845 -2.7253E-08 0.017325" rpy="0 0 0" />
+                <mass value="0.86268" />
+                <inertia ixx="0.0017501" ixy="8.3495E-09" ixz="9.0593E-06" iyy="0.0016637" iyz="-4.5806E-10" izz="0.0032119" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/base_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.75294 0.75294 0.75294 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/base_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="base_joint" type="fixed">
+            <origin xyz="0 0 0.037" rpy="0 0 0" />
+            <parent link="adapter_link" />
+            <child link="base_link" />
+            <axis xyz="0 0 0" />
+        </joint>
+        <link name="shoulder_link">
+            <inertial>
+                <origin xyz="2.679E-07 0.010024 0.0831" rpy="0 0 0" />
+                <mass value="7.778" />
+                <inertia ixx="0.012906" ixy="1.6076E-08" ixz="-3.7079E-08" iyy="0.012039" iyz="-0.00053627" izz="0.010755" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/shoulder_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.25098 0.25098 0.25098 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/shoulder_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="shoulder_pan_joint" type="revolute">
+            <origin xyz="0 0 0.038" rpy="0 0 -1.57" />
+            <parent link="base_link" />
+            <child link="shoulder_link" />
+            <axis xyz="0 0 1" />
+            <limit lower="-6.28" upper="6.28" effort="330" velocity="120" />
+        </joint>
+        <link name="upper_arm_link">
+            <inertial>
+                <origin xyz="-0.25443 -2.027E-07 0.082537" rpy="0 0 0" />
+                <mass value="12.93" />
+                <inertia ixx="0.024456" ixy="3.1971E-08" ixz="0.0078193" iyy="0.52575" iyz="8.3512E-08" izz="0.52417" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/upper_arm_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.25098 0.25098 0.25098 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/upper_arm_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="shoulder_lift_joint" type="revolute">
+            <origin xyz="0 0.0859989999999999 0.0882571802206784" rpy="1.5707963267949 0.0240929901040578 3.14159265358979" />
+            <parent link="shoulder_link" />
+            <child link="upper_arm_link" />
+            <axis xyz="0 0 1" />
+            <limit lower="-6.28" upper="6.28" effort="330" velocity="120" />
+        </joint>
+        <link name="forearm_link">
+            <inertial>
+                <origin xyz="-0.24807 1.9251E-09 -0.034936" rpy="0 0 0" />
+                <mass value="3.87" />
+                <inertia ixx="0.0067905" ixy="5.4328E-08" ixz="-0.00025402" iyy="0.20899" iyz="7.4389E-09" izz="0.20875" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/forearm_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.25098 0.25098 0.25098 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/forearm_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="elbow_joint" type="revolute">
+            <origin xyz="-0.612 0 0" rpy="0 0 0.0242666741712824" />
+            <parent link="upper_arm_link" />
+            <child link="forearm_link" />
+            <axis xyz="0 0 1" />
+            <limit lower="-3.14" upper="3.14" effort="150" velocity="180" />
+        </joint>
+        <link name="wrist_1_link">
+            <inertial>
+                <origin xyz="8.3814E-09 -0.010045 0.046994" rpy="0 0 0" />
+                <mass value="1.96" />
+                <inertia ixx="0.0010747" ixy="-1.3405E-12" ixz="4.6386E-10" iyy="0.00088168" iyz="7.862E-05" izz="0.00098347" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/wrist_1_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.25098 0.25098 0.25098 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/wrist_1_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="wrist_1_joint" type="revolute">
+            <origin xyz="-0.5716 0 0.0220010000000001" rpy="0 0 -0.000173684067224549" />
+            <parent link="forearm_link" />
+            <child link="wrist_1_link" />
+            <axis xyz="0 0 1" />
+            <limit lower="-6.28" upper="6.28" effort="56" velocity="180" />
+        </joint>
+        <link name="wrist_2_link">
+            <inertial>
+                <origin xyz="-8.3814E-09 0.010045 0.046994" rpy="0 0 0" />
+                <mass value="1.96" />
+                <inertia ixx="0.0010747" ixy="-1.3405E-12" ixz="-4.6386E-10" iyy="0.00088168" iyz="-7.862E-05" izz="0.00098347" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/wrist_2_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.25098 0.25098 0.25098 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/wrist_2_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="wrist_2_joint" type="revolute">
+            <origin xyz="0 -0.0617000000000001 0.054" rpy="1.5707963267949 0 0" />
+            <parent link="wrist_1_link" />
+            <child link="wrist_2_link" />
+            <axis xyz="0 0 1" />
+            <limit lower="-6.28" upper="6.28" effort="56" velocity="180" />
+        </joint>
+        <link name="wrist_3_link">
+            <inertial>
+                <origin xyz="2.2204E-16 -1.1102E-16 0.015005" rpy="0 0 0" />
+                <mass value="0.202" />
+                <inertia ixx="0.00010845" ixy="-6.3527E-22" ixz="8.5217E-21" iyy="0.00010845" iyz="2.1272E-20" izz="0.0001885" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/wrist_3_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.75294 0.75294 0.75294 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/wrist_3_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="wrist_3_joint" type="revolute">
+            <origin xyz="0 0.0617 0.054" rpy="-1.5707963267949 0.0141025375343068 0" />
+            <parent link="wrist_2_link" />
+            <child link="wrist_3_link" />
+            <axis xyz="0 0 1" />
+            <limit lower="-6.28" upper="6.28" effort="56" velocity="180" />
+        </joint>
+        <link name="tool0_link">
+            <inertial>
+                <origin xyz="-9.51811385263568E-09 -0.00040829549117638 -0.063076624107084" rpy="0 0 0" />
+                <mass value="0.159494248297753" />
+                <inertia ixx="0.000196142213229152" ixy="-3.17147593634008E-12" ixz="-8.16590451397829E-11" iyy="0.000202558472496363" iyz="3.31143649078889E-05" izz="0.000103928487892553" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/test_finger_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0 0 0 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/test_finger_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="tool0" type="fixed">
+            <origin xyz="0 -0.0486072989450782 0.0984743807368732" rpy="0.785398163397435 0 0" />
+            <parent link="wrist_3_link" />
+            <child link="tool0_link" />
+            <axis xyz="0 0 0" />
+        </joint>
+        <link name="camera_link">
+            <inertial>
+                <origin xyz="-1.61524861117535E-05 -0.00212700504491092 -0.0193765848255853" rpy="0 0 0" />
+                <mass value="0.0840231018507497" />
+                <inertia ixx="8.83086020963579E-06" ixy="4.69402693871799E-10" ixz="-1.85931238714756E-08" iyy="0.00010709697994186" iyz="1.0714392504519E-06" izz="0.000107821135197006" />
+            </inertial>
+            <!-- <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/camera_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+                </material>
+            </visual> -->
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ur10_description_v3/meshes/camera_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="tool_camera" type="fixed">
+            <origin xyz="0 0.0158483827537649 0.0919267022436815" rpy="0.856180071631976 0 0" />
+            <parent link="wrist_3_link" />
+            <child link="camera_link" />
+            <axis xyz="0 0 0" />
+        </joint>
+        
+        <transmission name="trans_shoulder_pan_joint">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="shoulder_pan_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="shoulder_pan_joint_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+        <transmission name="trans_shoulder_lift_joint">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="shoulder_lift_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="shoulder_lift_joint_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+        <transmission name="trans_elbow_joint">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="elbow_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="elbow_joint_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+        <transmission name="trans_wrist_1_joint">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="wrist_1_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="wrist_1_joint_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+        <transmission name="trans_wrist_2_joint">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="wrist_2_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="wrist_2_joint_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+        <transmission name="trans_wrist_3_joint">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="wrist_3_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="wrist_3_joint_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <!-- force/torque sensor -->
+        <xacro:ft_sensor_gazebo joint="wrist_3_joint"/>
+
+        <!-- camera -->
+        <xacro:kinetic_rgb name="rgbd_camera" parent="camera">
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+        </xacro:kinetic_rgb>
+
+        <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <!-- <robotNamespace></robotNamespace> -->
+        </plugin>
+        </gazebo>
+
+        <!-- ROS-Industrial 'base' frame: base_link to UR 'Base' Coordinates transform -->
+        <link name="base"/>
+        <joint name="base_link-base_fixed_joint" type="fixed">
+        <!-- Note the rotation over Z of pi radians: as base_link is REP-103
+            aligned (ie: has X+ forward, Y+ left and Z+ up), this is needed
+            to correctly align 'base' with the 'Base' coordinate system of
+            the UR controller.
+        -->
+        <origin xyz="0 0 0" rpy="0 0 3.14"/>
+        <parent link="base_link"/>
+        <child link="base"/>
+        </joint>
+    </xacro:macro>
+
+    <!-- call -->
+    <xacro:ur10_robot/>
+
+</robot>

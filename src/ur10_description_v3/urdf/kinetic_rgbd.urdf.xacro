@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- Define the conversion constant -->
+    <xacro:property name="deg_to_rad" value="0.017453292519943295" />
+    <xacro:include filename="$(find ur10_description_v3)/urdf/kinetic_rgbd.gazebo.xacro"/>
+
+    <xacro:macro name="dummy_inertial">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.001"/>
+            <inertia ixx="0.00001" ixy="0" ixz="0"
+                    iyy="0.00001" iyz="0"
+                    izz="0.00001"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="kinetic_rgb" params="name parent *origin *optical_origin">
+
+        <!-- frames in the center of the camera -->
+        <joint name="${name}_joint" type="fixed">
+            <xacro:insert_block name="origin"/>
+            <parent link="${parent}_link"/>
+            <child link="${name}_link"/>
+        </joint>
+
+        <link name="${name}_link">
+            <inertial>
+                <origin xyz="-0.00936000000 -0.00003000000 -0.00273000000" rpy="0 0 0"/>
+                <mass value="0.21970000000"/>
+                <inertia ixx="0.00000429247" ixy="0.00000000000" ixz="0.00000002565"
+                        iyy="0.00000008027" iyz="0.00000000000"
+                        izz="0.00000427339"/>
+            </inertial>
+            <!-- <visual>
+                <geometry>
+                    <box size="0.025 0.1 0.025" />
+                    <<mesh filename="package://"/> 
+                </geometry>
+                <material name="DarkGrey"/>
+            </visual> -->
+
+            <!-- <collision>
+                <geometry>
+                    <box size="0.025 0.1 0.025" />
+                    <mesh filename="package://"/>
+                </geometry>
+            </collision> -->
+        </link>
+
+        <joint name="${name}_optical_joint" type="fixed">
+            <xacro:insert_block name="optical_origin"/>
+            <parent link="${name}_link"/>
+            <child link="${name}_optical_frame"/>
+        </joint>
+
+        <link name="${name}_optical_frame">
+            <xacro:dummy_inertial/>
+        </link>
+
+        <!-- Depth sensor frames -->
+        <joint name="${name}_depth_joint" type="fixed">
+            <origin xyz="0.049 0.0 0.0" rpy="0 0 0"/>   <!--origin xyz="0.0 0.049 0.0" rpy="0 0 0"-->
+            <parent link="${name}_link"/>
+            <child link="${name}_depth_frame"/>
+        </joint>
+
+        <link name="${name}_depth_frame">
+            <xacro:dummy_inertial/>
+        </link>
+
+        <joint name="${name}_depth_optical_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="${0 * deg_to_rad} 0.0 ${0 * deg_to_rad}"/>  <!-- -90 deg_to_rad - x&z -->
+            <parent link="${name}_depth_frame"/>
+            <child link="${name}_depth_optical_frame"/>
+        </joint>
+
+        <link name="${name}_depth_optical_frame">
+            <xacro:dummy_inertial/>
+        </link>
+
+        <!-- RGB sensor frames -->
+        <joint name="${name}_rgb_joint" type="fixed">
+            <origin xyz="0.0 0.022 0.0" rpy="0 0 0"/>
+            <parent link="${name}_link"/>
+            <child link="${name}_rgb_frame"/>
+        </joint>
+
+        <link name="${name}_rgb_frame">
+            <xacro:dummy_inertial/>
+        </link>
+
+        <joint name="${name}_rgb_optical_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="${0 * deg_to_rad} 0.0 ${0 * deg_to_rad}"/> <!-- -90 deg_to_rad - x&z -->
+            <parent link="${name}_rgb_frame"/>
+            <child link="${name}_rgb_optical_frame"/>
+        </joint>
+
+        <link name="${name}_rgb_optical_frame">
+            <xacro:dummy_inertial/>
+        </link>
+    </xacro:macro>
+
+    <!-- Add feedback for camera-related joints -->
+    <gazebo reference="rgbd_camera_joint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <gazebo reference="rgbd_camera_optical_joint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <gazebo reference="rgbd_camera_depth_joint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <gazebo reference="rgbd_camera_depth_optical_joint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <gazebo reference="rgbd_camera_rgb_joint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <gazebo reference="rgbd_camera_rgb_optical_joint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <!-- Pass the 'name' parameter when calling the gazebo macro -->
+    <xacro:kinetic_rgbd_camera_gazebo name="rgbd_camera"/>
+</robot>

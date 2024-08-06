@@ -29,6 +29,15 @@ private:
 
     //get current wrench data
     void wrenchCallback(const geometry_msgs::WrenchStamped::ConstPtr &msg){
+        if (msg.get() == nullptr) {
+            latestWrench.wrench.force.x = 0;
+            latestWrench.wrench.force.y = 0;
+            latestWrench.wrench.force.z = 0;
+            latestWrench.wrench.torque.x = 0;
+            latestWrench.wrench.torque.y = 0;
+            latestWrench.wrench.torque.z = 0;
+        }
+
         latestWrench = *msg;
     };
 
