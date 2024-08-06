@@ -125,3 +125,13 @@ target_link_libraries(move_in_z_example custom_lib ${catkin_LIBRARIES} ${OpenCV_
 
 # Add dependencies for the move_in_z_example program
 add_dependencies(move_in_z_example ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+############################################################
+# CMakelist for start_camera_node node
+############################################################
+
+# Install Python scripts
+catkin_install_python(PROGRAMS
+  scripts/start_camera_node.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
