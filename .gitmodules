@@ -1,3 +1,7 @@
 [submodule "src/universal_robot"]
 	path = src/universal_robot
 	url = https://github.com/ros-industrial/universal_robot.git
+
+[submodule "src/realsense-ros"]
+path = src/realsense-ros
+url = https://github.com/IntelRealSense/realsense-ros.git

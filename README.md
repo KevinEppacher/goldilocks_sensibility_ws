@@ -50,6 +50,7 @@ Laptop Ip = 192.168.1.101
 sudo apt-get update
 
 rosdep install --from-paths src --ignore-src -y
+rosdep install --from-paths src --ignore-src -r -y
 
 # diese commands bis hier ausführen
 
