@@ -2,11 +2,11 @@ import subprocess
 import rospy
 
 def launch_ros_file():
-    rospy.init_node('launch_demo_node', anonymous=True)
+    rospy.init_node('launch_camera_node', anonymous=True)
     try:
         # Der Befehl, um das Launch-File zu starten
-        rospy.sleep(3)
-        command = 'roslaunch bdr_ur10_moveit demo.launch'
+        rospy.sleep(2)
+        command = 'roslaunch tars_robot depth_camera.launch'
         
         # ROSLAUNCH-Befehl in einer Shell ausführen
         subprocess.call(command, shell=True)
