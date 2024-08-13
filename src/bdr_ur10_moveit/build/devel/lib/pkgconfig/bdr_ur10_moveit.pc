@@ -1,0 +1,8 @@
+prefix=/home/kevin/RobotikMaster/Semester2/ROD/goldilocks_sensibility_ws/src/bdr_ur10_moveit/build/devel
+
+Name: bdr_ur10_moveit
+Description: Description of bdr_ur10_moveit
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
