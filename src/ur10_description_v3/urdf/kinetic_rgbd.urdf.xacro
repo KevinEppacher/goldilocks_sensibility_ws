@@ -60,7 +60,7 @@
 
         <!-- Depth sensor frames -->
         <joint name="${name}_depth_joint" type="fixed">
-            <origin xyz="0.049 0.0 0.0" rpy="0 0 0"/>   <!--origin xyz="0.0 0.049 0.0" rpy="0 0 0"-->
+            <origin xyz="-0.025 0.0 0.0" rpy="1.57 -1.57 0"/>   <!--origin xyz="0.0 0.049 0.0" rpy="0 0 0"-->
             <parent link="${name}_link"/>
             <child link="${name}_depth_frame"/>
         </joint>
@@ -70,7 +70,7 @@
         </link>
 
         <joint name="${name}_depth_optical_joint" type="fixed">
-            <origin xyz="0 0 0" rpy="${0 * deg_to_rad} 0.0 ${0 * deg_to_rad}"/>  <!-- -90 deg_to_rad - x&z -->
+            <origin xyz="0 0 0" rpy="${-90 * deg_to_rad} 0.0 ${-90 * deg_to_rad}"/>  <!-- -90 deg_to_rad - x&z -->
             <parent link="${name}_depth_frame"/>
             <child link="${name}_depth_optical_frame"/>
         </joint>
@@ -81,7 +81,7 @@
 
         <!-- RGB sensor frames -->
         <joint name="${name}_rgb_joint" type="fixed">
-            <origin xyz="0.0 0.022 0.0" rpy="0 0 0"/>
+            <origin xyz="0 0 0" rpy="1.57 -1.57 0"/>
             <parent link="${name}_link"/>
             <child link="${name}_rgb_frame"/>
         </joint>
@@ -91,7 +91,7 @@
         </link>
 
         <joint name="${name}_rgb_optical_joint" type="fixed">
-            <origin xyz="0 0 0" rpy="${0 * deg_to_rad} 0.0 ${0 * deg_to_rad}"/> <!-- -90 deg_to_rad - x&z -->
+            <origin xyz="0 0 0" rpy="${-90 * deg_to_rad} 0.0 ${-90 * deg_to_rad}"/> <!-- -90 deg_to_rad - x&z -->
             <parent link="${name}_rgb_frame"/>
             <child link="${name}_rgb_optical_frame"/>
         </joint>

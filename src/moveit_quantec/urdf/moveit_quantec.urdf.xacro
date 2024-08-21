@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="moveit_quantec" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="moveit_quantec" params="">
+    <link
+      name="base_link">
+      <inertial>
+        <origin
+          xyz="-0.0810107614623872 1.69806255825153E-07 0.10599645436339"
+          rpy="0 0 0" />
+        <mass
+          value="97.9298238151877" />
+        <inertia
+          ixx="3.12727259199142"
+          ixy="2.14569120944394E-06"
+          ixz="0.467210023955441"
+          iyy="5.52628001885015"
+          iyz="-1.97817775090254E-06"
+          izz="7.58545932293491" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/base_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/base_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <link
+      name="link_1">
+      <inertial>
+        <origin
+          xyz="-0.0084665 0.019734 0.25939"
+          rpy="0 0 0" />
+        <mass
+          value="94.945" />
+        <inertia
+          ixx="2.6472"
+          ixy="-0.62895"
+          ixz="-0.35979"
+          iyy="6.3022"
+          iyz="-0.17581"
+          izz="5.5156" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_1.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_1.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="joint_1"
+      type="continuous">
+      <origin
+        xyz="0 -0.235 0"
+        rpy="1.5708 0.014047 0" />
+      <parent
+        link="base_link" />
+      <child
+        link="link_1" />
+      <axis
+        xyz="0 0 1" />
+    </joint>
+    <link
+      name="link_2">
+      <inertial>
+        <origin
+          xyz="0.0015545 -0.23159 0.40897"
+          rpy="0 0 0" />
+        <mass
+          value="82.176" />
+        <inertia
+          ixx="12.398"
+          ixy="-9.2862E-05"
+          ixz="0.082654"
+          iyy="12.541"
+          iyz="0.043185"
+          izz="0.91874" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_2.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_2.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="joint_2"
+      type="continuous">
+      <origin
+        xyz="0.33 0 0.41772"
+        rpy="0 -0.0391 0" />
+      <parent
+        link="link_1" />
+      <child
+        link="link_2" />
+      <axis
+        xyz="0 1 0" />
+    </joint>
+    <link
+      name="link_3">
+      <inertial>
+        <origin
+          xyz="0.35711 -0.015416 0.10193"
+          rpy="0 0 0" />
+        <mass
+          value="47.124" />
+        <inertia
+          ixx="0.41866"
+          ixy="-0.086691"
+          ixz="-0.15996"
+          iyy="3.9994"
+          iyz="-0.042155"
+          izz="3.9284" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_3.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_3.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="joint_3"
+      type="continuous">
+      <origin
+        xyz="0 0 1.15"
+        rpy="0 -0.52738 0" />
+      <parent
+        link="link_2" />
+      <child
+        link="link_3" />
+      <axis
+        xyz="0 1 0" />
+    </joint>
+    <link
+      name="link_4">
+      <inertial>
+        <origin
+          xyz="0.27937 0.0063685 -0.00017456"
+          rpy="0 0 0" />
+        <mass
+          value="4.6744" />
+        <inertia
+          ixx="0.011503"
+          ixy="-0.0037737"
+          ixz="7.4652E-05"
+          iyy="0.085293"
+          iyz="-0.00012925"
+          izz="0.085285" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_4.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_4.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="joint_4"
+      type="continuous">
+      <origin
+        xyz="0.78147 -0.0086752 0.115"
+        rpy="0.037095 0 0" />
+      <parent
+        link="link_3" />
+      <child
+        link="link_4" />
+      <axis
+        xyz="1 0 0" />
+    </joint>
+    <link
+      name="link_5">
+      <inertial>
+        <origin
+          xyz="0.046286 0.05529 7.0521E-05"
+          rpy="0 0 0" />
+        <mass
+          value="8.3467" />
+        <inertia
+          ixx="0.035209"
+          ixy="0.0040294"
+          ixz="-2.9627E-05"
+          iyy="0.059372"
+          iyz="-0.00013764"
+          izz="0.046632" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_5.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_5.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="joint_5"
+      type="continuous">
+      <origin
+        xyz="0.44853 0 0"
+        rpy="0 0.9269 0" />
+      <parent
+        link="link_4" />
+      <child
+        link="link_5" />
+      <axis
+        xyz="0 1 0" />
+    </joint>
+    <link
+      name="link_6">
+      <inertial>
+        <origin
+          xyz="0.021186 9.6657E-07 -3.3846E-07"
+          rpy="0 0 0" />
+        <mass
+          value="0.97276" />
+        <inertia
+          ixx="0.0044336"
+          ixy="-1.5389E-09"
+          ixz="6.5721E-10"
+          iyy="0.0023152"
+          iyz="-1.9424E-09"
+          izz="0.0023149" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_6.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://moveit_quantec/meshes/link_6.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="joint_6"
+      type="continuous">
+      <origin
+        xyz="0.20228 1.3733E-05 0"
+        rpy="-2.218 0 0" />
+      <parent
+        link="link_5" />
+      <child
+        link="link_6" />
+      <axis
+        xyz="1 0 0" />
+    </joint>
+
+  </xacro:macro>
+
+  <!-- call -->
+  <xacro:moveit_quantec/>
+</robot>

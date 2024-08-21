@@ -1,0 +1,24 @@
+controller_list:
+  - name: fake_ur10_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - ur10_shoulder_pan_joint
+      - ur10_shoulder_lift_joint
+      - ur10_elbow_joint
+      - ur10_wrist_1_joint
+      - ur10_wrist_2_joint
+      - ur10_wrist_3_joint
+  - name: fake_quantec_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - quantec_joint_1
+      - quantec_joint_2
+      - quantec_joint_3
+      - quantec_joint_4
+      - quantec_joint_5
+      - quantec_joint_6
+initial:  # Define initial robot poses per group
+  - group: ur10
+    pose: home
+  - group: quantec
+    pose: home
