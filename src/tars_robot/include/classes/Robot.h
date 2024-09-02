@@ -24,12 +24,13 @@ namespace Robot {
     public:
         ArticulatedRobot();
         void PTP(geometry_msgs::Pose target);
-        void LIN(const std::string& reference_link, double distance, double velocity_scaling_factor);
+        void LIN(const std::string& reference_link, double distance, double linear_velocity);
 
     private:
         void planAndVisualize(geometry_msgs::Pose target);
         void logRobotState();
         void configureMoveGroup();
+
         std::string planningGroup;
         ros::AsyncSpinner spinner;
         moveit::planning_interface::MoveGroupInterface move_group;

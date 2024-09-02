@@ -31,7 +31,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "start_sensibility_measurements");
     ros::NodeHandle nh;
     Measurement::Sensibility sens(nh);
-    sens.run_measurement();    
+    sens.run_measurement();
     ros::shutdown();
     return 0;
 }

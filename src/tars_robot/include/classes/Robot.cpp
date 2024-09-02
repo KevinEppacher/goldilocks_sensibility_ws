@@ -5,15 +5,10 @@ namespace Robot {
     ArticulatedRobot::ArticulatedRobot() : 
         spinner(1), 
         move_group("bdr_ur10"), 
-        visual_tools_base("base_link"), // For base_link
         visual_tools_table("table_link") // For table_link
     {
         // Initialize ROS spinner
         spinner.start();
-
-        // Load MoveIt Visual Tools for base_link
-        visual_tools_base.loadRemoteControl();
-        visual_tools_base.deleteAllMarkers();
 
         // Load MoveIt Visual Tools for table_link
         visual_tools_table.loadRemoteControl();
@@ -24,24 +19,33 @@ namespace Robot {
         text_pose.translation().z() = 1.25; // Position the text above the robot bases
 
         // Display initial messages
-        visual_tools_base.trigger();
         visual_tools_table.trigger();
 
-        // configureMoveGroup();
+        configureMoveGroup();
 
     }
 
     void ArticulatedRobot::configureMoveGroup()
     {
         // Set the maximum planning time
-        move_group.setPlanningTime(5.0);
+        move_group.setPlanningTime(10.0);
 
         // Set a different planner algorithm
-        move_group.setPlannerId("RRT");
+        move_group.setPlannerId("PRM");
 
         // Set position and orientation tolerances
-        move_group.setGoalPositionTolerance(0.01);
-        move_group.setGoalOrientationTolerance(0.05);
+        move_group.setGoalPositionTolerance(0.05);
+
+        move_group.setGoalOrientationTolerance(0.1);
+
+        move_group.setNumPlanningAttempts(20);
+
+        move_group.setMaxVelocityScalingFactor(0.01);
+
+        move_group.setMaxAccelerationScalingFactor(0.1);
+
+        move_group.setPoseReferenceFrame("base_link"); // Stellen Sie sicher, dass die Zielpose relativ zu base_link definiert wird
+
     }
 
     void ArticulatedRobot::PTP(geometry_msgs::Pose target)
@@ -50,42 +54,67 @@ namespace Robot {
                 target.position.x, target.position.y, target.position.z,
                 target.orientation.w, target.orientation.x, target.orientation.y, target.orientation.z);
 
+        // Überprüfen der aktuellen Roboterpose
+        logRobotState();
+
         // Visualize the target pose using base_link reference frame
         visual_tools_base.publishAxisLabeled(target, "target_pose_base");
         visual_tools_base.trigger(); // Trigger to display changes in RViz
 
         // Set the pose target for MoveIt
-        move_group.setPoseTarget(target);
+        move_group.setPoseTarget(target, "tool0_link");
+
+        ROS_INFO("Set pose target for MoveIt.");
 
         // Plan and move to the target
         moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-        bool success = (move_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+        moveit::core::MoveItErrorCode planning_result = move_group.plan(my_plan);
+        bool success = (planning_result == moveit::core::MoveItErrorCode::SUCCESS);
 
-        if (success)
-        {
+        if (!success) {
+            ROS_ERROR_STREAM("Planning failed with error code: " << planning_result);
+            switch(planning_result.val) {
+                case moveit::core::MoveItErrorCode::TIMED_OUT:
+                    ROS_ERROR("Planning timed out.");
+                    break;
+                // Weitere spezifische Fehlerbehandlung basierend auf den verschiedenen Fehlercodes
+                default:
+                    ROS_ERROR("Unknown planning error occurred.");
+                    break;
+            }
+        } else {
             ROS_INFO("Planning successful. Executing the motion...");
-            
+
             // Retrieve joint model group for visualization
             const moveit::core::JointModelGroup* joint_model_group = move_group.getCurrentState()->getJointModelGroup(move_group.getName());
-            
+
             // Visualize the plan using table_link reference frame
             visual_tools_table.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
             visual_tools_table.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
             visual_tools_table.trigger(); // Trigger to display trajectory line
 
             // Execute the plan
-            move_group.move();
-        }
-        else
-        {
-            ROS_INFO_NAMED(className,"Planning failed. Unable to move to target pose.");
+            moveit::core::MoveItErrorCode execute_result = move_group.move();
+
+            if (execute_result != moveit::core::MoveItErrorCode::SUCCESS) {
+                ROS_ERROR_STREAM("Execution failed with error code: " << execute_result);
+            }
         }
     }
 
-    void ArticulatedRobot::LIN(const std::string& reference_link, double distance, double velocity_scaling_factor)
+
+
+    /// @brief Move the robot end effector in a straight line
+    /// @param reference_link The reference link for the linear movement
+    /// @param distance The distance to move along the Z-axis
+    /// @param linear_velocity The linear velocity for the movement in percentage (0-1)
+    void ArticulatedRobot::LIN(const std::string& reference_link, double distance, double linear_velocity)
     {
         // Aktuelle Pose des Endeffektors abrufen
         geometry_msgs::PoseStamped current_pose = move_group.getCurrentPose(reference_link);
+
+        // Set the reference frame to base_link
+        move_group.setPoseReferenceFrame("table_link");
 
         // Transformation der aktuellen Pose
         tf2::Transform current_transform;
@@ -122,7 +151,7 @@ namespace Robot {
         rt.setRobotTrajectoryMsg(*move_group.getCurrentState(), trajectory);
 
         trajectory_processing::IterativeParabolicTimeParameterization iptp;
-        bool success = iptp.computeTimeStamps(rt, velocity_scaling_factor);
+        bool success = iptp.computeTimeStamps(rt, linear_velocity);
 
         // Wenn die Zeitparametrisierung erfolgreich war, aktualisieren Sie die Trajektorie
         if (success)
@@ -153,8 +182,10 @@ namespace Robot {
         {
             ROS_WARN_NAMED(className,"Time parameterization failed. Unable to move to target pose.");
         }
-    }
 
+        move_group.setPoseReferenceFrame("base_link"); // Set the reference frame back to base_link
+
+    }
 
 
     void ArticulatedRobot::planAndVisualize(geometry_msgs::Pose target)
