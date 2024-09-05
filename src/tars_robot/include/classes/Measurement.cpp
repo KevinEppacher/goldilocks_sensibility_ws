@@ -59,21 +59,32 @@ namespace Measurement
 
     void Sensibility::run_measurement()
     {
-        Robot::ArticulatedRobot ur10;
+        Robot::ArticulatedRobot ur10(nh);
         double distance = 0.1;
-        double linear_velocity = 0.001;
+        double linear_velocity = 0.1;
+        double linear_acceleration = 0.1;
 
-        if (poses.poses.size() == 0)
+        while(ros::ok())
         {
-            ROS_ERROR("No poses to measure");
-            return;
+            ur10.LIN("tool0_link", distance, linear_velocity, linear_acceleration);
+            ros::Duration(1.0).sleep();
+            ROS_INFO("LIN movement finished");
+            ur10.LIN("tool0_link", -distance, linear_velocity, linear_acceleration);
+            ros::Duration(1.0).sleep();
         }
 
-        for(auto& pose : poses.poses)
-        {
-            ur10.PTP( pose );
-            ur10.LIN("tool0_link", distance, linear_velocity);
-        }        
+
+        // if (poses.poses.size() == 0)
+        // {
+        //     ROS_ERROR("No poses to measure");
+        //     return;
+        // }
+
+        // for(auto& pose : poses.poses)
+        // {
+        //     ur10.PTP( pose );
+        //     ur10.LIN("tool0_link", distance, linear_velocity, 1);
+        // }        
     }
 
 

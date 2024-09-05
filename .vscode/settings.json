@@ -11,10 +11,13 @@
     ],
     "cmake.sourceDirectory": "/home/kevin/RobotikMaster/Semester2/ROD/goldilocks_sensibility_ws/src/tars_robot",
     "files.associations": {
+        "MLTable": "yaml",
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "vector": "cpp",
         "deque": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iterator": "cpp",
+        "*.tcc": "cpp"
     }
 }

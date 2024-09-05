@@ -16,23 +16,28 @@
 #include <geometry_msgs/PoseStamped.h>
 #include <moveit/robot_trajectory/robot_trajectory.h>
 #include <moveit/trajectory_processing/iterative_time_parameterization.h>
+#include <std_msgs/Bool.h>
 
 namespace rvt = rviz_visual_tools;
 
 namespace Robot {
     class ArticulatedRobot {
     public:
-        ArticulatedRobot();
+        ArticulatedRobot(ros::NodeHandle& nodehandler);
         void PTP(geometry_msgs::Pose target);
-        void LIN(const std::string& reference_link, double distance, double linear_velocity);
+        void LIN(const std::string& reference_link, double distance, double linear_velocity, double linear_acceleration);
 
     private:
         void planAndVisualize(geometry_msgs::Pose target);
         void logRobotState();
         void configureMoveGroup();
+        void airskinStateCallback(const std_msgs::Bool::ConstPtr& msg);
 
         std::string planningGroup;
         ros::AsyncSpinner spinner;
+        ros::NodeHandle nh;
+        ros::Subscriber airskinStateSub;
+
         moveit::planning_interface::MoveGroupInterface move_group;
         moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
         // Separate visual tools for each reference frame
@@ -40,6 +45,7 @@ namespace Robot {
         moveit_visual_tools::MoveItVisualTools visual_tools_table;
         Eigen::Isometry3d text_pose;
         std::string className = "ArticulatedRobot";
+        bool moveAllowed = true;
     };
 }
 

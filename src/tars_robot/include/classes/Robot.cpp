@@ -2,11 +2,14 @@
 
 namespace Robot {
 
-    ArticulatedRobot::ArticulatedRobot() : 
+    ArticulatedRobot::ArticulatedRobot(ros::NodeHandle& nodehandler) : 
         spinner(1), 
         move_group("bdr_ur10"), 
-        visual_tools_table("table_link") // For table_link
+        visual_tools_table("table_link"),
+        nh(nodehandler)
     {
+        airskinStateSub = nh.subscribe("airskin_state", 1, &ArticulatedRobot::airskinStateCallback, this);
+
         // Initialize ROS spinner
         spinner.start();
 
@@ -25,6 +28,17 @@ namespace Robot {
 
     }
 
+    void ArticulatedRobot::airskinStateCallback(const std_msgs::Bool::ConstPtr& msg)
+    {
+        if (!msg->data && moveAllowed)
+        {
+            move_group.stop();
+            moveAllowed = false;
+            ROS_WARN("AIRSKIN state changed to false. Stopping the robot.");
+        }
+    }
+
+
     void ArticulatedRobot::configureMoveGroup()
     {
         // Set the maximum planning time
@@ -38,18 +52,25 @@ namespace Robot {
 
         move_group.setGoalOrientationTolerance(0.1);
 
-        move_group.setNumPlanningAttempts(20);
+        move_group.setNumPlanningAttempts(40);
 
-        move_group.setMaxVelocityScalingFactor(0.01);
+        // move_group.setMaxVelocityScalingFactor(0.01);
 
-        move_group.setMaxAccelerationScalingFactor(0.1);
+        // move_group.setMaxAccelerationScalingFactor(0.1);
 
-        move_group.setPoseReferenceFrame("base_link"); // Stellen Sie sicher, dass die Zielpose relativ zu base_link definiert wird
-
+        move_group.setPoseReferenceFrame("base_link");
     }
 
     void ArticulatedRobot::PTP(geometry_msgs::Pose target)
     {
+        if (!moveAllowed)
+        {
+            ROS_WARN("Movement not allowed. Skipping PTP command.");
+            moveAllowed = true;
+            ROS_INFO("Movement allowed again.");
+            return;
+        }
+
         ROS_INFO("Attempting PTP to target pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
                 target.position.x, target.position.y, target.position.z,
                 target.orientation.w, target.orientation.x, target.orientation.y, target.orientation.z);
@@ -100,6 +121,10 @@ namespace Robot {
                 ROS_ERROR_STREAM("Execution failed with error code: " << execute_result);
             }
         }
+
+        moveAllowed = true;
+        ROS_INFO("Movement allowed again.");
+
     }
 
 
@@ -108,84 +133,96 @@ namespace Robot {
     /// @param reference_link The reference link for the linear movement
     /// @param distance The distance to move along the Z-axis
     /// @param linear_velocity The linear velocity for the movement in percentage (0-1)
-    void ArticulatedRobot::LIN(const std::string& reference_link, double distance, double linear_velocity)
+    /// @param linear_acceleration The linear acceleration for the movement in percentage (0-1)
+    void ArticulatedRobot::LIN(const std::string& reference_link, double distance, double linear_velocity, double linear_acceleration)
     {
-        // Aktuelle Pose des Endeffektors abrufen
+        if (!moveAllowed)
+        {
+            ROS_WARN("Movement not allowed. Skipping PTP command.");
+            moveAllowed = true;
+            ROS_INFO("Movement allowed again.");
+            return;
+        }
+
+        // Get the current pose of the end effector
         geometry_msgs::PoseStamped current_pose = move_group.getCurrentPose(reference_link);
 
         // Set the reference frame to base_link
         move_group.setPoseReferenceFrame("table_link");
 
-        // Transformation der aktuellen Pose
+        // Transformation of the current pose
         tf2::Transform current_transform;
         tf2::fromMsg(current_pose.pose, current_transform);
 
-        // Definieren der Translation entlang der Z-Achse
+        // Define translation along the Z-axis
         tf2::Vector3 translation(0, 0, distance);
 
-        // Berechnung der Translation relativ zur aktuellen Werkzeugorientierung
+        // Calculate translation relative to the current tool orientation
         tf2::Vector3 translated_vector = current_transform.getBasis() * translation;
 
-        // Neue Zielpose basierend auf der Translation definieren
+        // Define a new target pose based on the translation
         geometry_msgs::Pose target_pose = current_pose.pose;
         target_pose.position.x += translated_vector.x();
         target_pose.position.y += translated_vector.y();
         target_pose.position.z += translated_vector.z();
 
-        // Visualisierung der Zielpose im Bezug auf den Baseline-Link
+        // Visualize the target pose in relation to the baseline link
         visual_tools_base.publishAxisLabeled(target_pose, "target_pose_base");
-        visual_tools_base.trigger(); // Anzeigen der Änderungen in RViz
+        visual_tools_base.trigger(); // Display changes in RViz
 
-        // Vektor für Wegpunkte erstellen und die Zielpose hinzufügen
+        // Create a vector for waypoints and add the initial and target poses
         std::vector<geometry_msgs::Pose> waypoints;
-        waypoints.push_back(target_pose);
+        waypoints.push_back(current_pose.pose); // Start pose
+        waypoints.push_back(target_pose); // End pose
 
-        // Kartesischen Pfad berechnen
+        // Compute the Cartesian path
         moveit_msgs::RobotTrajectory trajectory;
-        const double jump_threshold = 0.0; // Kein Sprung erlaubt
-        const double eef_step = 0.01; // Schrittweite für den Endeffektor
+        const double jump_threshold = 0.0; // No jumps allowed
+        const double eef_step = 0.01; // Step size for the end effector
         double fraction = move_group.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
 
-        // Trajektorie zeitlich parametrisieren
-        robot_trajectory::RobotTrajectory rt(move_group.getCurrentState()->getRobotModel(), move_group.getName());
-        rt.setRobotTrajectoryMsg(*move_group.getCurrentState(), trajectory);
-
-        trajectory_processing::IterativeParabolicTimeParameterization iptp;
-        bool success = iptp.computeTimeStamps(rt, linear_velocity);
-
-        // Wenn die Zeitparametrisierung erfolgreich war, aktualisieren Sie die Trajektorie
-        if (success)
+        // If sufficient path is planned
+        if (fraction > 0.3) 
         {
-            rt.getRobotTrajectoryMsg(trajectory);
+            // Parameterize the trajectory timing
+            robot_trajectory::RobotTrajectory rt(move_group.getCurrentState()->getRobotModel(), move_group.getName());
+            rt.setRobotTrajectoryMsg(*move_group.getCurrentState(), trajectory);
 
-            // Plan erstellen und ausführen
-            moveit::planning_interface::MoveGroupInterface::Plan plan;
-            plan.trajectory_ = trajectory;
+            trajectory_processing::IterativeParabolicTimeParameterization iptp;
+            bool success = iptp.computeTimeStamps(rt, linear_velocity, linear_acceleration);
 
-            // Prüfen, ob der kartesische Pfad erfolgreich war
-            if (fraction > 0.3) // Sicherstellen, dass mindestens 90% der Trajektorie erfolgreich geplant wurden
+            if (success)
             {
-                ROS_INFO_NAMED(className,"Planning successful. Executing the motion...");
-                // Trajektorie visualisieren
+                rt.getRobotTrajectoryMsg(trajectory);
+
+                // Create and execute the plan
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+
+                ROS_INFO_NAMED(className, "Planning successful. Executing the motion...");
                 const moveit::core::JointModelGroup* joint_model_group = move_group.getCurrentState()->getJointModelGroup(move_group.getName());
                 visual_tools_table.publishTrajectoryLine(plan.trajectory_, joint_model_group);
                 visual_tools_table.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
-                visual_tools_table.trigger(); // Anzeigen der Trajektorielinie
+                visual_tools_table.trigger(); // Show the trajectory line
+
                 move_group.execute(plan);
             }
             else
             {
-                ROS_WARN_NAMED(className,"Planning failed. The Cartesian path was not sufficiently achieved.");
+                ROS_WARN_NAMED(className, "Time parameterization failed. Unable to move to target pose.");
             }
         }
         else
         {
-            ROS_WARN_NAMED(className,"Time parameterization failed. Unable to move to target pose.");
+            ROS_WARN_NAMED(className, "Planning failed. The Cartesian path was not sufficiently achieved.");
         }
+
+        ROS_INFO("Movement allowed again.");
 
         move_group.setPoseReferenceFrame("base_link"); // Set the reference frame back to base_link
 
     }
+
 
 
     void ArticulatedRobot::planAndVisualize(geometry_msgs::Pose target)

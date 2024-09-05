@@ -20,4 +20,6 @@
 
     <node name="start_camera_node" pkg="tars_robot" type="start_camera_node.py" output="screen" />
 
+    <node name="airskin_state" pkg="ft_sensor" type="airskin_state" />
+
 </launch>
