@@ -23,14 +23,14 @@ namespace rvt = rviz_visual_tools;
 namespace Robot {
     class ArticulatedRobot {
     public:
-        ArticulatedRobot(ros::NodeHandle& nodehandler);
+        ArticulatedRobot(ros::NodeHandle& nodeHandler);
         void PTP(geometry_msgs::Pose target);
-        void LIN(const std::string& reference_link, double distance, double linear_velocity, double linear_acceleration);
+        void LIN(const std::string& referenceLink, double distance);
 
     private:
-        void planAndVisualize(geometry_msgs::Pose target);
         void logRobotState();
         void configureMoveGroup();
+        void loadParameters();
         void airskinStateCallback(const std_msgs::Bool::ConstPtr& msg);
 
         std::string planningGroup;
@@ -38,14 +38,27 @@ namespace Robot {
         ros::NodeHandle nh;
         ros::Subscriber airskinStateSub;
 
-        moveit::planning_interface::MoveGroupInterface move_group;
-        moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-        // Separate visual tools for each reference frame
-        moveit_visual_tools::MoveItVisualTools visual_tools_base;
-        moveit_visual_tools::MoveItVisualTools visual_tools_table;
-        Eigen::Isometry3d text_pose;
+        moveit::planning_interface::MoveGroupInterface moveGroup;
+        moveit::planning_interface::PlanningSceneInterface planningSceneInterface;
+        moveit_visual_tools::MoveItVisualTools visualToolsBase;
+        moveit_visual_tools::MoveItVisualTools visualToolsTable;
+        Eigen::Isometry3d textPose;
         std::string className = "ArticulatedRobot";
         bool moveAllowed = true;
+
+        // Parameters loaded from YAML
+        double linearDistance;
+        double linearVelocity;
+        double ptpVelocity;
+        double ptpAcceleration;
+        double linearAcceleration;
+        double acceptableFraction;
+        std::string plannerId;
+        int planningAttempts;
+        double planningTime;
+        double goalPositionTolerance;
+        double goalOrientationTolerance;
+
     };
 }
 

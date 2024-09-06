@@ -43,6 +43,8 @@ namespace Measurement
         void run_measurement();
 
     private:
+        void loadParameters();
+
         // Sensibility measurement version 1
         std_msgs::Float64 msgAbsoluteForce;
         geometry_msgs::Pose currentPose, lastPose, distanceVektor;
@@ -61,6 +63,8 @@ namespace Measurement
 
         // general
         std::string nodeName = "Sensibility";
+
+        double maxDistance;
     };
 
     class csvPlotter

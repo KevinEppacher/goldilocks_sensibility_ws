@@ -1,0 +1,17 @@
+# robot_motion_params.yaml
+
+robot_motion:
+  linear_distance: 0.2  # in meters
+
+  linear_velocity: 0.01  # in percentage (0-1)
+  linear_acceleration: 0.01  # in percentage (0-1)
+
+  ptp_velocity: 0.1  # in percentage (0-1)
+  ptp_acceleration: 0.1  # in percentage (0-1)
+
+  acceptable_fraction: 0.3  # acceptable fraction of the path that must be followed
+  planner_id: "PRM"  # Planner ID (PRM, RRT, etc.)
+  planning_attempts: 100  # Number of planning attempts
+  planning_time: 30.0  # Maximum planning time in seconds
+  goal_position_tolerance: 0.01  # Position tolerance in meters
+  goal_orientation_tolerance: 0.05  # Orientation tolerance in radians

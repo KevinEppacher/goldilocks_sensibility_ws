@@ -1,0 +1,8 @@
+<launch>
+    <!-- Load parameters from YAML file -->
+    <rosparam file="$(find tars_robot)/param/sensitivity_program_param.yaml" command="load" />
+
+    <!-- Launch the ArticulatedRobot node -->
+    <node name="start_sensibility_measurements" pkg="tars_robot" type="start_sensibility_measurements" output="screen" />
+
+</launch>

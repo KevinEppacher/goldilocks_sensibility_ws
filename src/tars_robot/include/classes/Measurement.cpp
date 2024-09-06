@@ -21,6 +21,12 @@ namespace Measurement
 
     }
 
+    void Sensibility::loadParameters()
+    {
+        // Load parameters from the parameter server (YAML file)
+        nh.param("robot_motion/linear_distance", maxDistance, 0.05);
+    }
+
     void Sensibility::forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr& forceTorque)
     {
         msgAbsoluteForce.data = sqrt( pow(forceTorque->position.x , 2) + pow(forceTorque->position.y , 2) + pow(forceTorque->position.z , 2));
@@ -60,17 +66,17 @@ namespace Measurement
     void Sensibility::run_measurement()
     {
         Robot::ArticulatedRobot ur10(nh);
-        double distance = 0.1;
-        double linear_velocity = 0.1;
-        double linear_acceleration = 0.1;
 
         while(ros::ok())
         {
-            ur10.LIN("tool0_link", distance, linear_velocity, linear_acceleration);
-            ros::Duration(1.0).sleep();
+            ur10.LIN("tool0_link", 0.2);
+            ros::Duration(5.0).sleep();
             ROS_INFO("LIN movement finished");
-            ur10.LIN("tool0_link", -distance, linear_velocity, linear_acceleration);
-            ros::Duration(1.0).sleep();
+            std::cout<<std::endl;
+            ur10.LIN("tool0_link", -0.2);
+            ros::Duration(5.0).sleep();
+            std::cout<<std::endl;
+
         }
 
 
