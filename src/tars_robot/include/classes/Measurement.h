@@ -41,6 +41,7 @@ namespace Measurement
 
         // Sensibility measurement
         void run_measurement();
+        void zero_ft_sensor();
 
     private:
         void loadParameters();
@@ -65,6 +66,10 @@ namespace Measurement
         std::string nodeName = "Sensibility";
 
         double max_measuring_distance;
+        // Parameters loaded from YAML
+        double linearDistance; 
+        double linearVelocity; double linearAcceleration;
+        double ptpVelocity; double ptpAcceleration;
     };
 
     class csvPlotter

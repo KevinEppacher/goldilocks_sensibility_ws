@@ -2,9 +2,9 @@
 
 namespace Measurement
 {
-    Sensibility::Sensibility(ros::NodeHandle& nodehandler) : nh(nodehandler)
+    Sensibility::Sensibility(ros::NodeHandle &nodehandler) : nh(nodehandler)
     {
-        // Publisher and Subscriber 
+        // Publisher and Subscriber
         forceTorqueSensor = nh.advertise<geometry_msgs::Pose>("force_torque_sensor", 100);
         absoluteForce = nh.advertise<std_msgs::Float64>("absolute_force", 100);
         forceTorqueSensorSub = nh.subscribe("force_torque_sensor", 100, &Sensibility::forceTorqueSensorCallback, this);
@@ -13,26 +13,27 @@ namespace Measurement
 
         // Publisher and Subscriber for sensibility measurement
         measurementPointsSub = nh.subscribe("measurement_points", 1, &Sensibility::measurementPointsCallback, this);
-        
+
         loadParameters();
-        
     }
 
     Sensibility::~Sensibility()
     {
-
     }
 
     void Sensibility::loadParameters()
     {
         // Load parameters from the parameter server (YAML file)
         nh.param("robot_motion/max_measuring_distance", max_measuring_distance, 0.05);
-        ROS_INFO("Max measuring distance: %f", max_measuring_distance);
+        nh.param("robot_motion/linear_velocity", linearVelocity, 0.5);
+        nh.param("robot_motion/linear_acceleration", linearAcceleration, 0.5);
+        nh.param("robot_motion/ptp_velocity", ptpVelocity, 0.05);
+        nh.param("robot_motion/ptp_acceleration", ptpAcceleration, 0.05);
     }
 
-    void Sensibility::forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr& forceTorque)
+    void Sensibility::forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr &forceTorque)
     {
-        msgAbsoluteForce.data = sqrt( pow(forceTorque->position.x , 2) + pow(forceTorque->position.y , 2) + pow(forceTorque->position.z , 2));
+        msgAbsoluteForce.data = sqrt(pow(forceTorque->position.x, 2) + pow(forceTorque->position.y, 2) + pow(forceTorque->position.z, 2));
     }
 
     void Sensibility::publishAbsoluteForce()
@@ -40,7 +41,7 @@ namespace Measurement
         absoluteForce.publish(msgAbsoluteForce);
     }
 
-    void Sensibility::poseUrCallback(const geometry_msgs::Pose::ConstPtr& poseUR)
+    void Sensibility::poseUrCallback(const geometry_msgs::Pose::ConstPtr &poseUR)
     {
         currentPose = *poseUR;
 
@@ -50,13 +51,13 @@ namespace Measurement
             distanceVektor.position.y += abs(currentPose.position.y - lastPose.position.y);
             distanceVektor.position.z += abs(currentPose.position.z - lastPose.position.z);
 
-            scalarDistance.data = sqrt( pow(distanceVektor.position.x , 2) + pow(distanceVektor.position.y , 2) + pow(distanceVektor.position.z , 2));
+            scalarDistance.data = sqrt(pow(distanceVektor.position.x, 2) + pow(distanceVektor.position.y, 2) + pow(distanceVektor.position.z, 2));
         }
-        
+
         lastPose = currentPose;
     }
 
-    void Sensibility::measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr& measurementsPointsMsg)
+    void Sensibility::measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr &measurementsPointsMsg)
     {
         poses = *measurementsPointsMsg;
         // std::cout<<"Number of poses: "<<poses.poses.size()<<std::endl;
@@ -71,52 +72,39 @@ namespace Measurement
         Robot::ArticulatedRobot ur10(nh);
         bool withActiveAirskin = true;
 
-        // while(ros::ok())
-        // {
-        //     ROS_INFO("max_measuring_distance: %f", max_measuring_distance);
-        //     ur10.LIN("tool0_link", max_measuring_distance);
-        //     ros::Duration(5.0).sleep();
-        //     ROS_INFO("LIN movement finished");
-        //     std::cout<<std::endl;
-        //     bool withActiveAirskin = true;
-        //     ur10.LIN("tool0_link", -max_measuring_distance, withActiveAirskin);
-        //     ros::Duration(5.0).sleep();
-        //     std::cout<<std::endl;
-
-        // }
-
         if (poses.poses.size() == 0)
         {
             ROS_ERROR("No poses to measure");
             return;
         }
 
-        for(auto& pose : poses.poses)
+        for (auto &pose : poses.poses)
         {
-            ur10.PTP( pose );
-            ur10.LIN("tool0_link", max_measuring_distance);
+            ur10.PTP(pose, ptpVelocity, ptpAcceleration);
+            ur10.LIN("tool0_link", max_measuring_distance, linearVelocity, linearAcceleration);
+            zero_ft_sensor();
             ros::Duration(1.0).sleep();
-            ur10.LIN("tool0_link", -max_measuring_distance, withActiveAirskin);
-        }        
+            ur10.LIN("tool0_link", -max_measuring_distance, linearVelocity * 10, linearAcceleration * 10, withActiveAirskin);
+        }
     }
 
+    void Sensibility::zero_ft_sensor()
+    {
 
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    csvPlotter::csvPlotter(const std::string& filename) : filename(filename)
+    csvPlotter::csvPlotter(const std::string &filename) : filename(filename)
     {
-        
     }
 
     csvPlotter::csvPlotter()
     {
-
     }
 
     csvPlotter::~csvPlotter()
     {
-        
     }
 
     void csvPlotter::getTime()
@@ -131,10 +119,10 @@ namespace Measurement
 
         std::stringstream dateStream;
         dateStream << std::setw(4) << std::setfill('0') << (localTime->tm_year + 1900) << "-"
-                << std::setw(2) << std::setfill('0') << (localTime->tm_mon + 1) << "-"
-                << std::setw(2) << std::setfill('0') << localTime->tm_mday << "-"
-                << std::setw(2) << std::setfill('0') << localTime->tm_hour << "-"
-                << std::setw(2) << std::setfill('0') << localTime->tm_min;
+                   << std::setw(2) << std::setfill('0') << (localTime->tm_mon + 1) << "-"
+                   << std::setw(2) << std::setfill('0') << localTime->tm_mday << "-"
+                   << std::setw(2) << std::setfill('0') << localTime->tm_hour << "-"
+                   << std::setw(2) << std::setfill('0') << localTime->tm_min;
 
         std::string formattedDate = dateStream.str();
 
@@ -144,38 +132,37 @@ namespace Measurement
 
         file.open(filename, std::ios::app);
 
-        if (!file.is_open()) 
+        if (!file.is_open())
         {
             std::cerr << "Failed to open file: " << filename << std::endl;
             return 0;
         }
 
-        file << "Time [s],";  
-        for(int i = 1; i <= PadQuantity; i++)
+        file << "Time [s],";
+        for (int i = 1; i <= PadQuantity; i++)
         {
-            file << "Pad-Nr "<<i<<",Absolute Force [N],Airskin State, Distance [mm],";
+            file << "Pad-Nr " << i << ",Absolute Force [N],Airskin State, Distance [mm],";
         }
-        file<<",\n";
-        
+        file << ",\n";
 
         return 1;
     }
 
-    bool csvPlotter::writeCSVData(std_msgs::Float64* msgAbsoluteForce, std_msgs::Int16* airskinPadNumber, std_msgs::String* airskinState, std_msgs::Float64* distance)
+    bool csvPlotter::writeCSVData(std_msgs::Float64 *msgAbsoluteForce, std_msgs::Int16 *airskinPadNumber, std_msgs::String *airskinState, std_msgs::Float64 *distance)
     {
         csvPlotter::getTime();
 
         msgAbsoluteForceString = std::to_string(msgAbsoluteForce->data);
         airskinPadNumberString = std::to_string(airskinPadNumber->data);
-        timeString= std::to_string(time);
+        timeString = std::to_string(time);
         distanceString = std::to_string(distance->data);
         airskinPadNumberInt = airskinPadNumber->data;
 
-        file<<timeString<<",";
+        file << timeString << ",";
 
         if (airskinPadNumberInt != 0)
         {
-            if(airskinState->data == "True")
+            if (airskinState->data == "True")
             {
                 airskinStateString = "1";
             }
@@ -188,16 +175,14 @@ namespace Measurement
 
             for (size_t i = 0; i < quantityOfZeros; i++)
             {
-                file<<"0,";
+                file << "0,";
             }
-            file<<airskinPadNumberString<<","<<msgAbsoluteForceString<<","<<airskinStateString<<","<<distanceString;
-            file<<"\n";
-            
-            std::cout<<"Time: "<< timeString.c_str() <<"   || AIRSKIN Pad Nummer: "<<airskinPadNumberString.c_str()<<" || Absolute Force: "<<msgAbsoluteForceString.c_str()<<"  || AIRSKIN State: "<< airskinStateString.c_str() <<"   || distance: "<< distanceString.c_str() <<std::endl;
+            file << airskinPadNumberString << "," << msgAbsoluteForceString << "," << airskinStateString << "," << distanceString;
+            file << "\n";
+
+            std::cout << "Time: " << timeString.c_str() << "   || AIRSKIN Pad Nummer: " << airskinPadNumberString.c_str() << " || Absolute Force: " << msgAbsoluteForceString.c_str() << "  || AIRSKIN State: " << airskinStateString.c_str() << "   || distance: " << distanceString.c_str() << std::endl;
         }
-        
+
         return 1;
     }
 }
-
-

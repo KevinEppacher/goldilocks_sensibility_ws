@@ -24,8 +24,8 @@ namespace Robot {
     class ArticulatedRobot {
     public:
         ArticulatedRobot(ros::NodeHandle& nodeHandler);
-        void PTP(geometry_msgs::Pose target);
-        void LIN(const std::string &referenceLink, double distance, bool withActiveAirskin = false);
+        void PTP(geometry_msgs::Pose target, double velocityScaling, double accelerationScaling);
+        void LIN(const std::string &referenceLink, double distance, double velocityScaling, double accelerationScaling, bool withActiveAirskin = false) ;
 
     private:
         void logRobotState();
@@ -48,10 +48,6 @@ namespace Robot {
 
         // Parameters loaded from YAML
         double linearDistance;
-        double linearVelocity;
-        double ptpVelocity;
-        double ptpAcceleration;
-        double linearAcceleration;
         double acceptableFraction;
         std::string plannerId;
         int planningAttempts;

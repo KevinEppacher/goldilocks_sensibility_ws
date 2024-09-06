@@ -32,10 +32,6 @@ namespace Robot
     void ArticulatedRobot::loadParameters()
     {
         // Load parameters from the parameter server (YAML file)
-        nh.param("robot_motion/linear_velocity", linearVelocity, 0.5);
-        nh.param("robot_motion/linear_acceleration", linearAcceleration, 0.5);
-        nh.param("robot_motion/ptp_velocity", ptpVelocity, 0.05);
-        nh.param("robot_motion/ptp_acceleration", ptpAcceleration, 0.05);
         nh.param("robot_motion/acceptable_fraction", acceptableFraction, 0.9);
         nh.param("robot_motion/planner_id", plannerId, std::string("PRM"));
         nh.param("robot_motion/planning_attempts", planningAttempts, 100);
@@ -72,7 +68,7 @@ namespace Robot
         moveGroup.setPoseReferenceFrame("base_link");
     }
 
-    void ArticulatedRobot::PTP(geometry_msgs::Pose target)
+    void ArticulatedRobot::PTP(geometry_msgs::Pose target, double velocityScaling, double accelerationScaling)
     {
         // if (!moveAllowed)
         // {
@@ -82,13 +78,12 @@ namespace Robot
         // }
 
         // Apply velocity and acceleration scaling
-        moveGroup.setMaxVelocityScalingFactor(ptpVelocity);
-        moveGroup.setMaxAccelerationScalingFactor(ptpAcceleration);
-        ROS_INFO_NAMED(className, "PTP Velocity: %.3f, PTP Acceleration: %.3f", ptpVelocity, ptpAcceleration);
-
-        // ROS_INFO("Attempting PTP to target pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
-        //         target.position.x, target.position.y, target.position.z,
-        //         target.orientation.w, target.orientation.x, target.orientation.y, target.orientation.z);
+        moveGroup.setMaxVelocityScalingFactor(velocityScaling);
+        moveGroup.setMaxAccelerationScalingFactor(accelerationScaling);
+        ROS_INFO_NAMED(className, "PTP Velocity: %.3f, PTP Acceleration: %.3f", velocityScaling, accelerationScaling);
+        ROS_INFO("Attempting PTP to target pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
+                target.position.x, target.position.y, target.position.z,
+                target.orientation.w, target.orientation.x, target.orientation.y, target.orientation.z);
 
         // Check current robot state
         // logRobotState();
@@ -144,7 +139,7 @@ namespace Robot
         // moveAllowed = true;
     }
 
-    void ArticulatedRobot::LIN(const std::string &referenceLink, double distance, bool withActiveAirskin) 
+    void ArticulatedRobot::LIN(const std::string &referenceLink, double distance, double velocityScaling, double accelerationScaling, bool withActiveAirskin) 
     {
         if (withActiveAirskin)
         {
@@ -152,9 +147,9 @@ namespace Robot
         }
 
         // Apply velocity and acceleration scaling
-        moveGroup.setMaxVelocityScalingFactor(linearVelocity);
-        moveGroup.setMaxAccelerationScalingFactor(linearAcceleration);
-        ROS_INFO_NAMED(className, "LIN Velocity: %f, LIN Acceleration: %f", linearVelocity, linearAcceleration);
+        moveGroup.setMaxVelocityScalingFactor(velocityScaling);
+        moveGroup.setMaxAccelerationScalingFactor(accelerationScaling);
+        ROS_INFO_NAMED(className, "LIN Velocity: %f, LIN Acceleration: %f", velocityScaling, accelerationScaling);
         ROS_INFO_NAMED(className, "Moving %f meters along the Z-axis in the %s reference frame.", distance, referenceLink.c_str());
 
         // Get the current pose of the end effector
@@ -200,7 +195,7 @@ namespace Robot
             rt.setRobotTrajectoryMsg(*moveGroup.getCurrentState(), trajectory);
 
             trajectory_processing::IterativeParabolicTimeParameterization iptp;
-            bool success = iptp.computeTimeStamps(rt, linearVelocity, linearAcceleration);
+            bool success = iptp.computeTimeStamps(rt, velocityScaling, accelerationScaling);
 
             if (success)
             {
