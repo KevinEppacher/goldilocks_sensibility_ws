@@ -1,9 +1,9 @@
 # robot_motion_params.yaml
 
 robot_motion:
-  linear_distance: 0.2  # in meters
+  max_measuring_distance: 0.1  # in meters
 
-  linear_velocity: 0.01  # in percentage (0-1)
+  linear_velocity: 0.0001  # in percentage (0-1)
   linear_acceleration: 0.01  # in percentage (0-1)
 
   ptp_velocity: 0.1  # in percentage (0-1)

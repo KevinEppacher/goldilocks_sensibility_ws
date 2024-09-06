@@ -1,14 +1,14 @@
 #include "Robot.h"
 
-namespace Robot {
+namespace Robot
+{
 
-    ArticulatedRobot::ArticulatedRobot(ros::NodeHandle& nodeHandler) : 
-        spinner(1), 
-        moveGroup("bdr_ur10"), 
-        visualToolsTable("table_link"),
-        nh(nodeHandler)
+    ArticulatedRobot::ArticulatedRobot(ros::NodeHandle &nodeHandler) : spinner(1),
+                                                                       moveGroup("bdr_ur10"),
+                                                                       visualToolsTable("table_link"),
+                                                                       nh(nodeHandler)
     {
-        loadParameters();  // Load parameters from YAML file
+        loadParameters(); // Load parameters from YAML file
 
         airskinStateSub = nh.subscribe("airskin_state", 1, &ArticulatedRobot::airskinStateCallback, this);
 
@@ -26,8 +26,7 @@ namespace Robot {
         // Display initial messages
         visualToolsTable.trigger();
 
-        configureMoveGroup();  // Configure MoveGroupInterface settings
-
+        configureMoveGroup(); // Configure MoveGroupInterface settings
     }
 
     void ArticulatedRobot::loadParameters()
@@ -45,7 +44,7 @@ namespace Robot {
         nh.param("robot_motion/goal_orientation_tolerance", goalOrientationTolerance, 0.05);
     }
 
-    void ArticulatedRobot::airskinStateCallback(const std_msgs::Bool::ConstPtr& msg)
+    void ArticulatedRobot::airskinStateCallback(const std_msgs::Bool::ConstPtr &msg)
     {
         if (!msg->data && moveAllowed)
         {
@@ -70,10 +69,6 @@ namespace Robot {
         // Set the number of planning attempts
         moveGroup.setNumPlanningAttempts(planningAttempts);
 
-        // Set velocity and acceleration scaling factors
-        moveGroup.setMaxVelocityScalingFactor(linearVelocity);
-        moveGroup.setMaxAccelerationScalingFactor(linearAcceleration);
-
         moveGroup.setPoseReferenceFrame("base_link");
     }
 
@@ -87,13 +82,13 @@ namespace Robot {
         // }
 
         // Apply velocity and acceleration scaling
-        moveGroup.setMaxVelocityScalingFactor(linearVelocity);
-        moveGroup.setMaxAccelerationScalingFactor(linearAcceleration);
+        moveGroup.setMaxVelocityScalingFactor(ptpVelocity);
+        moveGroup.setMaxAccelerationScalingFactor(ptpAcceleration);
         ROS_INFO_NAMED(className, "PTP Velocity: %.3f, PTP Acceleration: %.3f", ptpVelocity, ptpAcceleration);
 
-        ROS_INFO("Attempting PTP to target pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
-                target.position.x, target.position.y, target.position.z,
-                target.orientation.w, target.orientation.x, target.orientation.y, target.orientation.z);
+        // ROS_INFO("Attempting PTP to target pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
+        //         target.position.x, target.position.y, target.position.z,
+        //         target.orientation.w, target.orientation.x, target.orientation.y, target.orientation.z);
 
         // Check current robot state
         // logRobotState();
@@ -112,21 +107,25 @@ namespace Robot {
         moveit::core::MoveItErrorCode planningResult = moveGroup.plan(myPlan);
         bool success = (planningResult == moveit::core::MoveItErrorCode::SUCCESS);
 
-        if (!success) {
+        if (!success)
+        {
             ROS_ERROR_STREAM("Planning failed with error code: " << planningResult);
-            switch(planningResult.val) {
-                case moveit::core::MoveItErrorCode::TIMED_OUT:
-                    ROS_ERROR("Planning timed out.");
-                    break;
-                default:
-                    ROS_ERROR("Unknown planning error occurred.");
-                    break;
+            switch (planningResult.val)
+            {
+            case moveit::core::MoveItErrorCode::TIMED_OUT:
+                ROS_ERROR("Planning timed out.");
+                break;
+            default:
+                ROS_ERROR("Unknown planning error occurred.");
+                break;
             }
-        } else {
+        }
+        else
+        {
             ROS_INFO("Planning successful. Executing the motion...");
 
             // Retrieve joint model group for visualization
-            const moveit::core::JointModelGroup* jointModelGroup = moveGroup.getCurrentState()->getJointModelGroup(moveGroup.getName());
+            const moveit::core::JointModelGroup *jointModelGroup = moveGroup.getCurrentState()->getJointModelGroup(moveGroup.getName());
 
             // Visualize the plan using table_link reference frame
             visualToolsTable.publishTrajectoryLine(myPlan.trajectory_, jointModelGroup);
@@ -136,7 +135,8 @@ namespace Robot {
             // Execute the plan
             moveit::core::MoveItErrorCode executeResult = moveGroup.move();
 
-            if (executeResult != moveit::core::MoveItErrorCode::SUCCESS) {
+            if (executeResult != moveit::core::MoveItErrorCode::SUCCESS)
+            {
                 ROS_ERROR_STREAM("Execution failed with error code: " << executeResult);
             }
         }
@@ -144,7 +144,7 @@ namespace Robot {
         // moveAllowed = true;
     }
 
-    void ArticulatedRobot::LIN(const std::string& referenceLink, double distance)
+    void ArticulatedRobot::LIN(const std::string &referenceLink, double distance)
     {
         // if (!moveAllowed)
         // {
@@ -157,8 +157,8 @@ namespace Robot {
         // Apply velocity and acceleration scaling
         moveGroup.setMaxVelocityScalingFactor(linearVelocity);
         moveGroup.setMaxAccelerationScalingFactor(linearAcceleration);
-        ROS_INFO_NAMED(className, "LIN Velocity: %.3f, LIN Acceleration: %.3f", linearVelocity, linearAcceleration);
-        ROS_INFO_NAMED(className, "Moving %.3f meters along the Z-axis in the %s reference frame.", distance, referenceLink.c_str());
+        ROS_INFO_NAMED(className, "LIN Velocity: %f, LIN Acceleration: %f", linearVelocity, linearAcceleration);
+        ROS_INFO_NAMED(className, "Moving %f meters along the Z-axis in the %s reference frame.", distance, referenceLink.c_str());
 
         // Get the current pose of the end effector
         geometry_msgs::PoseStamped currentPose = moveGroup.getCurrentPose(referenceLink);
@@ -192,11 +192,11 @@ namespace Robot {
         // Compute the Cartesian path
         moveit_msgs::RobotTrajectory trajectory;
         const double jumpThreshold = 0.0; // No jumps allowed
-        const double eefStep = 0.01; // Step size for the end effector
+        const double eefStep = 0.01;      // Step size for the end effector
         double fraction = moveGroup.computeCartesianPath(waypoints, eefStep, jumpThreshold, trajectory);
 
         // If sufficient path is planned
-        if (fraction > acceptableFraction) 
+        if (fraction > acceptableFraction)
         {
             // Parameterize the trajectory timing
             robot_trajectory::RobotTrajectory rt(moveGroup.getCurrentState()->getRobotModel(), moveGroup.getName());
@@ -214,7 +214,7 @@ namespace Robot {
                 plan.trajectory_ = trajectory;
 
                 ROS_INFO_NAMED(className, "Planning successful. Executing the motion...");
-                const moveit::core::JointModelGroup* jointModelGroup = moveGroup.getCurrentState()->getJointModelGroup(moveGroup.getName());
+                const moveit::core::JointModelGroup *jointModelGroup = moveGroup.getCurrentState()->getJointModelGroup(moveGroup.getName());
                 visualToolsTable.publishTrajectoryLine(plan.trajectory_, jointModelGroup);
                 visualToolsTable.publishText(textPose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
                 visualToolsTable.trigger(); // Show the trajectory line
@@ -231,18 +231,17 @@ namespace Robot {
             ROS_WARN_NAMED(className, "Planning failed. The Cartesian path was not sufficiently achieved.");
         }
 
-        moveGroup.setPoseReferenceFrame("base_link"); // Set the reference frame back to base_link
+        moveGroup.setPoseReferenceFrame("base_link");
     }
-
 
     void ArticulatedRobot::logRobotState()
     {
         // Get the current robot state
         moveit::core::RobotStatePtr currentState = moveGroup.getCurrentState();
-        
+
         // Get current joint values
         std::vector<double> jointValues;
-        const moveit::core::JointModelGroup* jointModelGroup = currentState->getRobotModel()->getJointModelGroup(moveGroup.getName());
+        const moveit::core::JointModelGroup *jointModelGroup = currentState->getRobotModel()->getJointModelGroup(moveGroup.getName());
         currentState->copyJointGroupPositions(jointModelGroup, jointValues);
 
         ROS_INFO("Current joint values:");
@@ -254,7 +253,7 @@ namespace Robot {
         // Check the end effector's current pose
         geometry_msgs::PoseStamped currentPose = moveGroup.getCurrentPose();
         ROS_INFO("Current end effector pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
-                currentPose.pose.position.x, currentPose.pose.position.y, currentPose.pose.position.z,
-                currentPose.pose.orientation.w, currentPose.pose.orientation.x, currentPose.pose.orientation.y, currentPose.pose.orientation.z);
+                 currentPose.pose.position.x, currentPose.pose.position.y, currentPose.pose.position.z,
+                 currentPose.pose.orientation.w, currentPose.pose.orientation.x, currentPose.pose.orientation.y, currentPose.pose.orientation.z);
     }
 }

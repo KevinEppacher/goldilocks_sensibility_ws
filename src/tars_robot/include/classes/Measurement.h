@@ -64,7 +64,7 @@ namespace Measurement
         // general
         std::string nodeName = "Sensibility";
 
-        double maxDistance;
+        double max_measuring_distance;
     };
 
     class csvPlotter

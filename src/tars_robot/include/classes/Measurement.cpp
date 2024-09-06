@@ -14,6 +14,8 @@ namespace Measurement
         // Publisher and Subscriber for sensibility measurement
         measurementPointsSub = nh.subscribe("measurement_points", 1, &Sensibility::measurementPointsCallback, this);
         
+        loadParameters();
+        
     }
 
     Sensibility::~Sensibility()
@@ -24,7 +26,8 @@ namespace Measurement
     void Sensibility::loadParameters()
     {
         // Load parameters from the parameter server (YAML file)
-        nh.param("robot_motion/linear_distance", maxDistance, 0.05);
+        nh.param("robot_motion/max_measuring_distance", max_measuring_distance, 0.05);
+        ROS_INFO("Max measuring distance: %f", max_measuring_distance);
     }
 
     void Sensibility::forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr& forceTorque)
@@ -69,11 +72,12 @@ namespace Measurement
 
         while(ros::ok())
         {
-            ur10.LIN("tool0_link", 0.2);
+            ROS_INFO("max_measuring_distance: %f", max_measuring_distance);
+            ur10.LIN("tool0_link", max_measuring_distance);
             ros::Duration(5.0).sleep();
             ROS_INFO("LIN movement finished");
             std::cout<<std::endl;
-            ur10.LIN("tool0_link", -0.2);
+            ur10.LIN("tool0_link", -max_measuring_distance);
             ros::Duration(5.0).sleep();
             std::cout<<std::endl;
 
