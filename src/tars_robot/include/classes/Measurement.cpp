@@ -69,32 +69,35 @@ namespace Measurement
     void Sensibility::run_measurement()
     {
         Robot::ArticulatedRobot ur10(nh);
+        bool withActiveAirskin = true;
 
-        while(ros::ok())
-        {
-            ROS_INFO("max_measuring_distance: %f", max_measuring_distance);
-            ur10.LIN("tool0_link", max_measuring_distance);
-            ros::Duration(5.0).sleep();
-            ROS_INFO("LIN movement finished");
-            std::cout<<std::endl;
-            ur10.LIN("tool0_link", -max_measuring_distance);
-            ros::Duration(5.0).sleep();
-            std::cout<<std::endl;
-
-        }
-
-
-        // if (poses.poses.size() == 0)
+        // while(ros::ok())
         // {
-        //     ROS_ERROR("No poses to measure");
-        //     return;
+        //     ROS_INFO("max_measuring_distance: %f", max_measuring_distance);
+        //     ur10.LIN("tool0_link", max_measuring_distance);
+        //     ros::Duration(5.0).sleep();
+        //     ROS_INFO("LIN movement finished");
+        //     std::cout<<std::endl;
+        //     bool withActiveAirskin = true;
+        //     ur10.LIN("tool0_link", -max_measuring_distance, withActiveAirskin);
+        //     ros::Duration(5.0).sleep();
+        //     std::cout<<std::endl;
+
         // }
 
-        // for(auto& pose : poses.poses)
-        // {
-        //     ur10.PTP( pose );
-        //     ur10.LIN("tool0_link", distance, linear_velocity, 1);
-        // }        
+        if (poses.poses.size() == 0)
+        {
+            ROS_ERROR("No poses to measure");
+            return;
+        }
+
+        for(auto& pose : poses.poses)
+        {
+            ur10.PTP( pose );
+            ur10.LIN("tool0_link", max_measuring_distance);
+            ros::Duration(1.0).sleep();
+            ur10.LIN("tool0_link", -max_measuring_distance, withActiveAirskin);
+        }        
     }
 
 

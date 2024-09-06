@@ -25,7 +25,7 @@ namespace Robot {
     public:
         ArticulatedRobot(ros::NodeHandle& nodeHandler);
         void PTP(geometry_msgs::Pose target);
-        void LIN(const std::string& referenceLink, double distance);
+        void LIN(const std::string &referenceLink, double distance, bool withActiveAirskin = false);
 
     private:
         void logRobotState();

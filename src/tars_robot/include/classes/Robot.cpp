@@ -144,15 +144,12 @@ namespace Robot
         // moveAllowed = true;
     }
 
-    void ArticulatedRobot::LIN(const std::string &referenceLink, double distance)
+    void ArticulatedRobot::LIN(const std::string &referenceLink, double distance, bool withActiveAirskin) 
     {
-        // if (!moveAllowed)
-        // {
-        //     ROS_WARN("Movement not allowed. Skipping LIN command.");
-        //     moveAllowed = true;
-        //     ROS_INFO("Movement allowed again.");
-        //     return;
-        // }
+        if (withActiveAirskin)
+        {
+            moveAllowed = false;
+        }
 
         // Apply velocity and acceleration scaling
         moveGroup.setMaxVelocityScalingFactor(linearVelocity);
@@ -230,6 +227,8 @@ namespace Robot
         {
             ROS_WARN_NAMED(className, "Planning failed. The Cartesian path was not sufficiently achieved.");
         }
+
+        moveAllowed = true;
 
         moveGroup.setPoseReferenceFrame("base_link");
     }
