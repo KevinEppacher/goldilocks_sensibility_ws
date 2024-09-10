@@ -1,0 +1,24 @@
+controller_list:
+  - name: ur10_scaled_pos_joint_traj_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - ur10_shoulder_pan_joint
+      - ur10_shoulder_lift_joint
+      - ur10_elbow_joint
+      - ur10_wrist_1_joint
+      - ur10_wrist_2_joint
+      - ur10_wrist_3_joint
+
+  - name: quantec_scaled_pos_joint_traj_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: False
+    joints:
+      - quantec_joint_1
+      - quantec_joint_2
+      - quantec_joint_3
+      - quantec_joint_4
+      - quantec_joint_5
+      - quantec_joint_6

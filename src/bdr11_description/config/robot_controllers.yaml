@@ -1,0 +1,75 @@
+ur10_:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: &loop_hz 125  # Define the loop_hz anchor once
+
+  eff_joint_traj_controller:
+    type: effort_controllers/JointTrajectoryController
+    joints: &ur10_joints
+      - ur10_shoulder_pan_joint
+      - ur10_shoulder_lift_joint
+      - ur10_elbow_joint
+      - ur10_wrist_1_joint
+      - ur10_wrist_2_joint
+      - ur10_wrist_3_joint
+    gains: # Required because we're controlling an effort interface
+      ur10_shoulder_pan_joint: {p: 20000, d: 500, i: 10, i_clamp: 1}
+      ur10_shoulder_lift_joint: {p: 20000, d: 500, i: 10, i_clamp: 1}
+      ur10_elbow_joint: {p: 20000, d: 500, i: 10, i_clamp: 1}
+      ur10_wrist_1_joint: {p: 500, d: 10, i: 1, i_clamp: 1}
+      ur10_wrist_2_joint: {p: 500, d: 10, i: 1, i_clamp: 1}
+      ur10_wrist_3_joint: {p: 10, d: 0.1, i: 0, i_clamp: 1}  
+    constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      ur10_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1}
+      ur10_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1}
+      ur10_elbow_joint: {trajectory: 0.1, goal: 0.1}
+      ur10_wrist_1_joint: {trajectory: 0.1, goal: 0.1}
+      ur10_wrist_2_joint: {trajectory: 0.1, goal: 0.1}
+      ur10_wrist_3_joint: {trajectory: 0.1, goal: 0.1}
+    stop_trajectory_duration: 0.5
+    state_publish_rate: *loop_hz
+    action_monitor_rate: 10
+
+  joint_group_eff_controller:
+    type: effort_controllers/JointGroupEffortController
+    joints: *ur10_joints
+
+quantec_:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: *loop_hz  # Use the alias instead of redefining the anchor
+
+  eff_joint_traj_controller:
+    type: effort_controllers/JointTrajectoryController
+    joints: &quantec_joints
+      - quantec_joint_1
+      - quantec_joint_2
+      - quantec_joint_3
+      - quantec_joint_4
+      - quantec_joint_5
+      - quantec_joint_6
+    gains: # Required because we're controlling an effort interface
+      quantec_joint_1: {p: 20000, d: 500, i: 10, i_clamp: 1}
+      quantec_joint_2: {p: 20000, d: 500, i: 10, i_clamp: 1}
+      quantec_joint_3: {p: 20000, d: 500, i: 10, i_clamp: 1}
+      quantec_joint_4: {p: 500, d: 10, i: 1, i_clamp: 1}
+      quantec_joint_5: {p: 500, d: 10, i: 1, i_clamp: 1}
+      quantec_joint_6: {p: 10, d: 0.1, i: 0, i_clamp: 1}  
+    constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      quantec_joint_1: {trajectory: 0.1, goal: 0.1}
+      quantec_joint_2: {trajectory: 0.1, goal: 0.1}
+      quantec_joint_3: {trajectory: 0.1, goal: 0.1}
+      quantec_joint_4: {trajectory: 0.1, goal: 0.1}
+      quantec_joint_5: {trajectory: 0.1, goal: 0.1}
+      quantec_joint_6: {trajectory: 0.1, goal: 0.1}
+    stop_trajectory_duration: 0.5
+    state_publish_rate: *loop_hz
+    action_monitor_rate: 10
+
+  joint_group_eff_controller:
+    type: effort_controllers/JointGroupEffortController
+    joints: *quantec_joints

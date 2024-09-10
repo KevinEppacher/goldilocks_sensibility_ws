@@ -263,7 +263,7 @@
         </transmission>
         <gazebo>
             <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-                <robotNamespace>/quantec_ns</robotNamespace>
+                <robotNamespace>$/{quantec_ns}</robotNamespace>    
             </plugin>
         </gazebo>
 
