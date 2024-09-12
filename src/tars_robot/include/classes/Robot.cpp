@@ -77,6 +77,8 @@ namespace Robot
         //     ROS_INFO("Movement allowed again.");
         // }
 
+        // disableOctomapCollision();
+
         // Apply velocity and acceleration scaling
         moveGroup.setMaxVelocityScalingFactor(velocityScaling);
         moveGroup.setMaxAccelerationScalingFactor(accelerationScaling);
@@ -136,6 +138,8 @@ namespace Robot
             }
         }
 
+        // enableOctomapCollision();
+
         // moveAllowed = true;
     }
 
@@ -146,7 +150,7 @@ namespace Robot
             moveAllowed = false;
         }
 
-        disableOctomapCollision();
+        // disableOctomapCollision();
 
         // Apply velocity and acceleration scaling
         moveGroup.setMaxVelocityScalingFactor(velocityScaling);
@@ -227,7 +231,7 @@ namespace Robot
 
         moveAllowed = true;
 
-        enableOctomapCollision();
+        // enableOctomapCollision();
 
         moveGroup.setPoseReferenceFrame("base_link");
     }
@@ -236,15 +240,21 @@ namespace Robot
     {
         moveit::planning_interface::PlanningSceneInterface planningSceneInterface;
 
-        // Aktualisiere die Kollisionserkennung: Deaktiviere Kollision mit der Octomap
+        // Holen Sie sich alle bekannten Objekt-IDs in der Planungsumgebung
         std::vector<std::string> object_ids = planningSceneInterface.getKnownObjectNames();
-        moveit_msgs::CollisionObject octomap;
-        octomap.id = "<octomap_id>";  // Setze den richtigen ID-Namen der Octomap
-        octomap.operation = moveit_msgs::CollisionObject::REMOVE;
 
-        planningSceneInterface.applyCollisionObject(octomap);
-        ROS_INFO("Octomap-Kollisionserkennung deaktiviert.");
+        // Wenn es bekannte Objekte gibt, diese aus der Planungsumgebung entfernen
+        if (!object_ids.empty())
+        {
+            planningSceneInterface.removeCollisionObjects(object_ids);
+            ROS_INFO("Alle Kollisionsobjekte (einschließlich Octomap, falls vorhanden) wurden entfernt.");
+        }
+        else
+        {
+            ROS_INFO("Keine Objekte zum Entfernen gefunden.");
+        }
     }
+
 
     void ArticulatedRobot::enableOctomapCollision()
     {
@@ -252,7 +262,7 @@ namespace Robot
 
         // Aktualisiere die Kollisionserkennung: Füge die Octomap wieder hinzu
         moveit_msgs::CollisionObject octomap;
-        octomap.id = "<octomap_id>";  // Setze den richtigen ID-Namen der Octomap
+        octomap.id = "";  // Setze den richtigen ID-Namen der Octomap
         octomap.operation = moveit_msgs::CollisionObject::ADD;
 
         planningSceneInterface.applyCollisionObject(octomap);
