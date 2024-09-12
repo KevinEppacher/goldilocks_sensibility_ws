@@ -146,6 +146,8 @@ namespace Robot
             moveAllowed = false;
         }
 
+        disableOctomapCollision();
+
         // Apply velocity and acceleration scaling
         moveGroup.setMaxVelocityScalingFactor(velocityScaling);
         moveGroup.setMaxAccelerationScalingFactor(accelerationScaling);
@@ -225,8 +227,38 @@ namespace Robot
 
         moveAllowed = true;
 
+        enableOctomapCollision();
+
         moveGroup.setPoseReferenceFrame("base_link");
     }
+
+    void ArticulatedRobot::disableOctomapCollision()
+    {
+        moveit::planning_interface::PlanningSceneInterface planningSceneInterface;
+
+        // Aktualisiere die Kollisionserkennung: Deaktiviere Kollision mit der Octomap
+        std::vector<std::string> object_ids = planningSceneInterface.getKnownObjectNames();
+        moveit_msgs::CollisionObject octomap;
+        octomap.id = "<octomap_id>";  // Setze den richtigen ID-Namen der Octomap
+        octomap.operation = moveit_msgs::CollisionObject::REMOVE;
+
+        planningSceneInterface.applyCollisionObject(octomap);
+        ROS_INFO("Octomap-Kollisionserkennung deaktiviert.");
+    }
+
+    void ArticulatedRobot::enableOctomapCollision()
+    {
+        moveit::planning_interface::PlanningSceneInterface planningSceneInterface;
+
+        // Aktualisiere die Kollisionserkennung: Füge die Octomap wieder hinzu
+        moveit_msgs::CollisionObject octomap;
+        octomap.id = "<octomap_id>";  // Setze den richtigen ID-Namen der Octomap
+        octomap.operation = moveit_msgs::CollisionObject::ADD;
+
+        planningSceneInterface.applyCollisionObject(octomap);
+        ROS_INFO("Octomap-Kollisionserkennung aktiviert.");
+    }
+
 
     void ArticulatedRobot::logRobotState()
     {

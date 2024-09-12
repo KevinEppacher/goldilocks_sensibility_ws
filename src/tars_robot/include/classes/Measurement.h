@@ -41,7 +41,6 @@ namespace Measurement
 
         // Sensibility measurement
         void run_measurement();
-        void zero_ft_sensor();
 
     private:
         void loadParameters();

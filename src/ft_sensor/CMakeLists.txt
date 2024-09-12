@@ -56,3 +56,13 @@ target_link_libraries(airskin_state custom_lib ${catkin_LIBRARIES} ${OpenCV_LIBS
 
 # Add dependencies for the advertise_topics_for_UR program
 add_dependencies(airskin_state ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+############################################################
+# CMakelist for zero_ft_sensor node
+############################################################
+
+# Install Python scripts
+catkin_install_python(PROGRAMS
+  scripts/zero_ft_sensor.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

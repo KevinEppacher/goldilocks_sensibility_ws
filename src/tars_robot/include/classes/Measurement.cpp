@@ -72,6 +72,8 @@ namespace Measurement
         Robot::ArticulatedRobot ur10(nh);
         bool withActiveAirskin = true;
 
+        ROS_INFO("Starting the sensibility measurement...");
+
         if (poses.poses.size() == 0)
         {
             ROS_ERROR("No poses to measure");
@@ -82,16 +84,11 @@ namespace Measurement
         {
             ur10.PTP(pose, ptpVelocity, ptpAcceleration);
             ur10.LIN("tool0_link", max_measuring_distance, linearVelocity, linearAcceleration);
-            zero_ft_sensor();
             ros::Duration(1.0).sleep();
             ur10.LIN("tool0_link", -max_measuring_distance, linearVelocity * 10, linearAcceleration * 10, withActiveAirskin);
         }
     }
 
-    void Sensibility::zero_ft_sensor()
-    {
-
-    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

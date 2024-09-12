@@ -32,6 +32,9 @@ namespace Robot {
         void configureMoveGroup();
         void loadParameters();
         void airskinStateCallback(const std_msgs::Bool::ConstPtr& msg);
+        void disableOctomapCollision();
+        void enableOctomapCollision();
+
 
         std::string planningGroup;
         ros::AsyncSpinner spinner;
