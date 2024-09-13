@@ -236,38 +236,38 @@ namespace Robot
         moveGroup.setPoseReferenceFrame("base_link");
     }
 
-    void ArticulatedRobot::disableOctomapCollision()
-    {
-        moveit::planning_interface::PlanningSceneInterface planningSceneInterface;
+    // void ArticulatedRobot::disableOctomapCollision()
+    // {
+    //     moveit::planning_interface::PlanningSceneInterface planningSceneInterface;
 
-        // Holen Sie sich alle bekannten Objekt-IDs in der Planungsumgebung
-        std::vector<std::string> object_ids = planningSceneInterface.getKnownObjectNames();
+    //     // Holen Sie sich alle bekannten Objekt-IDs in der Planungsumgebung
+    //     std::vector<std::string> object_ids = planningSceneInterface.getKnownObjectNames();
 
-        // Wenn es bekannte Objekte gibt, diese aus der Planungsumgebung entfernen
-        if (!object_ids.empty())
-        {
-            planningSceneInterface.removeCollisionObjects(object_ids);
-            ROS_INFO("Alle Kollisionsobjekte (einschließlich Octomap, falls vorhanden) wurden entfernt.");
-        }
-        else
-        {
-            ROS_INFO("Keine Objekte zum Entfernen gefunden.");
-        }
-    }
+    //     // Wenn es bekannte Objekte gibt, diese aus der Planungsumgebung entfernen
+    //     if (!object_ids.empty())
+    //     {
+    //         planningSceneInterface.removeCollisionObjects(object_ids);
+    //         ROS_INFO("Alle Kollisionsobjekte (einschließlich Octomap, falls vorhanden) wurden entfernt.");
+    //     }
+    //     else
+    //     {
+    //         ROS_INFO("Keine Objekte zum Entfernen gefunden.");
+    //     }
+    // }
 
 
-    void ArticulatedRobot::enableOctomapCollision()
-    {
-        moveit::planning_interface::PlanningSceneInterface planningSceneInterface;
+    // void ArticulatedRobot::enableOctomapCollision()
+    // {
+    //     moveit::planning_interface::PlanningSceneInterface planningSceneInterface;
 
-        // Aktualisiere die Kollisionserkennung: Füge die Octomap wieder hinzu
-        moveit_msgs::CollisionObject octomap;
-        octomap.id = "";  // Setze den richtigen ID-Namen der Octomap
-        octomap.operation = moveit_msgs::CollisionObject::ADD;
+    //     // Aktualisiere die Kollisionserkennung: Füge die Octomap wieder hinzu
+    //     moveit_msgs::CollisionObject octomap;
+    //     octomap.id = "";  // Setze den richtigen ID-Namen der Octomap
+    //     octomap.operation = moveit_msgs::CollisionObject::ADD;
 
-        planningSceneInterface.applyCollisionObject(octomap);
-        ROS_INFO("Octomap-Kollisionserkennung aktiviert.");
-    }
+    //     planningSceneInterface.applyCollisionObject(octomap);
+    //     ROS_INFO("Octomap-Kollisionserkennung aktiviert.");
+    // }
 
 
     void ArticulatedRobot::logRobotState()
@@ -291,5 +291,12 @@ namespace Robot
         ROS_INFO("Current end effector pose: x=%.3f, y=%.3f, z=%.3f, orientation (w,x,y,z)=(%.3f,%.3f,%.3f,%.3f)",
                  currentPose.pose.position.x, currentPose.pose.position.y, currentPose.pose.position.z,
                  currentPose.pose.orientation.w, currentPose.pose.orientation.x, currentPose.pose.orientation.y, currentPose.pose.orientation.z);
+    }
+
+    geometry_msgs::Pose ArticulatedRobot::getCurrentPose(const std::string& referenceFrame)
+    {
+        // Hole die aktuelle Pose des Endeffektors
+        geometry_msgs::PoseStamped currentPoseStamped = moveGroup.getCurrentPose(referenceFrame);
+        return currentPoseStamped.pose;
     }
 }

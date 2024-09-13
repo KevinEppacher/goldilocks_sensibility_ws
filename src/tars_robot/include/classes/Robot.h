@@ -25,15 +25,16 @@ namespace Robot {
     public:
         ArticulatedRobot(ros::NodeHandle& nodeHandler);
         void PTP(geometry_msgs::Pose target, double velocityScaling, double accelerationScaling);
-        void LIN(const std::string &referenceLink, double distance, double velocityScaling, double accelerationScaling, bool withActiveAirskin = false) ;
+        void LIN(const std::string &referenceLink, double distance, double velocityScaling, double accelerationScaling, bool withActiveAirskin = false);
+        geometry_msgs::Pose getCurrentPose(const std::string& referenceFrame = "tool0_link");
 
     private:
         void logRobotState();
         void configureMoveGroup();
         void loadParameters();
         void airskinStateCallback(const std_msgs::Bool::ConstPtr& msg);
-        void disableOctomapCollision();
-        void enableOctomapCollision();
+        // void disableOctomapCollision();
+        // void enableOctomapCollision();
 
 
         std::string planningGroup;

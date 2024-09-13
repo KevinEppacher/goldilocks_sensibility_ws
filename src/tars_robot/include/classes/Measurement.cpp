@@ -19,11 +19,14 @@ namespace Measurement
 
     Sensibility::~Sensibility()
     {
+        if (csvFile.is_open())
+        {
+            csvFile.close();
+        }
     }
 
     void Sensibility::loadParameters()
     {
-        // Load parameters from the parameter server (YAML file)
         nh.param("robot_motion/max_measuring_distance", max_measuring_distance, 0.05);
         nh.param("robot_motion/linear_velocity", linearVelocity, 0.5);
         nh.param("robot_motion/linear_acceleration", linearAcceleration, 0.5);
@@ -31,30 +34,70 @@ namespace Measurement
         nh.param("robot_motion/ptp_acceleration", ptpAcceleration, 0.05);
     }
 
-    void Sensibility::forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr &forceTorque)
-    {
-        msgAbsoluteForce.data = sqrt(pow(forceTorque->position.x, 2) + pow(forceTorque->position.y, 2) + pow(forceTorque->position.z, 2));
-    }
-
     void Sensibility::publishAbsoluteForce()
     {
         absoluteForce.publish(msgAbsoluteForce);
     }
 
+    std::string Sensibility::getCurrentDateTime()
+    {
+        auto now = std::chrono::system_clock::now();
+        auto in_time_t = std::chrono::system_clock::to_time_t(now);
+        std::stringstream ss;
+        ss << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d_%H-%M");
+        return ss.str();
+    }
+
+    void Sensibility::createDirectory(const std::string &dirName)
+    {
+        if (mkdir(dirName.c_str(), 0777) == -1)
+        {
+            ROS_ERROR_STREAM("Error creating directory: " << strerror(errno));
+        }
+        else
+        {
+            ROS_INFO_STREAM("Directory created: " << dirName);
+        }
+    }
+
+    void Sensibility::forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr &forceTorque)
+    {
+        // Berechne die absolute Kraft
+        msgAbsoluteForce.data = sqrt(pow(forceTorque->position.x, 2) + pow(forceTorque->position.y, 2) + pow(forceTorque->position.z, 2));
+
+        if (startMeasurement)
+        {
+            // Hole die aktuelle Pose des Endeffektors von ArticulatedRobot
+            // Robot::ArticulatedRobot robot(nh);
+            // geometry_msgs::Pose currentPose = robot.getCurrentPose("tool0_link");
+
+            // Berechne die Distanz zwischen der aktuellen und der letzten Pose
+            double deltaX = currentPose.position.x - lastPose.position.x;
+            double deltaY = currentPose.position.y - lastPose.position.y;
+            double deltaZ = currentPose.position.z - lastPose.position.z;
+
+            double deltaDistance = sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+
+            // Summiere die Distanz über die Zeit
+            scalarDistance.data += deltaDistance;
+
+            ROS_INFO_NAMED("Sensibility", "Current distance: %f", scalarDistance.data);
+
+            // Schreibe die Daten in die CSV-Datei
+            if (csvFile.is_open())
+            {
+                csvFile << ros::Time::now() << "," << msgAbsoluteForce.data << "," << scalarDistance.data * 1000 << "\n";  // Distanz in mm
+            }
+
+            // Speichere die aktuelle Pose als letzte Pose für die nächste Iteration
+            lastPose = currentPose;
+        }
+    }
+
+
     void Sensibility::poseUrCallback(const geometry_msgs::Pose::ConstPtr &poseUR)
     {
         currentPose = *poseUR;
-
-        if (poseUR->orientation.w == 1)
-        {
-            distanceVektor.position.x += abs(currentPose.position.x - lastPose.position.x);
-            distanceVektor.position.y += abs(currentPose.position.y - lastPose.position.y);
-            distanceVektor.position.z += abs(currentPose.position.z - lastPose.position.z);
-
-            scalarDistance.data = sqrt(pow(distanceVektor.position.x, 2) + pow(distanceVektor.position.y, 2) + pow(distanceVektor.position.z, 2));
-        }
-
-        lastPose = currentPose;
     }
 
     void Sensibility::measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr &measurementsPointsMsg)
@@ -69,8 +112,9 @@ namespace Measurement
 
     void Sensibility::run_measurement()
     {
-        Robot::ArticulatedRobot ur10(nh);
         bool withActiveAirskin = true;
+
+        Robot::ArticulatedRobot ur10(nh);
 
         ROS_INFO("Starting the sensibility measurement...");
 
@@ -80,106 +124,58 @@ namespace Measurement
             return;
         }
 
+        // Hole den Pfad zum tars_robot-Package
+        std::string packagePath = ros::package::getPath("tars_robot");
+        if (packagePath.empty())
+        {
+            ROS_ERROR("Could not find package path for tars_robot.");
+            return;
+        }
+
+        // Speicherpfad im data-Verzeichnis des tars_robot-Packages
+        std::string dataPath = packagePath + "/data";
+        ROS_INFO_STREAM("Data will be saved to: " << dataPath);
+
+        // Erstelle den Hauptordner für die Messungen
+        mainFolder = dataPath + "/" + getCurrentDateTime() + "_Measurement-Set";
+        createDirectory(mainFolder);
+        ROS_INFO_STREAM("Created main measurement directory: " << mainFolder);
+
+        measurementID = 0;
+
         for (auto &pose : poses.poses)
         {
+            measurementID++;
+            poseFolder = mainFolder + "/" + std::to_string(measurementID) + "_Measurement";
+            createDirectory(poseFolder);
+            ROS_INFO_STREAM("Created folder for measurement " << measurementID << ": " << poseFolder);
+
+            // Erstelle die CSV-Datei
+            csvFilePath = poseFolder + "/" + std::to_string(measurementID) + "_Measurement.csv";
+            csvFile.open(csvFilePath);
+            if (!csvFile.is_open())
+            {
+                ROS_ERROR_STREAM("Could not create CSV file: " << csvFilePath);
+                return;
+            }
+            csvFile << "Timestamp,AbsoluteForce,Distance(mm)\n";  // CSV-Header
+            ROS_INFO_STREAM("CSV file created: " << csvFilePath);
+
             ur10.PTP(pose, ptpVelocity, ptpAcceleration);
+            startMeasurement = true;
+
+            // LIN fahren (Messung)
             ur10.LIN("tool0_link", max_measuring_distance, linearVelocity, linearAcceleration);
-            ros::Duration(1.0).sleep();
+
+            // Nach der Messung die Messung stoppen
+            startMeasurement = false;
+
+            csvFile.close();
+            ROS_INFO_STREAM("Measurement " << measurementID << " completed and saved to CSV at: " << csvFilePath);
+
+            // Zurückfahren
+            ros::Duration(2.0).sleep();
             ur10.LIN("tool0_link", -max_measuring_distance, linearVelocity * 10, linearAcceleration * 10, withActiveAirskin);
         }
-    }
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    csvPlotter::csvPlotter(const std::string &filename) : filename(filename)
-    {
-    }
-
-    csvPlotter::csvPlotter()
-    {
-    }
-
-    csvPlotter::~csvPlotter()
-    {
-    }
-
-    void csvPlotter::getTime()
-    {
-        currentTime = std::time(nullptr);
-        localTime = std::localtime(&currentTime);
-    }
-
-    bool csvPlotter::createCSVFile()
-    {
-        csvPlotter::getTime();
-
-        std::stringstream dateStream;
-        dateStream << std::setw(4) << std::setfill('0') << (localTime->tm_year + 1900) << "-"
-                   << std::setw(2) << std::setfill('0') << (localTime->tm_mon + 1) << "-"
-                   << std::setw(2) << std::setfill('0') << localTime->tm_mday << "-"
-                   << std::setw(2) << std::setfill('0') << localTime->tm_hour << "-"
-                   << std::setw(2) << std::setfill('0') << localTime->tm_min;
-
-        std::string formattedDate = dateStream.str();
-
-        std::cout << formattedDate << std::endl;
-
-        filename = "src/sensibility_measurements/measurements/" + formattedDate + "-Sensitivity-Measurement.csv";
-
-        file.open(filename, std::ios::app);
-
-        if (!file.is_open())
-        {
-            std::cerr << "Failed to open file: " << filename << std::endl;
-            return 0;
-        }
-
-        file << "Time [s],";
-        for (int i = 1; i <= PadQuantity; i++)
-        {
-            file << "Pad-Nr " << i << ",Absolute Force [N],Airskin State, Distance [mm],";
-        }
-        file << ",\n";
-
-        return 1;
-    }
-
-    bool csvPlotter::writeCSVData(std_msgs::Float64 *msgAbsoluteForce, std_msgs::Int16 *airskinPadNumber, std_msgs::String *airskinState, std_msgs::Float64 *distance)
-    {
-        csvPlotter::getTime();
-
-        msgAbsoluteForceString = std::to_string(msgAbsoluteForce->data);
-        airskinPadNumberString = std::to_string(airskinPadNumber->data);
-        timeString = std::to_string(time);
-        distanceString = std::to_string(distance->data);
-        airskinPadNumberInt = airskinPadNumber->data;
-
-        file << timeString << ",";
-
-        if (airskinPadNumberInt != 0)
-        {
-            if (airskinState->data == "True")
-            {
-                airskinStateString = "1";
-            }
-            else
-            {
-                airskinStateString = "0";
-            }
-
-            quantityOfZeros = sectionColumn * airskinPadNumber->data - sectionColumn;
-
-            for (size_t i = 0; i < quantityOfZeros; i++)
-            {
-                file << "0,";
-            }
-            file << airskinPadNumberString << "," << msgAbsoluteForceString << "," << airskinStateString << "," << distanceString;
-            file << "\n";
-
-            std::cout << "Time: " << timeString.c_str() << "   || AIRSKIN Pad Nummer: " << airskinPadNumberString.c_str() << " || Absolute Force: " << msgAbsoluteForceString.c_str() << "  || AIRSKIN State: " << airskinStateString.c_str() << "   || distance: " << distanceString.c_str() << std::endl;
-        }
-
-        return 1;
     }
 }

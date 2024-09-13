@@ -19,6 +19,9 @@
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseArray.h>
 #include <iostream>
+#include <chrono>
+#include <sys/stat.h>
+#include <std_msgs/Float64.h>
 
 // Custom classes
 #include "Robot.h"
@@ -31,10 +34,11 @@ namespace Measurement
     public:
         Sensibility(ros::NodeHandle &nodehandler);
         ~Sensibility();
-        // Publishers
+
+        // Publisher
         void publishAbsoluteForce();
 
-        // Subscibers
+        // Subscribers
         void forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr &forceTorque);
         void poseUrCallback(const geometry_msgs::Pose::ConstPtr &poseUR);
         void measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr &measurementsPointsMsg);
@@ -43,69 +47,48 @@ namespace Measurement
         void run_measurement();
 
     private:
+        // Utility functions
         void loadParameters();
+        std::string getCurrentDateTime();
+        void createDirectory(const std::string &dirName);
 
         // Sensibility measurement version 1
         std_msgs::Float64 msgAbsoluteForce;
         geometry_msgs::Pose currentPose, lastPose, distanceVektor;
         std_msgs::Float64 msgDistance;
         std_msgs::Float64 scalarDistance;
+
+        // ROS variables
         ros::NodeHandle nh;
         ros::Publisher forceTorqueSensor;
         ros::Publisher absoluteForce;
         ros::Subscriber forceTorqueSensorSub;
         ros::Publisher poseUR;
         ros::Subscriber poseUrSub;
-
-        // Sensibility measurement version 2
         ros::Subscriber measurementPointsSub;
+
+        // Custom classes
+        // Robot::ArticulatedRobot ur10;
+        
+        // Sensibility measurement version 2
         geometry_msgs::PoseArray poses;
 
-        // general
+        // General
         std::string nodeName = "Sensibility";
 
+        // Measurement-related variables
         double max_measuring_distance;
-        // Parameters loaded from YAML
-        double linearDistance; 
-        double linearVelocity; double linearAcceleration;
-        double ptpVelocity; double ptpAcceleration;
-    };
+        double linearVelocity, linearAcceleration;
+        double ptpVelocity, ptpAcceleration;
 
-    class csvPlotter
-    {
-    public:
-        csvPlotter(const std::string &filename);
-        csvPlotter();
-        ~csvPlotter();
-        bool createCSVFile();
-        void getTime();
-        bool createExcelFile();
-        bool writeData(std_msgs::Float64 msgAbsoluteForce, std_msgs::Int16 airskinPadNumber, std_msgs::String airskinState);
-        bool writeCSVData(std_msgs::Float64 *msgAbsoluteForce, std_msgs::Int16 *airskinPadNumber, std_msgs::String *airskinState, std_msgs::Float64 *distance);
-        bool writeExcelData(std_msgs::Float64 *msgAbsoluteForce, std_msgs::Int16 *airskinPadNumber, std_msgs::String *airskinState, std_msgs::Float64 *distance);
-        bool closeWorkbook();
+        bool startMeasurement = false;
+        int measurementID = 0;
 
-    private:
-        std::string filename;
-        std::ofstream sensitivityFile;
-        std::time_t currentTime;
-        std::tm *localTime;
-        std::uint32_t currentTimeSec;
-        float time = 0, frequency = 0.001;
-        int rowArray[15];
-        int row = 1;
-        std::string msgAbsoluteForceString;
-        std::string airskinPadNumberString;
-        std::string timeString;
-        std::string airskinStateString;
-        std::string distanceString;
-        int airskinPadNumberInt;
-        std::ofstream file;
-        int PadQuantity = 15;
-        int sectionColumn = 4;
-        int colSection = 4;
-        int columThreshold;
-        int quantityOfZeros = 0;
+        // File and folder variables
+        std::string mainFolder;
+        std::string poseFolder;
+        std::string csvFilePath;
+        std::ofstream csvFile;
     };
 
 }
