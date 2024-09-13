@@ -2,16 +2,16 @@
 
 namespace Measurement
 {
-    Sensibility::Sensibility(ros::NodeHandle &nodehandler) : nh(nodehandler)
+    Sensibility::Sensibility(ros::NodeHandle &nodehandler) : nh(nodehandler), tfListener(tfBuffer)
     {
-        // Publisher and Subscriber
+        // Publisher und Subscriber
         forceTorqueSensor = nh.advertise<geometry_msgs::Pose>("force_torque_sensor", 100);
         absoluteForce = nh.advertise<std_msgs::Float64>("absolute_force", 100);
         forceTorqueSensorSub = nh.subscribe("force_torque_sensor", 100, &Sensibility::forceTorqueSensorCallback, this);
         poseUR = nh.advertise<geometry_msgs::Pose>("pose_ur_robot", 100);
         poseUrSub = nh.subscribe("pose_ur_robot", 100, &Sensibility::poseUrCallback, this);
 
-        // Publisher and Subscriber for sensibility measurement
+        // Publisher und Subscriber für Sensibility-Messungen
         measurementPointsSub = nh.subscribe("measurement_points", 1, &Sensibility::measurementPointsCallback, this);
 
         loadParameters();
@@ -67,9 +67,8 @@ namespace Measurement
 
         if (startMeasurement)
         {
-            // Hole die aktuelle Pose des Endeffektors von ArticulatedRobot
-            // Robot::ArticulatedRobot robot(nh);
-            // geometry_msgs::Pose currentPose = robot.getCurrentPose("tool0_link");
+            // Hole die aktuelle Pose des Endeffektors
+            currentPose = getCurrentTCPPose();
 
             // Berechne die Distanz zwischen der aktuellen und der letzten Pose
             double deltaX = currentPose.position.x - lastPose.position.x;
@@ -81,6 +80,8 @@ namespace Measurement
             // Summiere die Distanz über die Zeit
             scalarDistance.data += deltaDistance;
 
+            ROS_INFO_NAMED("Sensibility", "Current Pose x=%f, y=%f, z=%f", currentPose.position.x, currentPose.position.y, currentPose.position.z);
+            ROS_INFO_NAMED("Sensibility", "Last Pose x=%f, y=%f, z=%f", lastPose.position.x, lastPose.position.y, lastPose.position.z);
             ROS_INFO_NAMED("Sensibility", "Current distance: %f", scalarDistance.data);
 
             // Schreibe die Daten in die CSV-Datei
@@ -94,6 +95,29 @@ namespace Measurement
         }
     }
 
+    geometry_msgs::Pose Sensibility::getCurrentTCPPose()
+    {
+        geometry_msgs::Pose currentPose;
+
+        try
+        {
+            // Hole die Transformation von base_link zu tool0_link
+            geometry_msgs::TransformStamped transformStamped = tfBuffer.lookupTransform("base_link", "tool0_link", ros::Time(0), ros::Duration(3.0));
+
+            // Konvertiere TransformStamped zu Pose
+            currentPose.position.x = transformStamped.transform.translation.x;
+            currentPose.position.y = transformStamped.transform.translation.y;
+            currentPose.position.z = transformStamped.transform.translation.z;
+
+            currentPose.orientation = transformStamped.transform.rotation;
+        }
+        catch (tf2::TransformException &ex)
+        {
+            ROS_WARN("%s", ex.what());
+        }
+
+        return currentPose;
+    }
 
     void Sensibility::poseUrCallback(const geometry_msgs::Pose::ConstPtr &poseUR)
     {
@@ -103,11 +127,6 @@ namespace Measurement
     void Sensibility::measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr &measurementsPointsMsg)
     {
         poses = *measurementsPointsMsg;
-        // std::cout<<"Number of poses: "<<poses.poses.size()<<std::endl;
-        // for(auto& pose : poses.poses)
-        // {
-        //     ROS_INFO_NAMED("Sensibility", "Pose: x=%f, y=%f, z=%f", pose.position.x, pose.position.y, pose.position.z);
-        // }
     }
 
     void Sensibility::run_measurement()
@@ -161,7 +180,13 @@ namespace Measurement
             csvFile << "Timestamp,AbsoluteForce,Distance(mm)\n";  // CSV-Header
             ROS_INFO_STREAM("CSV file created: " << csvFilePath);
 
+            // Setze die Distanz auf 0, bevor eine neue Messung beginnt
+            scalarDistance.data = 0;
+            lastPose = getCurrentTCPPose();  // Setze die initiale Pose vor der Messung
+
             ur10.PTP(pose, ptpVelocity, ptpAcceleration);
+            ros::Duration(1.0).sleep(); // Warten, um sicherzustellen, dass die Pose stabil ist
+
             startMeasurement = true;
 
             // LIN fahren (Messung)
@@ -175,7 +200,7 @@ namespace Measurement
 
             // Zurückfahren
             ros::Duration(2.0).sleep();
-            ur10.LIN("tool0_link", -max_measuring_distance, linearVelocity * 10, linearAcceleration * 10, withActiveAirskin);
+            ur10.LIN("tool0_link", -max_measuring_distance, linearVelocity * 20, linearAcceleration * 20, withActiveAirskin);
         }
     }
 }

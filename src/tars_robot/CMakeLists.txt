@@ -136,3 +136,12 @@ catkin_install_python(PROGRAMS
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
+############################################################
+# CMakelist for create_sensibility_plot node
+############################################################
+
+# Install Python scripts
+catkin_install_python(PROGRAMS
+  scripts/create_sensibility_plot.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

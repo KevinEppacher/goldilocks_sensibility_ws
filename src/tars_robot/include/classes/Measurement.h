@@ -22,6 +22,8 @@
 #include <chrono>
 #include <sys/stat.h>
 #include <std_msgs/Float64.h>
+#include <tf2_ros/transform_listener.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 // Custom classes
 #include "Robot.h"
@@ -42,6 +44,7 @@ namespace Measurement
         void forceTorqueSensorCallback(const geometry_msgs::Pose::ConstPtr &forceTorque);
         void poseUrCallback(const geometry_msgs::Pose::ConstPtr &poseUR);
         void measurementPointsCallback(const geometry_msgs::PoseArray::ConstPtr &measurementsPointsMsg);
+        geometry_msgs::Pose getCurrentTCPPose();
 
         // Sensibility measurement
         void run_measurement();
@@ -67,9 +70,10 @@ namespace Measurement
         ros::Subscriber poseUrSub;
         ros::Subscriber measurementPointsSub;
 
-        // Custom classes
-        // Robot::ArticulatedRobot ur10;
-        
+        // tf2 Buffer und Listener
+        tf2_ros::Buffer tfBuffer;
+        tf2_ros::TransformListener tfListener;
+
         // Sensibility measurement version 2
         geometry_msgs::PoseArray poses;
 
