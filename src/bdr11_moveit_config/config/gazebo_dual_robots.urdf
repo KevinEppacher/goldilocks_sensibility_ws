@@ -5,25 +5,27 @@
 <!-- =================================================================================== -->
 <robot name="dual_robots">
     <!-- Define the world link -->
-    <link name="world_link">
+    <link name="dual_robot_link">
         <inertial>
             <mass value="1.0" />
-            <origin rpy="0 0 0" xyz="0 0 0" />
+            <origin rpy="0 0 0" xyz="0 0 0.0" />
+            <!-- Raise the link by changing the z-value -->
             <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
         </inertial>
         <visual>
             <geometry>
-                <box size="0.1 0.1 0.1" />
+                <box size="0.01 0.01 0.01" />
             </geometry>
+            <collision>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <box size="0.01 0.01 0.01" />
+                </geometry>
+            </collision>
             <material name="gray">
                 <color rgba="0.5 0.5 0.5 1.0" />
             </material>
         </visual>
-        <collision>
-            <geometry>
-                <box size="0.1 0.1 0.1" />
-            </geometry>
-        </collision>
     </link>
     <!--https://github.com/carlosjoserg/force-torque-sensor/tree/master/model-->
     <!-- Add feedback for camera-related joints -->
@@ -116,7 +118,7 @@
     </gazebo>
     <!-- call -->
     <!-- <xacro:ur10_robot/> -->
-    <link name="ur10_table_link">
+    <link name="table_link">
         <inertial>
             <origin rpy="0 0 0" xyz="0.503679778923471 0.436750246454337 0.533162239913515" />
             <mass value="164.427518164029" />
@@ -138,7 +140,7 @@
             </geometry>
         </collision>
     </link>
-    <link name="ur10_adapter_link">
+    <link name="adapter_link">
         <inertial>
             <origin rpy="0 0 0" xyz="0.00148762870939384 -5.55111512312578E-17 0.0184969952138566" />
             <mass value="1.3940393775037" />
@@ -160,13 +162,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_adapter_joint" type="fixed">
+    <joint name="adapter_joint" type="fixed">
         <origin rpy="0 0 0" xyz="0.17 0.4 0.9" />
-        <parent link="ur10_table_link" />
-        <child link="ur10_adapter_link" />
+        <parent link="table_link" />
+        <child link="adapter_link" />
         <axis xyz="0 0 0" />
     </joint>
-    <link name="ur10_base_link">
+    <link name="base_link">
         <inertial>
             <origin rpy="0 0 0" xyz="0.0011845 -2.7253E-08 0.017325" />
             <mass value="0.86268" />
@@ -188,13 +190,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_base_joint" type="fixed">
+    <joint name="base_joint" type="fixed">
         <origin rpy="0 0 0" xyz="0 0 0.037" />
-        <parent link="ur10_adapter_link" />
-        <child link="ur10_base_link" />
+        <parent link="adapter_link" />
+        <child link="base_link" />
         <axis xyz="0 0 0" />
     </joint>
-    <link name="ur10_shoulder_link">
+    <link name="shoulder_link">
         <inertial>
             <origin rpy="0 0 0" xyz="2.679E-07 0.010024 0.0831" />
             <mass value="7.778" />
@@ -216,14 +218,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_shoulder_pan_joint" type="revolute">
+    <joint name="shoulder_pan_joint" type="revolute">
         <origin rpy="0 0 -1.57" xyz="0 0 0.038" />
-        <parent link="ur10_base_link" />
-        <child link="ur10_shoulder_link" />
+        <parent link="base_link" />
+        <child link="shoulder_link" />
         <axis xyz="0 0 1" />
         <limit effort="330" lower="-6.28" upper="6.28" velocity="120" />
     </joint>
-    <link name="ur10_upper_arm_link">
+    <link name="upper_arm_link">
         <inertial>
             <origin rpy="0 0 0" xyz="-0.25443 -2.027E-07 0.082537" />
             <mass value="12.93" />
@@ -245,14 +247,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_shoulder_lift_joint" type="revolute">
+    <joint name="shoulder_lift_joint" type="revolute">
         <origin rpy="1.5707963267949 0.0240929901040578 3.14159265358979" xyz="0 0.0859989999999999 0.0882571802206784" />
-        <parent link="ur10_shoulder_link" />
-        <child link="ur10_upper_arm_link" />
+        <parent link="shoulder_link" />
+        <child link="upper_arm_link" />
         <axis xyz="0 0 1" />
         <limit effort="330" lower="-6.28" upper="6.28" velocity="120" />
     </joint>
-    <link name="ur10_forearm_link">
+    <link name="forearm_link">
         <inertial>
             <origin rpy="0 0 0" xyz="-0.24807 1.9251E-09 -0.034936" />
             <mass value="3.87" />
@@ -274,14 +276,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_elbow_joint" type="revolute">
+    <joint name="elbow_joint" type="revolute">
         <origin rpy="0 0 0.0242666741712824" xyz="-0.612 0 0" />
-        <parent link="ur10_upper_arm_link" />
-        <child link="ur10_forearm_link" />
+        <parent link="upper_arm_link" />
+        <child link="forearm_link" />
         <axis xyz="0 0 1" />
         <limit effort="150" lower="-3.14" upper="3.14" velocity="180" />
     </joint>
-    <link name="ur10_wrist_1_link">
+    <link name="wrist_1_link">
         <inertial>
             <origin rpy="0 0 0" xyz="8.3814E-09 -0.010045 0.046994" />
             <mass value="1.96" />
@@ -303,14 +305,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_wrist_1_joint" type="revolute">
+    <joint name="wrist_1_joint" type="revolute">
         <origin rpy="0 0 -0.000173684067224549" xyz="-0.5716 0 0.0220010000000001" />
-        <parent link="ur10_forearm_link" />
-        <child link="ur10_wrist_1_link" />
+        <parent link="forearm_link" />
+        <child link="wrist_1_link" />
         <axis xyz="0 0 1" />
         <limit effort="56" lower="-6.28" upper="6.28" velocity="180" />
     </joint>
-    <link name="ur10_wrist_2_link">
+    <link name="wrist_2_link">
         <inertial>
             <origin rpy="0 0 0" xyz="-8.3814E-09 0.010045 0.046994" />
             <mass value="1.96" />
@@ -332,14 +334,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_wrist_2_joint" type="revolute">
+    <joint name="wrist_2_joint" type="revolute">
         <origin rpy="1.5707963267949 0 0" xyz="0 -0.0617000000000001 0.054" />
-        <parent link="ur10_wrist_1_link" />
-        <child link="ur10_wrist_2_link" />
+        <parent link="wrist_1_link" />
+        <child link="wrist_2_link" />
         <axis xyz="0 0 1" />
         <limit effort="56" lower="-6.28" upper="6.28" velocity="180" />
     </joint>
-    <link name="ur10_wrist_3_link">
+    <link name="wrist_3_link">
         <inertial>
             <origin rpy="0 0 0" xyz="2.2204E-16 -1.1102E-16 0.015005" />
             <mass value="0.202" />
@@ -361,14 +363,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_wrist_3_joint" type="revolute">
+    <joint name="wrist_3_joint" type="revolute">
         <origin rpy="-1.5707963267949 0.0141025375343068 0" xyz="0 0.0617 0.054" />
-        <parent link="ur10_wrist_2_link" />
-        <child link="ur10_wrist_3_link" />
+        <parent link="wrist_2_link" />
+        <child link="wrist_3_link" />
         <axis xyz="0 0 1" />
         <limit effort="56" lower="-6.28" upper="6.28" velocity="180" />
     </joint>
-    <link name="ur10_tool0_link">
+    <link name="tool0_link">
         <inertial>
             <origin rpy="0 0 0" xyz="-9.51811385263568E-09 -0.00040829549117638 -0.063076624107084" />
             <mass value="0.159494248297753" />
@@ -390,13 +392,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_tool0" type="fixed">
+    <joint name="tool0" type="fixed">
         <origin rpy="0.785398163397435 0 0" xyz="0 -0.0486072989450782 0.0984743807368732" />
-        <parent link="ur10_wrist_3_link" />
-        <child link="ur10_tool0_link" />
+        <parent link="wrist_3_link" />
+        <child link="tool0_link" />
         <axis xyz="0 0 0" />
     </joint>
-    <link name="ur10_camera_link">
+    <link name="camera_link">
         <inertial>
             <origin rpy="0 0 0" xyz="-1.61524861117535E-05 -0.00212700504491092 -0.0193765848255853" />
             <mass value="0.0840231018507497" />
@@ -418,82 +420,22 @@
             </geometry>
         </collision>
     </link>
-    <joint name="ur10_tool_camera" type="fixed">
+    <joint name="tool_camera" type="fixed">
         <origin rpy="0.856180071631976 0 0" xyz="0 0.0158483827537649 0.0919267022436815" />
-        <parent link="ur10_wrist_3_link" />
-        <child link="ur10_camera_link" />
+        <parent link="wrist_3_link" />
+        <child link="camera_link" />
         <axis xyz="0 0 0" />
     </joint>
-    <transmission name="ur10_trans_shoulder_pan_joint">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="ur10_shoulder_pan_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="ur10_shoulder_pan_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="ur10_trans_shoulder_lift_joint">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="ur10_shoulder_lift_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="ur10_shoulder_lift_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="ur10_trans_elbow_joint">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="ur10_elbow_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="ur10_elbow_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="ur10_trans_wrist_1_joint">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="ur10_wrist_1_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="ur10_wrist_1_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="ur10_trans_wrist_2_joint">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="ur10_wrist_2_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="ur10_wrist_2_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="ur10_trans_wrist_3_joint">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="ur10_wrist_3_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="ur10_wrist_3_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
     <!-- Forces the joint to send feedback  -->
-    <gazebo reference="ur10_wrist_3_joint">
+    <gazebo reference="wrist_3_joint">
         <provideFeedback>true</provideFeedback>
     </gazebo>
     <!-- The ft_sensor plugin  -->
     <gazebo>
-        <plugin filename="libgazebo_ros_ft_sensor.so" name="ur10_wrist_3_joint_ft_sensor">
+        <plugin filename="libgazebo_ros_ft_sensor.so" name="wrist_3_joint_ft_sensor">
             <updateRate>1000.0</updateRate>
             <topicName>/wrench</topicName>
-            <jointName>ur10_wrist_3_joint</jointName>
+            <jointName>wrist_3_joint</jointName>
             <noise>
                 <type>gaussian</type>
                 <mean>0.0</mean>
@@ -505,7 +447,7 @@
     <!-- frames in the center of the camera -->
     <joint name="rgbd_camera_joint" type="fixed">
         <origin rpy="0 0 3.14" xyz="0 0 0.005" />
-        <parent link="ur10_camera_link" />
+        <parent link="camera_link" />
         <child link="rgbd_camera_link" />
     </joint>
     <link name="rgbd_camera_link">
@@ -593,31 +535,27 @@
             <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00001" />
         </inertial>
     </link>
-    <gazebo>
-        <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-            <robotNamespace>$/{ur10_ns}</robotNamespace>
-        </plugin>
-    </gazebo>
     <!-- ROS-Industrial 'base' frame: base_link to UR 'Base' Coordinates transform -->
-    <link name="ur10_base" />
-    <joint name="ur10_base_link-base_fixed_joint" type="fixed">
+    <link name="base" />
+    <joint name="base_link-base_fixed_joint" type="fixed">
         <!-- Note the rotation over Z of pi radians: as base_link is REP-103
             aligned (ie: has X+ forward, Y+ left and Z+ up), this is needed
             to correctly align 'base' with the 'Base' coordinate system of
             the UR controller.
         -->
         <origin rpy="0 0 3.14" xyz="0 0 0" />
-        <parent link="ur10_base_link" />
-        <child link="ur10_base" />
+        <parent link="base_link" />
+        <child link="base" />
     </joint>
     <joint name="ur10_robot_joint" type="fixed">
-        <parent link="world_link" />
-        <child link="ur10_table_link" />
-        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="dual_robot_link" />
+        <child link="table_link" />
+        <!-- ${ur10_ns} -->
+        <origin rpy="0 0 0" xyz="0 0 -0.005" />
     </joint>
     <!-- call -->
     <!-- <xacro:moveit_quantec/> -->
-    <link name="quantec_base_link_quantec">
+    <link name="base_link_quantec">
         <inertial>
             <origin rpy="0 0 0" xyz="-0.0810107614623872 1.69806255825153E-07 0.10599645436339" />
             <mass value="97.9298238151877" />
@@ -639,7 +577,7 @@
             </geometry>
         </collision>
     </link>
-    <link name="quantec_link_1">
+    <link name="link_1">
         <inertial>
             <origin rpy="0 0 0" xyz="-0.0084665 0.019734 0.25939" />
             <mass value="94.945" />
@@ -661,13 +599,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="quantec_joint_1" type="continuous">
+    <joint name="joint_1" type="continuous">
         <origin rpy="1.5708 0.014047 0" xyz="0 -0.235 0" />
-        <parent link="quantec_base_link_quantec" />
-        <child link="quantec_link_1" />
+        <parent link="base_link_quantec" />
+        <child link="link_1" />
         <axis xyz="0 0 1" />
     </joint>
-    <link name="quantec_link_2">
+    <link name="link_2">
         <inertial>
             <origin rpy="0 0 0" xyz="0.0015545 -0.23159 0.40897" />
             <mass value="82.176" />
@@ -689,13 +627,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="quantec_joint_2" type="continuous">
+    <joint name="joint_2" type="continuous">
         <origin rpy="0 -0.0391 0" xyz="0.33 0 0.41772" />
-        <parent link="quantec_link_1" />
-        <child link="quantec_link_2" />
+        <parent link="link_1" />
+        <child link="link_2" />
         <axis xyz="0 1 0" />
     </joint>
-    <link name="quantec_link_3">
+    <link name="link_3">
         <inertial>
             <origin rpy="0 0 0" xyz="0.35711 -0.015416 0.10193" />
             <mass value="47.124" />
@@ -717,13 +655,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="quantec_joint_3" type="continuous">
+    <joint name="joint_3" type="continuous">
         <origin rpy="0 -0.52738 0" xyz="0 0 1.15" />
-        <parent link="quantec_link_2" />
-        <child link="quantec_link_3" />
+        <parent link="link_2" />
+        <child link="link_3" />
         <axis xyz="0 1 0" />
     </joint>
-    <link name="quantec_link_4">
+    <link name="link_4">
         <inertial>
             <origin rpy="0 0 0" xyz="0.27937 0.0063685 -0.00017456" />
             <mass value="4.6744" />
@@ -745,13 +683,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="quantec_joint_4" type="continuous">
+    <joint name="joint_4" type="continuous">
         <origin rpy="0.037095 0 0" xyz="0.78147 -0.0086752 0.115" />
-        <parent link="quantec_link_3" />
-        <child link="quantec_link_4" />
+        <parent link="link_3" />
+        <child link="link_4" />
         <axis xyz="1 0 0" />
     </joint>
-    <link name="quantec_link_5">
+    <link name="link_5">
         <inertial>
             <origin rpy="0 0 0" xyz="0.046286 0.05529 7.0521E-05" />
             <mass value="8.3467" />
@@ -773,13 +711,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="quantec_joint_5" type="continuous">
+    <joint name="joint_5" type="continuous">
         <origin rpy="0 0.9269 0" xyz="0.44853 0 0" />
-        <parent link="quantec_link_4" />
-        <child link="quantec_link_5" />
+        <parent link="link_4" />
+        <child link="link_5" />
         <axis xyz="0 1 0" />
     </joint>
-    <link name="quantec_link_6">
+    <link name="link_6">
         <inertial>
             <origin rpy="0 0 0" xyz="0.021186 9.6657E-07 -3.3846E-07" />
             <mass value="0.97276" />
@@ -801,92 +739,164 @@
             </geometry>
         </collision>
     </link>
-    <joint name="quantec_joint_6" type="continuous">
+    <joint name="joint_6" type="continuous">
         <origin rpy="-2.218 0 0" xyz="0.20228 1.3733E-05 0" />
-        <parent link="quantec_link_5" />
-        <child link="quantec_link_6" />
+        <parent link="link_5" />
+        <child link="link_6" />
         <axis xyz="1 0 0" />
     </joint>
-    <transmission name="quantec_trans_joint_1">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="quantec_joint_1">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="quantec_joint_1_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="quantec_trans_joint_2">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="quantec_joint_2">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="quantec_joint_2_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="quantec_trans_joint_3">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="quantec_joint_3">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="quantec_joint_3_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="quantec_trans_joint_4">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_4">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="quantec_joint_4_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="quantec_trans_joint_5">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="quantec_joint_5">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="quantec_joint_5_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="quantec_trans_joint_6">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="quantec_joint_6">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="quantec_joint_6_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <gazebo>
-        <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-            <robotNamespace>/quantec_ns</robotNamespace>
-        </plugin>
-    </gazebo>
     <joint name="quantec_robot_joint" type="fixed">
-        <parent link="world_link" />
-        <child link="quantec_base_link_quantec" />
-        <origin rpy="-1.57 0 0" xyz="-1 0.4 0" />
+        <parent link="dual_robot_link" />
+        <child link="base_link_quantec" />
+        <!-- ${quantec_ns} -->
+        <origin rpy="-1.57 0 0" xyz="-1 0.4 -0.005" />
         <!-- Adjust xyz for the desired position -->
     </joint>
-    <transmission name="trans_quantec_joint_4">
+    <transmission name="trans_shoulder_pan_joint">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="quantec_joint_4">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <joint name="shoulder_pan_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <actuator name="quantec_joint_4_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <actuator name="shoulder_pan_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
+    <transmission name="trans_shoulder_lift_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="shoulder_lift_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="shoulder_lift_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_elbow_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="elbow_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="elbow_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_wrist_1_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist_1_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wrist_1_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_wrist_2_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist_2_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wrist_2_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_wrist_3_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist_3_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wrist_3_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_1_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_2">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_2_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_3">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_3_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_4">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_4_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_5">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_5_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_6">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_6_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- controller plugins & configuration -->
+    <gazebo>
+        <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+            <jointName> 
+                shoulder_pan_joint,
+                shoulder_lift_joint,
+                elbow_joint,
+                wrist_1_joint,
+                wrist_2_joint,
+                wrist_3_joint,
+                joint_1,
+                joint_2,
+                joint_3,
+                joint_4,
+                joint_5,
+                joint_6
+            </jointName>
+        </plugin>
+    </gazebo>
+
 </robot>
 

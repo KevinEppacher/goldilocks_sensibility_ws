@@ -8,7 +8,7 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot name="moveit_quantec" xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <xacro:property name="quantec_ns" value="quantec_" />
+    <xacro:property name="quantec_ns" value="" />
 
     <xacro:macro name="moveit_quantec" params="">
         <link name="${quantec_ns}base_link_quantec">
@@ -201,72 +201,6 @@
             <child link="${quantec_ns}link_6" />
             <axis xyz="1 0 0" />
         </joint>
-        <transmission name="${quantec_ns}trans_joint_1">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="${quantec_ns}joint_1">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${quantec_ns}joint_1_motor">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-                <mechanicalReduction>1</mechanicalReduction>
-            </actuator>
-        </transmission>
-        <transmission name="${quantec_ns}trans_joint_2">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="${quantec_ns}joint_2">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${quantec_ns}joint_2_motor">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-                <mechanicalReduction>1</mechanicalReduction>
-            </actuator>
-        </transmission>
-        <transmission name="${quantec_ns}trans_joint_3">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="${quantec_ns}joint_3">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${quantec_ns}joint_3_motor">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-                <mechanicalReduction>1</mechanicalReduction>
-            </actuator>
-        </transmission>
-        <transmission name="${quantec_ns}trans_joint_4">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="joint_4">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${quantec_ns}joint_4_motor">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-                <mechanicalReduction>1</mechanicalReduction>
-            </actuator>
-        </transmission>
-        <transmission name="${quantec_ns}trans_joint_5">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="${quantec_ns}joint_5">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${quantec_ns}joint_5_motor">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-                <mechanicalReduction>1</mechanicalReduction>
-            </actuator>
-        </transmission>
-        <transmission name="${quantec_ns}trans_joint_6">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="${quantec_ns}joint_6">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${quantec_ns}joint_6_motor">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-                <mechanicalReduction>1</mechanicalReduction>
-            </actuator>
-        </transmission>
-        <gazebo>
-            <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-                <robotNamespace>$/{quantec_ns}</robotNamespace>    
-            </plugin>
-        </gazebo>
-
     </xacro:macro>
 
     <!-- call -->

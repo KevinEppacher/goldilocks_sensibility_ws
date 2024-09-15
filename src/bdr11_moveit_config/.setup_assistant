@@ -6,6 +6,6 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/dual_robots.srdf
   CONFIG:
-    author_name: Moritz Dönges
-    author_email: re23m024@technikum-wien.at
-    generated_timestamp: 1724222063
+    author_name: roblyat
+    author_email: ro@blyat.com
+    generated_timestamp: 1726429236
