@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- spwan both robots und -->
+    <include file="$(find bdr11_moveit_config)/launch/demo_gazebo.launch" />
+    
+    <!-- spawn him -->
+    <node name="hmi" pkg="hmi" type="hmi" output="screen" />
+
+</launch>
