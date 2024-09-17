@@ -6,8 +6,8 @@ robot_motion:
   linear_velocity: 0.00001  # in percentage (0-1)
   linear_acceleration: 0.01  # in percentage (0-1)
 
-  ptp_velocity: 0.001  # in percentage (0-1)
-  ptp_acceleration: 0.0001  # in percentage (0-1)
+  ptp_velocity: 0.0005  # in percentage (0-1)
+  ptp_acceleration: 0.00005  # in percentage (0-1)
 
   acceptable_fraction: 0.3  # acceptable fraction of the path that must be followed
   planner_id: "PRM"  # Planner ID (PRM, RRT, etc.)
