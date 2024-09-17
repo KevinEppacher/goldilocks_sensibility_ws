@@ -1,7 +1,17 @@
 <?xml version="1.0"?>
 <launch>
+
+    <param name="use_sim_time" value="true" />
+
+    <!-- Set parameters for the robot movement -->
+    <!-- Set parameters for the robot movement -->
+    <param name="goal_position_tolerance" value="0.1" />
+    <param name="goal_orientation_tolerance" value="0.1" />
+    <param name="planning_time" value="60" />
+    <param name="planning_attempts" value="100" />
+
     <!-- spwan both robots und -->
-    <include file="$(find bdr11_moveit_config)/launch/demo_gazebo.launch" />
+    <include file="$(find bdr11_moveit_config_v1)/launch/demo_gazebo.launch" />
     
     <!-- spawn him -->
     <node name="hmi" pkg="hmi" type="hmi" output="screen" />

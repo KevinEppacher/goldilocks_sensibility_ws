@@ -13,7 +13,7 @@
   </include>
 
   <!-- Set the robot urdf on the parameter server -->
-  <param name="robot_description" textfile="$(find bdr11_moveit_config)/config/gazebo_dual_robots.urdf" />
+  <param name="robot_description" textfile="$(find bdr11_moveit_config_v1)/config/gazebo_dual_robots.urdf" />
 
   <!-- Unpause the simulation after loading the robot model -->
   <arg name="unpause" value="$(eval '' if arg('paused') else '-unpause')" />
@@ -23,11 +23,11 @@
     respawn="false" output="screen" />
 
   <!-- Load the controller parameters onto the parameter server -->
-  <rosparam file="$(find bdr11_moveit_config)/config/gazebo_controllers.yaml" />
+  <rosparam file="$(find bdr11_moveit_config_v1)/config/gazebo_controllers.yaml" />
   <include file="$(dirname)/ros_controllers.launch"/>
 
   <!-- Spawn the Gazebo ROS controllers -->
-  <!-- <node name="gazebo_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller" />  -->
+  <!-- <node name="gazebo_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller" /> -->
 
   <!-- Given the published joint states, publish tf for the robot links -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />

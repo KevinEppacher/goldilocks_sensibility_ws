@@ -2,36 +2,16 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="dual_robots">
 
   <!-- Define the world link -->
-  <link name="dual_robot_link">
-    <inertial>
-      <mass value="1.0" />
-      <origin xyz="0 0 0.0" rpy="0 0 0" /> <!-- Raise the link by changing the z-value -->
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
-    </inertial>
-    <visual>
-      <geometry>
-        <box size="0.01 0.01 0.01" />
-      </geometry>
-      <collision>
-          <origin rpy="0 0 0" xyz="0 0 0" />
-          <geometry>
-              <box size="0.01 0.01 0.01" />
-          </geometry>
-      </collision>
-      <material name="gray">
-        <color rgba="0.5 0.5 0.5 1.0" />
-      </material>
-    </visual>
-  </link>
+    <link name="world" />
 
   <!-- First robot -->
   <xacro:include filename="$(find bdr11_description)/urdf/ur10_robot.xacro" />
   <xacro:ur10_robot />
   
   <joint name="ur10_robot_joint" type="fixed">
-    <parent link="dual_robot_link" />
+    <parent link="world" />
     <child link="${ur10_ns}table_link" /> <!-- ${ur10_ns} -->
-    <origin xyz="0 0 -0.005" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>
 
   <!-- Second robot -->
@@ -39,9 +19,9 @@
   <xacro:moveit_quantec />
   
   <joint name="quantec_robot_joint" type="fixed">
-    <parent link="dual_robot_link" />
+    <parent link="world" />
     <child link="${quantec_ns}base_link_quantec" />  <!-- ${quantec_ns} -->
-    <origin xyz="-1 0.4 -0.005" rpy="-1.57 0 0" /> <!-- Adjust xyz for the desired position -->
+    <origin xyz="-1 0.4 0" rpy="-1.57 0 0" /> <!-- Adjust xyz for the desired position -->
   </joint>
 
 </robot>

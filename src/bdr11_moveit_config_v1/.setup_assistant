@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: bdr11_description
+    relative_path: urdf/bdr11.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/dual_robots.srdf
+  CONFIG:
+    author_name: roblyat
+    author_email: ro@blyat.com
+    generated_timestamp: 1726588171
