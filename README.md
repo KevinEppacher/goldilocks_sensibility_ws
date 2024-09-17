@@ -81,87 +81,107 @@ After installing Docker, you can follow these post-installation steps:
 
 
 
+
 # Goldilocks Sensibility Measurements
 
-![sensbility_measurement_demo_1](docs/sensbility_measurement_demo_1.png)
+The Goldilocks Sensibility Measurements refer to a precise and methodical process designed to assess the mechanical and sensory capabilities of the UR robot in real-world applications. This process leverages both hardware and software components to ensure the system operates within optimal performance thresholds. Below is a visual demonstration of the sensibility measurements in action:
 
-![sensbility_measurement_demo_2](docs/sensbility_measurement_demo_2.png)
+![Sensibility Measurement Demo 1](docs/sensbility_measurement_demo_1.png)
 
-![sensbility_measurement_demo_3](docs/sensbility_measurement_demo_3.png)
+![Sensibility Measurement Demo 2](docs/sensbility_measurement_demo_2.png)
 
-![sensbility_measurement_demo_4](docs/sensbility_measurement_demo_4.png)
+![Sensibility Measurement Demo 3](docs/sensbility_measurement_demo_3.png)
 
+![Sensibility Measurement Demo 4](docs/sensbility_measurement_demo_4.png)
 
-Connect Ethernet cable from UR to Laptop
+## Process Overview
 
-start up UR
+1. **Ethernet Setup**: Ensure the Ethernet cable is properly connected between the UR robot and the laptop.
+2. **UR Initialization**: Power on the UR robot and ensure it is initialized properly.
+3. **Robot IP Configuration**: Confirm the robot’s IP address is set to `192.168.1.102`.
+3. **Laptop IP Configuration**: Confirm the Laptops’s IP address is set to `192.168.1.101`.
+4. **Workspace Setup**: Open Visual Studio Code (VSC) and select the `goldilocks_sensibility_ws` workspace folder.
+5. **Dependency Management**: Use either Docker (recommended) or install the necessary dependencies locally as specified in the Dockerfile. To install dependencies manually, run:
+    ```bash
+    rosdep install --from-paths src --ignore-src -y
+    ```
 
-initialize UR
+## Running the Sensibility Measurement
 
-Make sure robot ip adress is: 192.168.1.101
+Once the setup is complete, follow the steps below to run the sensibility measurement program:
 
-open vsc
+1. **Launch ROSBridge Server**:
+    Start the ROSBridge server for TCP communication between the laptop and the UR:
+    ```bash
+    roslaunch rosbridge_server rosbridge_tcp.launch
+    ```
+    This connects the laptop to the UR via TCP, allowing the force-torque sensor data to be published.
 
-select workspace folde goldilocks_sensibility_ws
+2. **Open HMI for Sensibility Control**:
+    Launch the sensitivity measurement control interface:
+    ```bash
+    roslaunch tars_robot measure_sensitivity.launch
+    ```
+    The Human-Machine Interface (HMI) allows you to:
+    - Enter **freedrive mode** to teach measurement points (`Setup` button).
+    - Switch to **external control mode** to control the robot via MoveIt RViz (`Begin External Control` button).
+    - Stop both programs and the TCP connection (`Default` button).
 
-Either connect vsc with remote docker or install all dependencies on local laptop (Dependencies are in the Dockerfile and execute rosdep install ... )
+3. **Start Sensibility Measurement**:
+    Once the measurement points are defined, start the sensibility measurement process:
+    ```bash
+    roslaunch tars_robot start_sensibility_measurement.launch
+    ```
+    You can adjust program parameters in the file:
+    ```bash
+    src/tars_robot/param/sensitivity_program_param.yaml
+    ```
 
-open 3 termials, go to path of workspace and source the terminals source devel/setup.bash
+4. **Data and Plots**:
+    The program will automatically save CSV files of the results in:
+    ```bash
+    src/tars_robot/data
+    ```
+    Python scripts will automatically generate plots for each measurement set if they do not exist. If a 3D visualization of the measurement is required, connect the camera to the laptop. Ensure the camera is connected via a powered USB hub if an extension cable is used.
 
-now execute following commands in this order
+    ```bash
+    rosrun  tars_robot create_sensibility_plot.py
+    ```
 
-roslaunch rosbridge_server rosbridge_tcp.launch
+---
 
-this launch file connects laptop with UR via tcp. In this case used for publishing the force torque sensor values
+# Hardware Setup
 
+The hardware setup for the Goldilocks Sensibility Measurements is crucial for obtaining accurate and reliable data. Below are the key components and configuration steps:
 
+### Required Components
 
+- **UR10 Robot**: The primary robotic platform used for manipulation and testing.
+- **FT300 Force-Torque Sensor**: Provides precision measurements of applied forces and torques during the test.
+- **Camera**: Mounted on the test finger gripper to capture visual data during the process.
 
-roslaunch tars_robot measure_sensitivity.launch
+### Pre-Configuration Checklist
 
-this launch file opens a hmi for controlling the current robot program and for teaching the measurement points
+1. **FT300 Sensor**: Ensure the FT300 sensor is securely connected to the UR10 robot via USB. The sensor provides crucial feedback for force and torque measurements.
+2. **Camera Mounting**: The camera must be firmly mounted on the test finger gripper to capture relevant visual data.
+3. **UR Software**: The UR10 should have **Polyscope** version 3.12.x or later installed to ensure compatibility with the measurement programs.
+4. **ROS Setup**: ROS Noetic should be installed on the controlling machine (e.g., laptop) to allow for communication with the robot and sensor systems.
 
-under the reiter Control Panel, the user is able to control the current robot program
+### Software Setup
 
-- Setup Button sets the robot in freedrive mode. You can use this mode to teach the measurement points
+1. **Catkin Workspace**: Navigate to your Catkin workspace and ensure the required packages are installed:
+   ```bash
+   cd ~/catkin_ws
+   ```
+2. **IP Configuration**: Confirm that the IP address of your laptop is set to `192.168.1.101`. This ensures proper communication with the UR robot.
+3. **System Update & ROS Dependencies**:
+   Ensure the system is updated and ROS dependencies are installed:
+   ```bash
+   sudo apt-get update
+   rosdep install --from-paths src --ignore-src -y
+   ```
 
-- Begin External Control sets the robot in external control, which can be controlled via MoveIt RViz or MoveGroup
-
-- Default settings stops both programms and stops the tcp communication. No program is selected
-
-
-
-roslaunch tars_robot start_sensibility_measurement.launch 
-
-when all measurement points are teached, and the user is in the Measurement Panel, then the robots starts the sensibility measurements
-
-the sensibility measurement program parameters can be set here:
-
-src/tars_robot/param/sensitivity_program_param.yaml
-
-
-when the measurement program is finished, it should have saved csv files in this folder:
-
-src/tars_robot/data
-
-When you want to have plots of each measurement of each measurement set, the python scripts checks if any plots need to done. If in each folder is no plot, it automatically generates one
-
-If you want to visualize a 3D representation of the measurement, then you need to connect the camera to the laptop (sidenote: either connect camera directly with laptop or when a extension cable is used, make sure the cable is externally powered via a docking station and the usb is connected on the fast usb port)
-
-Note:
-when you want to close the hmi window, then press first the default button and after that close the windows ord ctrl+C in the terminal. If you close the window while a program is running, the rosbridge connecion dies and shouts out a error message. The user has to stop the program on the ur10, by going on the program button and selecting stop program on the control panel.
-
-# Hardware setup
-
-make sure that ...
-
-the ft300-sensor is connected properly to the UR10 (via USB)
-
-the camera is mounted on the test finger gripper
-
-Polyscope > 3.12.x
-
-ros1 noetic devel is installed
+This hardware and software configuration ensures the UR robot is prepared for accurate sensibility measurements and optimal interaction with both the physical environment and external control interfaces.
 
 # UR Robot Startup Guide
 
