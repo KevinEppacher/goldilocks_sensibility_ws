@@ -10,6 +10,7 @@ namespace Measurement
         forceTorqueSensorSub = nh.subscribe("force_torque_sensor", 100, &Sensibility::forceTorqueSensorCallback, this);
         poseUR = nh.advertise<geometry_msgs::Pose>("pose_ur_robot", 100);
         poseUrSub = nh.subscribe("pose_ur_robot", 100, &Sensibility::poseUrCallback, this);
+        markerPub = nh.advertise<visualization_msgs::MarkerArray>("visualization_marker_array", 1);
 
         // Publisher und Subscriber für Sensibility-Messungen
         measurementPointsSub = nh.subscribe("measurement_points", 1, &Sensibility::measurementPointsCallback, this);
@@ -87,7 +88,7 @@ namespace Measurement
             // Schreibe die Daten in die CSV-Datei
             if (csvFile.is_open())
             {
-                csvFile << ros::Time::now() << "," << msgAbsoluteForce.data << "," << scalarDistance.data * 1000 << "\n";  // Distanz in mm
+                csvFile << ros::Time::now() << "," << msgAbsoluteForce.data << "," << scalarDistance.data * 1000 << "\n"; // Distanz in mm
             }
 
             // Speichere die aktuelle Pose als letzte Pose für die nächste Iteration
@@ -143,7 +144,7 @@ namespace Measurement
             return;
         }
 
-        // Hole den Pfad zum tars_robot-Package
+        // Get the path to the tars_robot package
         std::string packagePath = ros::package::getPath("tars_robot");
         if (packagePath.empty())
         {
@@ -151,11 +152,11 @@ namespace Measurement
             return;
         }
 
-        // Speicherpfad im data-Verzeichnis des tars_robot-Packages
+        // Save path in the data directory of the tars_robot package
         std::string dataPath = packagePath + "/data";
         ROS_INFO_STREAM("Data will be saved to: " << dataPath);
 
-        // Erstelle den Hauptordner für die Messungen
+        // Create the main folder for the measurements
         mainFolder = dataPath + "/" + getCurrentDateTime() + "_Measurement-Set";
         createDirectory(mainFolder);
         ROS_INFO_STREAM("Created main measurement directory: " << mainFolder);
@@ -169,7 +170,7 @@ namespace Measurement
             createDirectory(poseFolder);
             ROS_INFO_STREAM("Created folder for measurement " << measurementID << ": " << poseFolder);
 
-            // Erstelle die CSV-Datei
+            // Create the CSV file
             csvFilePath = poseFolder + "/" + std::to_string(measurementID) + "_Measurement.csv";
             csvFile.open(csvFilePath);
             if (!csvFile.is_open())
@@ -177,30 +178,113 @@ namespace Measurement
                 ROS_ERROR_STREAM("Could not create CSV file: " << csvFilePath);
                 return;
             }
-            csvFile << "Timestamp,AbsoluteForce,Distance(mm)\n";  // CSV-Header
+            csvFile << "Timestamp,AbsoluteForce,Distance(mm)\n"; // CSV header
             ROS_INFO_STREAM("CSV file created: " << csvFilePath);
 
-            // Setze die Distanz auf 0, bevor eine neue Messung beginnt
+            // Reset distance and initialize the last pose
             scalarDistance.data = 0;
-            lastPose = getCurrentTCPPose();  // Setze die initiale Pose vor der Messung
+            lastPose = getCurrentTCPPose(); // Set the initial pose before the measurement
+
+            ROS_INFO("Reset distance to 0 for new measurement point");
 
             ur10.PTP(pose, ptpVelocity, ptpAcceleration);
-            ros::Duration(1.0).sleep(); // Warten, um sicherzustellen, dass die Pose stabil ist
+            ros::Duration(1.0).sleep(); // Wait to ensure the pose is stable
 
             startMeasurement = true;
 
-            // LIN fahren (Messung)
+            // LIN movement (measurement)
             ur10.LIN("tool0_link", max_measuring_distance, linearVelocity, linearAcceleration);
 
-            // Nach der Messung die Messung stoppen
+            // After the measurement is done, stop the measurement
             startMeasurement = false;
+
+            // Publish force markers after the measurement
+            publishForceMarkers(measurementID, msgAbsoluteForce.data, pose);
 
             csvFile.close();
             ROS_INFO_STREAM("Measurement " << measurementID << " completed and saved to CSV at: " << csvFilePath);
 
-            // Zurückfahren
+            // Move back
             ros::Duration(2.0).sleep();
-            ur10.LIN("tool0_link", -max_measuring_distance, linearVelocity * 20, linearAcceleration * 20, withActiveAirskin);
+            ur10.LIN("tool0_link", -max_measuring_distance, linearVelocity * 10, linearAcceleration * 10, withActiveAirskin);
         }
     }
+
+    void Sensibility::publishForceMarkers(int measurementID, double absoluteForce, const geometry_msgs::Pose& position)
+    {
+        // Publisher for visualization markers
+        ros::Publisher markerPub = nh.advertise<visualization_msgs::MarkerArray>("visualization_marker_array", 1);
+
+        visualization_msgs::MarkerArray markerArray;
+
+        // Create a marker for the force arrow
+        visualization_msgs::Marker arrowMarker;
+        arrowMarker.header.frame_id = "base_link";  // Reference frame
+        arrowMarker.header.stamp = ros::Time::now();
+        arrowMarker.ns = "force_markers";
+        arrowMarker.id = measurementID;  // Unique ID for each measurement
+        arrowMarker.type = visualization_msgs::Marker::ARROW;
+        arrowMarker.action = visualization_msgs::Marker::ADD;
+
+        // Set the arrow pose at the current position
+        arrowMarker.pose.position = position.position;
+
+        // Get the orientation of the tool and rotate it to point in the -Z direction
+        tf2::Quaternion toolOrientation;
+        tf2::fromMsg(position.orientation, toolOrientation);
+
+        // Apply a rotation to the arrow to make it point along the -z axis relative to the tool
+        tf2::Quaternion rotation;
+        rotation.setRPY(0, M_PI/2, 0);  // Rotate 180 degrees around the x-axis to point -z
+
+        // Combine the tool's orientation with the rotation
+        tf2::Quaternion arrowOrientation = toolOrientation * rotation;
+        arrowMarker.pose.orientation = tf2::toMsg(arrowOrientation);
+
+        // Set the scale: length is proportional to the force (normalized to 5 N)
+        double normalizedForce = std::min(absoluteForce / 20.0, 1.0);  // Normalize to a max of 5 N
+        arrowMarker.scale.x = normalizedForce;  // Arrow length based on force
+        arrowMarker.scale.y = 0.025;  // Arrow width
+        arrowMarker.scale.z = 0.025;  // Arrow height
+
+        // Set the color (e.g., red for the arrow)
+        arrowMarker.color.r = 1.0;
+        arrowMarker.color.g = 0.0;
+        arrowMarker.color.b = 0.0;
+        arrowMarker.color.a = 1.0;
+
+        // Add label text for the force value
+        visualization_msgs::Marker textMarker;
+        textMarker.header.frame_id = "base_link";
+        textMarker.header.stamp = ros::Time::now();
+        textMarker.ns = "force_labels";
+        textMarker.id = measurementID + 1000;  // Unique ID for text (separate from arrow)
+        textMarker.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
+        textMarker.action = visualization_msgs::Marker::ADD;
+
+        // Position text slightly above the arrow
+        textMarker.pose.position = position.position;
+        textMarker.pose.position.z += 0.15;  // Move it up slightly
+
+        textMarker.scale.z = 0.1 / 3;  // Text height
+        textMarker.color.r = 0.0;
+        textMarker.color.g = 1.0;
+        textMarker.color.b = 0.0;
+        textMarker.color.a = 1.0;
+
+        // Set the label text to show the force value
+        std::stringstream ss;
+        ss << "Measurement " << measurementID << ": " << absoluteForce << " N";
+        textMarker.text = ss.str();
+
+        // Add both arrow and text markers to the marker array
+        markerArray.markers.push_back(arrowMarker);
+        markerArray.markers.push_back(textMarker);
+
+        // Publish the marker array
+        markerPub.publish(markerArray);
+
+        ROS_INFO("Published force markers for Measurement %d", measurementID);
+    }
+
 }
