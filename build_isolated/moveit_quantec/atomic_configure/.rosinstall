@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /goldilocks_sensibility_ws/devel_isolated/moveit_quantec/setup.sh

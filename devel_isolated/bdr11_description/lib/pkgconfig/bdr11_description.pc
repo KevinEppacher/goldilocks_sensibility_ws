@@ -1,0 +1,8 @@
+prefix=/goldilocks_sensibility_ws/devel_isolated/bdr11_description
+
+Name: bdr11_description
+Description: Description of bdr11_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

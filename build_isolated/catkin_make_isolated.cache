@@ -1,0 +1,2 @@
+bdr11_description:bdr11_moveit_config:bdr_ur10_moveit_config:hmi:tars_robot:unused/bdr11_test_moveit_config:unused/bdr_ur10_moveit:unused/moveit_quantec:ur10_description_v3
+-G Unix Makefiles -DCATKIN_DEVEL_PREFIX=/goldilocks_sensibility_ws/devel_isolated -DCMAKE_INSTALL_PREFIX=/goldilocks_sensibility_ws/install_isolated

@@ -1,0 +1,8 @@
+prefix=/goldilocks_sensibility_ws/devel_isolated/moveit_quantec
+
+Name: moveit_quantec
+Description: Description of moveit_quantec
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
