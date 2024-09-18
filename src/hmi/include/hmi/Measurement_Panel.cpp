@@ -72,7 +72,7 @@ void MeasurementPanel::render()
         if (ImGui::Button("Update Pose"))
         {
             geometry_msgs::Pose currentPose;
-            currentPose = getCurrentPose("base", "tool0_link");
+            currentPose = getCurrentPose("base_link", "tool0_link");
             updatePose(selectedPoseIndex, currentPose);
             poses.header.frame_id = "base_link";
             measurementPoseArrayPub.publish(poses);

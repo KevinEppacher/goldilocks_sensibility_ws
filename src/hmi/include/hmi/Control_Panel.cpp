@@ -150,7 +150,11 @@ void ControlPanel::moveRobotToPose(const std::string& planning_group, const geom
     move_group.setNumPlanningAttempts(planning_attempts);
     ROS_INFO("Planning attempts set to: %d", planning_attempts);
 
+    move_group.setPoseReferenceFrame("base_link");
+
     move_group.setPoseTarget(target_pose);
+
+    ROS_WARN("Moving robot to target pose... %f %f %f", target_pose.position.x, target_pose.position.y, target_pose.position.z);
 
     move_group.asyncMove();
 
