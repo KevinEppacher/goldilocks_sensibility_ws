@@ -47,6 +47,12 @@ RUN sudo apt-get install -y ros-noetic-moveit-commander
 
 RUN sudo apt-get install -y libglfw3-dev
 
+RUN sudo apt install -y ros-noetic-joint-state-controller
+
+RUN sudo apt install -y ros-noetic-controller-manager*
+
+RUN sudo apt install -y ros-noetic-moveit-ros-control-interface
+
 # RUN sudo apt-get install -y ros-$ROS_DISTRO-ur-kinematics
 
 # Install Git
