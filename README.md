@@ -5,7 +5,7 @@ Watch the Forces and Torques via Measurment Panel.
 Navigate the UR10 to saved Poses via Control Panel - External Control Button.
 Navigate UR10 and Quantec to Home Positions via Control Panel Quantec/UR10 - Default - Button.
 
-![HMI Contole Panel](docs/hmi_1png)
+![HMI Contole Panel](docs/hmi_1.png)
 
 ![HMI Contole Panel](docs/hmi2.png)
 
