@@ -167,6 +167,109 @@ geometry_msgs::Pose ControlPanel::handlePose(int index, const geometry_msgs::Pos
     return poses.poses[index];
 }
 
+void ControlPanel::moveLIN(const std::string& planning_group, const std::string &referenceLink) {
+
+    moveit::planning_interface::MoveGroupInterface move_group(planning_group);
+
+    double linearDistance;
+    double acceptableFraction;
+    std::string plannerId;
+    int planningAttempts;
+    double planningTime;
+    double goalPositionTolerance;
+    double goalOrientationTolerance;
+    double linearVelocityScaling;
+    double linearAccelerationScaling;
+
+    // Load parameters from the parameter server (YAML file)
+    nh.param("goal_position_tolerance", goalPositionTolerance, 0.01);
+    nh.param("goal_orientation_tolerance", goalOrientationTolerance, 0.05);
+    nh.param("planning_time", planningTime, 20.0);
+    nh.param("planning_attempts", planningAttempts, 100);
+    nh.param("acceptable_fraction", acceptableFraction, 0.9);
+    nh.param("planner_id", plannerId, std::string("PRM"));
+    nh.param("linear_distance", linearDistance, 0.1);
+    nh.param("linear_velocity_scaling", linearVelocityScaling, 0.1);
+    nh.param("linear_acceleration_scaling", linearAccelerationScaling, 0.1);
+
+    // Apply velocity and acceleration scaling
+    move_group.setMaxVelocityScalingFactor(linearVelocityScaling);
+    move_group.setMaxAccelerationScalingFactor(linearAccelerationScaling);
+
+    geometry_msgs::PoseStamped currentPose = move_group.getCurrentPose(referenceLink);
+
+    // Set the reference frame to base_link
+    move_group.setPoseReferenceFrame("table_link");
+
+    // Transformation of the current pose
+    tf2::Transform currentTransform;
+    tf2::fromMsg(currentPose.pose, currentTransform);
+
+    // Define translation along the Z-axis / set distance in Controle_Panel.h
+    tf2::Vector3 translation(0, 0, distance);
+    tf2::Vector3 translatedVector = currentTransform.getBasis() * translation;
+
+    // Define a new target pose based on the translation
+    geometry_msgs::Pose targetPose = currentPose.pose;
+    targetPose.position.x += translatedVector.x();
+    targetPose.position.y += translatedVector.y();
+    targetPose.position.z += translatedVector.z();
+
+    // Visualize the target pose in relation to the baseline link
+    // visualToolsBase.publishAxisLabeled(targetPose, "target_pose_base");
+    // visualToolsBase.trigger(); // Display changes in RViz
+
+    // Create a vector for waypoints and add only the target pose (no initial pose)
+    std::vector<geometry_msgs::Pose> waypoints;
+    // waypoints.push_back(currentPose.pose);
+    waypoints.push_back(targetPose); // Only the end pose
+
+    // Compute the Cartesian path
+    moveit_msgs::RobotTrajectory trajectory;
+    const double jumpThreshold = 0.0; // No jumps allowed
+    const double eefStep = 0.01;      // Step size for the end effector
+    double fraction = move_group.computeCartesianPath(waypoints, eefStep, jumpThreshold, trajectory);
+
+    // If sufficient path is planned
+    if (fraction > acceptableFraction)
+    {
+        // Optional: time parameterization
+        robot_trajectory::RobotTrajectory rt(move_group.getCurrentState()->getRobotModel(), move_group.getName());
+        rt.setRobotTrajectoryMsg(*move_group.getCurrentState(), trajectory);
+
+        trajectory_processing::IterativeParabolicTimeParameterization iptp;
+        bool success = iptp.computeTimeStamps(rt, linearVelocityScaling, linearAccelerationScaling);
+
+        if (success)
+        {
+            rt.getRobotTrajectoryMsg(trajectory);
+
+            // Create and execute the plan
+            moveit::planning_interface::MoveGroupInterface::Plan plan;
+            plan.trajectory_ = trajectory;
+
+            ROS_INFO_NAMED("move_group", "Planning successful. Executing the motion asynchronously...");
+
+            // Async movement: Non-blocking, starts executing and returns immediately
+            move_group.asyncMove();
+
+            // If you prefer blocking behavior (wait until motion finishes), use this:
+            // moveGroup.move();
+        }
+        else
+        {
+            ROS_WARN_NAMED("move_group", "Time parameterization failed. Unable to move to target pose.");
+        }
+    }
+    else
+    {
+        ROS_WARN_NAMED("move_group", "Planning failed. The Cartesian path was not sufficiently achieved.");
+    }
+
+    // Reset the reference frame back to base_link
+    move_group.setPoseReferenceFrame("base_link");
+};
+
 
 
 
